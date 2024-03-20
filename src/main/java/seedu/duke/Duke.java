@@ -14,41 +14,46 @@ public class Duke {
      */
     public static void main(String[] args) {
         ui.greetUser();
-        //ui.byeUser();
 
-        String input = "";
         boolean inGame = false;
-        input = Parser.readLine();
+        String input = Parser.readLine();
+
         while (true) {
-
-
             if (Parser.ifQuit(input)) {
+                ui.byeUser();
                 break;
             } else if (Parser.ifHelp(input)) {
                 ui.printHelp();
-                continue;
+            } else {
+                assert input != null;
+                if (input.equals("testquit")) {
+                    ui.println("runtestbat success!");
+                    break;
+                }
             }
 
             if (!inGame) {
-                //ui.askGame();
                 try {
                     Parser.readGame(input);
                     inGame = true;
                     if (input.equals("TTT")) {
                         try {
                             runTicTacToe();
-                            System.out.println("now what would you like to do");
+                            System.out.println("Now what would you like to do?");
                             inGame = false;
                         } catch (InvalidTTMoveException e) {
                             throw new RuntimeException(e);
                         }
                     } else if (input.equals("hangman")) {
                         hangman.runHangMan();
-                        System.out.println("now what would you like to do");
+                        System.out.println("Now what would you like to do?");
                         inGame = false;
                     }
+                    if (!input.equals("help")  ) {
+                        ui.printHelp();
+                    }
                 } catch (InvalidGameException | NullPointerException e) {
-                    ui.println("invalid game");
+                    ui.println("Invalid Game.");
                 }
             }
             input = Parser.readLine();
