@@ -51,6 +51,13 @@ The `UI` component,
 (image)
 
 ### <span style="color:grey;">Game Implementation:</span>
+The `Game` class, is the parent class for our games, `TicTacToe` and `Hangman`.
+* Contains an override method that runs the game for TicTacToe and Hangman.
+* Contains a method for tutorial guideline for users for each respective game to teach users on the games rules,
+and how the game would be played on the CLI.
+* ArrayList of `Game` type is created to store multiple instances of `TicTacToe` and `Hangman` to allow many rounds
+of either games to be played.
+* The `isExit` is a `Boolean` variable that checks when a user would want to quit an ongoing game or when a game is ended.
 
 ### <span style="color:grey;">TicTacToe Implementation:</span>
 The `TicTacToe` class, which inherits from the `Game` class, handles the Tic-Tac-Toe game itself!
