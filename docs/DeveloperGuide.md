@@ -53,6 +53,21 @@ The `UI` component,
 ### <span style="color:grey;">Game Implementation:</span>
 
 ### <span style="color:grey;">TicTacToe Implementation:</span>
+The `TicTacToe` class, which inherits from the `Game` class, handles the Tic-Tac-Toe game itself!
+
+The `TicTacToe` class:
+* reads commands using `Scanner`, after which the input is parsed by the `Parser` class. 
+  * Specifically, it takes in values only from `1` to `9`.
+* stores the `board` upon which the game is played on. 
+  * The `board` is a `String` `array` with `9` slots, indicating the possible inputs from the user.
+  * The `board` is also printed at the start of the game and after every move by the user.
+* checks the winner using the `checkWinner(int turnCount)` method, which takes in the number of turns taken so far.
+  * Returns the following based on the state of the game:
+    * `unending` if the game is unfinished or the user inputs `quit`.
+    * `X` if the user wins the game
+    * `O` if the user loses the game
+    * `draw` if the user and the computer draw
+
 
 ### <span style="color:grey;">Hangman Implementation:</span>
 

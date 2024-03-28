@@ -90,6 +90,14 @@ public class TicTacToe extends Game {
 
             try {
                 readTTMove(line);
+
+                while((board[Integer.parseInt(line) - 1].equals("X")) ||
+                        (board[Integer.parseInt(line) - 1].equals("O")) ) {
+                    System.out.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
+                    line = in.nextLine();
+                    readTTMove(line);
+                }
+
                 board[Integer.parseInt(line) - 1] = "X";
                 turnCount++;
 
