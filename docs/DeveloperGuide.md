@@ -77,6 +77,23 @@ The `TicTacToe` class:
 
 
 ### <span style="color:grey;">Hangman Implementation:</span>
+The `HangMan` class:
+* When the game is started, `runHangMan` is called.
+* User input is read using `Scanner`. 
+  * Available commands currently are only limited to single characters.
+    * (A future implementation for v2.0 would be to additionally include the ability to input an entire word for guessing)
+* Stores a `wordBank` which contains the list of available words randomly selected for the hangman game.
+* Contains attributes of `chosenWordLength` based on the randomly `chosenWord`.
+* User inputs are compared against the `chosenWord` to check for similar letters used.
+   Each iteration of user input will result in calls of `addGuess`, `printHangMan`, `printLettersGuessed` & `printWordGuesser`.
+  * `addGuess` adds the user input to an arraylist<String> of `allGuessedLetters`
+    * `printLettersGuessed` then iterates through `allGuessedLetters`, printing each element of the array list.
+  * Correctly guessed letters together with `_` blank spaces corresponding to letters not yet guessed, are printed using `printWordGuesser`.
+  * Incorrect guesses however lead to the game `state` increasing by 1.
+    * `printHangMan` prints a different hangman based on the game `state`. 
+    * Should the `state` reach 6, the game is lost.
+* `runHangMan` checks for the number of `_` blank spaces left at each iteration of user input.
+  * Should the number of `_` be 0, the player has won.
 
 ## Product scope
 
