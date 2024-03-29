@@ -4,6 +4,8 @@ import seedu.duke.exceptions.InvalidTTMoveException;
 
 import java.util.Scanner;
 
+import java.util.Random;
+
 import static seedu.duke.Parser.readTTMove;
 
 public class TicTacToe extends Game {
@@ -21,7 +23,7 @@ public class TicTacToe extends Game {
         System.out.println("  " + board[6] + " | " + board[7] + " | " + board[8] + "  ");
     }
 
-    public static String checkWinner() {
+    public static String checkWinner(int turnCount) {
         for (int a = 0; a < 8; a++) {
             String line = null;
             switch (a) {
@@ -54,29 +56,89 @@ public class TicTacToe extends Game {
             }
             if (line.equals("XXX")) {
                 return "X";
+            } else if (line.equals("OOO")) {
+                return "O";
             }
+        }
+        if (turnCount == 9) {
+            return "draw";
         }
         return "unending";
     }
 
-    public static void runTicTacToe() throws InvalidTTMoveException {
+    @Override public void runTicTacToe() throws InvalidTTMoveException {
         for (int i = 0; i < 9; i++) {
             board[i] = " ";
         }
+
+        Random rand = new Random();
+
+        int turnCount = 0;
+
         Scanner in = new Scanner(System.in);
-        String line = " ";
-        while (checkWinner().equals("unending") || line.equals("exit")) {
+        String line;
+        while (checkWinner(turnCount).equals("unending")) {
             printBoard();
+            System.out.println("----------------------------------------------------");
+            System.out.println("Make your move, challenger.");
             line = in.nextLine();
+            assert line != null;
+
+            if (line.equals("quit")) {
+                break;
+            }
 
             try {
                 readTTMove(line);
+
+                while((board[Integer.parseInt(line) - 1].equals("X")) ||
+                        (board[Integer.parseInt(line) - 1].equals("O")) ) {
+                    System.out.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
+                    line = in.nextLine();
+                    readTTMove(line);
+                }
+
                 board[Integer.parseInt(line) - 1] = "X";
-            } catch (InvalidTTMoveException e){
-                System.out.println("Invalid move. There are only slots 1-9.");
+                turnCount++;
+
+                if (turnCount == 9) {
+                    break;
+                }
+
+                int randomPlacement = rand.nextInt(9);
+
+                while (board[randomPlacement].equals("X") ||
+                        board[randomPlacement].equals("O")) {
+                    randomPlacement = rand.nextInt(9);
+                }
+
+                board[randomPlacement] = "O";
+                turnCount++;
+            } catch (InvalidTTMoveException e) {
+                System.out.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again.");
             }
         }
-        printBoard();
-        System.out.println("Thank you for playing. See you next time!");
+        String whoWon = checkWinner(turnCount);
+        switch (whoWon) {
+        case "X":
+            printBoard();
+            System.out.println("----------------------------------------------------");
+            System.out.println("You have claimed victory over the skies. Godspeed, champion.");
+            break;
+        case "O":
+            printBoard();
+            System.out.println("----------------------------------------------------");
+            System.out.println("Your defeat has brought shame to the skies. Try again, if you dare.");
+            break;
+        case "draw":
+            printBoard();
+            System.out.println("----------------------------------------------------");
+            System.out.println("It seems you have met your match. Try again, and this time, do try to win.");
+            break;
+        default:
+            System.out.println("----------------------------------------------------");
+            System.out.println("Cowards belong on the ground.");
+            break;
+        }
     }
 }
