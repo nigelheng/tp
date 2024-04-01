@@ -36,14 +36,14 @@ public class HangMan extends Game {
             Scanner in = new Scanner(System.in);
             userInput = in.nextLine();
 
-            if (userInput.equalsIgnoreCase("quit")) {
+            if (Parser.ifQuit(userInput)) {
                 System.out.println("Thank you!! Hope you had flying good time.");
                 break;
             }
-            if (userInput.equalsIgnoreCase("help")) {
+            if (Parser.ifHelp(userInput)) {
                 getHelp();
             }
-            if (!allGuessedLetters.contains(userInput)) {
+            if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
                 printHangMan();
                 printLettersGuessed();
@@ -54,7 +54,7 @@ public class HangMan extends Game {
                 System.out.println("___________________________________");
             }
 
-            if (!correctGuesses.contains("_")) {
+            if (!Parser.checkCorrectGuess(correctGuesses)) {
                 System.out.println("Woahhhh you got it!!");
                 break;
             }
@@ -184,21 +184,9 @@ public class HangMan extends Game {
         System.out.println();
     }
 
-    public static int parseGuess(String userInput) {
-        if (userInput == null) {
-            return 0;
-        }
-        int guessType;
-        if (userInput.length() == 1) {
-            guessType = 1;
-        } else {
-            guessType = 2;
-        }
-        return guessType;
-    }
     public static void addGuess(String userInput) {
         System.out.println("Checking to see if [" + userInput + "] is part of the word...");
-        int guessType = parseGuess(userInput);
+        int guessType = Parser.parseGuess(userInput);
         if (guessType == 1) { // input is a single character
             allGuessedLetters.add(userInput);
             numberOfLettersGuessed += 1;
