@@ -2,6 +2,7 @@ package seedu.duke;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class HangMan extends Game {
     protected String[] wordBank = new String[11];
     protected ArrayList<String> allGuessedLetters = new ArrayList<>();
@@ -12,6 +13,7 @@ public class HangMan extends Game {
     protected int state = 0;
     protected final String LETTER_SPACE = "_";
 
+
     public HangMan(String line) {
         super(line);
         String words = "ant baboon badger bat bear beaver camel cat clam cobra cougar";
@@ -20,7 +22,10 @@ public class HangMan extends Game {
         int whichWord = rand.nextInt(11);
         chosenWord = wordBank[whichWord];
         chosenWordLength = wordBank[whichWord].length();
-        correctGuesses = LETTER_SPACE.repeat(chosenWordLength);
+        correctGuesses = "";
+        for (int i = 0; i < chosenWordLength; i++) {
+            correctGuesses += LETTER_SPACE;
+        }
     }
 
     @Override public void runHangMan() {
