@@ -88,6 +88,10 @@ public class TicTacToe extends Game {
                 break;
             }
 
+            if (line.equals("guide")) {
+                howToPlay();
+            }
+
             try {
                 readTTMove(line);
 
@@ -115,7 +119,7 @@ public class TicTacToe extends Game {
                 board[randomPlacement] = "O";
                 turnCount++;
             } catch (InvalidTTMoveException e) {
-                System.out.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again.");
+                System.out.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again. Type \'guide\' for tutorial guide");
             }
         }
         String whoWon = checkWinner(turnCount);
@@ -140,5 +144,17 @@ public class TicTacToe extends Game {
             System.out.println("Cowards belong on the ground.");
             break;
         }
+    }
+
+    @Override public void howToPlay() {
+        super.howToPlay();
+        System.out.println("\t- Tic-Tac-Toe is an 1 VS 1 game. Hence, you will be challenging ME! HAHAHA");
+        System.out.println("\t- There will be a 3x3 grid. Each box represents a spot you can occupy");
+        System.out.println("\t- We will take turns marking each box. The first to form a row of 3 horizontally, diagonally or vertically wins!" + System.lineSeparator());
+        System.out.println("Commands for the game:");
+        System.out.println("\t- To mark a box, simply key in the box's number.");
+        System.out.println("\t- The grid is marked from left to right, top to bottom, from 1 to 9." + System.lineSeparator());
+        System.out.println("Best of luck challenger!");
+        System.out.println("----------------------------------------------------");
     }
 }
