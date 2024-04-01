@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 
 public class Duke {
-    private static final Ui ui = new Ui();
+    private static final Render render = new Render();
+    private static final Ui ui = new Ui(render);
     //private static final HangMan hangman = new HangMan();
     private static ArrayList<Game> games = new ArrayList<>();
     private static int gameCounter = 0;
