@@ -15,9 +15,6 @@ public class Game {
 
     }
 
-    public void getHelp() {
-    }
-
     public void runHangMan() {
     }
 
