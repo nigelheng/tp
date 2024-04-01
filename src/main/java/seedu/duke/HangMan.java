@@ -10,7 +10,7 @@ public class HangMan extends Game {
     protected int chosenWordLength;
     protected String correctGuesses;
     protected int state = 0;
-    protected final String LINE = "_";
+    protected final String LETTER_SPACE = "_";
 
     public HangMan(String line) {
         super(line);
@@ -20,7 +20,7 @@ public class HangMan extends Game {
         int whichWord = rand.nextInt(11);
         chosenWord = wordBank[whichWord];
         chosenWordLength = wordBank[whichWord].length();
-        correctGuesses = LINE.repeat(chosenWordLength);
+        correctGuesses = LETTER_SPACE.repeat(chosenWordLength);
     }
 
     @Override public void runHangMan() {
@@ -42,8 +42,7 @@ public class HangMan extends Game {
             }
             if (Parser.ifGuide(userInput)) {
                 howToPlay();
-            } else
-            if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
+            } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
                 printHangMan();
                 printLettersGuessed();
@@ -210,11 +209,13 @@ public class HangMan extends Game {
         super.howToPlay();
         System.out.println("\t- Hangman is a word guessing game played by yourself.");
         System.out.println("\t- There is a SECRET word which you would have to guess.");
-        System.out.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!" + System.lineSeparator());
+        System.out.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!"
+                            + System.lineSeparator());
         System.out.println("Commands for the game:");
         System.out.println("\t- To guess a letter, simply type in an alphabet.");
         System.out.println("\t- If it is correct, the letter will be shown.");
-        System.out.println("\t- A list of guessed letters will be indicated at the top as well.\"" + System.lineSeparator());
+        System.out.println("\t- A list of guessed letters will be indicated at the top as well.\""
+                            + System.lineSeparator());
         System.out.println("Lets put your english to the test! Best of luck :D");
         System.out.println("----------------------------------------------------");
     }
