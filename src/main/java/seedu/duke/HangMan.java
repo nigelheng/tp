@@ -40,9 +40,9 @@ public class HangMan extends Game {
                 System.out.println("Thank you!! Hope you had flying good time.");
                 break;
             }
-            if (Parser.ifHelp(userInput)) {
-                getHelp();
-            }
+            if (Parser.ifGuide(userInput)) {
+                howToPlay();
+            } else
             if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
                 printHangMan();
@@ -206,8 +206,16 @@ public class HangMan extends Game {
         }
     }
 
-    @Override public void getHelp() {
-        System.out.println("How to play:");
-        //show how to play
+    @Override public void howToPlay() {
+        super.howToPlay();
+        System.out.println("\t- Hangman is a word guessing game played by yourself.");
+        System.out.println("\t- There is a SECRET word which you would have to guess.");
+        System.out.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!" + System.lineSeparator());
+        System.out.println("Commands for the game:");
+        System.out.println("\t- To guess a letter, simply type in an alphabet.");
+        System.out.println("\t- If it is correct, the letter will be shown.");
+        System.out.println("\t- A list of guessed letters will be indicated at the top as well.\"" + System.lineSeparator());
+        System.out.println("Lets put your english to the test! Best of luck :D");
+        System.out.println("----------------------------------------------------");
     }
 }

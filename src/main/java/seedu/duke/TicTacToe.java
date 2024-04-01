@@ -91,7 +91,6 @@ public class TicTacToe extends Game {
             if (line.equals("guide")) {
                 howToPlay();
             }
-
             try {
                 readTTMove(line);
 
@@ -149,7 +148,7 @@ public class TicTacToe extends Game {
     @Override public void howToPlay() {
         super.howToPlay();
         System.out.println("\t- Tic-Tac-Toe is an 1 VS 1 game. Hence, you will be challenging ME! HAHAHA");
-        System.out.println("\t- There will be a 3x3 grid. Each box represents a spot you can occupy");
+        System.out.println("\t- There will be a 3x3 grid. Each box represents a spot you can occupy.");
         System.out.println("\t- We will take turns marking each box. The first to form a row of 3 horizontally, diagonally or vertically wins!" + System.lineSeparator());
         System.out.println("Commands for the game:");
         System.out.println("\t- To mark a box, simply key in the box's number.");
