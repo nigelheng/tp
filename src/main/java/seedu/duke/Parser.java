@@ -6,6 +6,7 @@ import seedu.duke.exceptions.InvalidTTMoveException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  * read user input and call other functions accordingly
@@ -61,6 +62,28 @@ public class Parser {
             // call function to Ui to say "invalid move"
             throw new InvalidTTMoveException();
         }
+    }
+
+    //@@author nigelheng
+    public static int parseGuess(String userInput) {
+        if (userInput == null) {
+            return 0;
+        }
+        int guessType;
+        if (userInput.length() == 1) {
+            guessType = 1;
+        } else {
+            guessType = 2;
+        }
+        return guessType;
+    }
+
+    public static boolean repeatGuess(ArrayList<String> allGuessedLetters, String userInput) {
+        return allGuessedLetters.contains(userInput);
+    }
+
+    public static boolean checkCorrectGuess(String currentString) {
+        return currentString.contains("_");
     }
 
     /**
