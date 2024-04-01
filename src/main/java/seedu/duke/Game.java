@@ -15,11 +15,11 @@ public class Game {
 
     }
 
-    public void getHelp() {
-
+    public void runHangMan() {
     }
 
-    public void runHangMan() {
-
+    public void howToPlay() {
+        System.out.println("----------------------------------------------------");
+        System.out.println("Let me explain the rules of this game:");
     }
 }

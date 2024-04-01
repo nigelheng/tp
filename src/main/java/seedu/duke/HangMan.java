@@ -3,14 +3,14 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class HangMan extends Game {
-    protected static String[] wordBank = new String[11];
-    protected static ArrayList<String> allGuessedLetters = new ArrayList<>();
-    protected static int numberOfLettersGuessed = 0;
-    protected static String chosenWord;
-    protected static int chosenWordLength;
-    protected static String correctGuesses;
-    protected static int state = 0;
-    protected static final String LINE = "_";
+    protected String[] wordBank = new String[11];
+    protected ArrayList<String> allGuessedLetters = new ArrayList<>();
+    protected int numberOfLettersGuessed = 0;
+    protected String chosenWord;
+    protected int chosenWordLength;
+    protected String correctGuesses;
+    protected int state = 0;
+    protected final String LINE = "_";
 
     public HangMan(String line) {
         super(line);
@@ -36,14 +36,14 @@ public class HangMan extends Game {
             Scanner in = new Scanner(System.in);
             userInput = in.nextLine();
 
-            if (userInput.equalsIgnoreCase("quit")) {
+            if (Parser.ifQuit(userInput)) {
                 System.out.println("Thank you!! Hope you had flying good time.");
                 break;
             }
-            if (userInput.equalsIgnoreCase("help")) {
-                getHelp();
-            }
-            if (!allGuessedLetters.contains(userInput)) {
+            if (Parser.ifGuide(userInput)) {
+                howToPlay();
+            } else
+            if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
                 printHangMan();
                 printLettersGuessed();
@@ -54,7 +54,7 @@ public class HangMan extends Game {
                 System.out.println("___________________________________");
             }
 
-            if (!correctGuesses.contains("_")) {
+            if (!Parser.checkCorrectGuess(correctGuesses)) {
                 System.out.println("Woahhhh you got it!!");
                 break;
             }
@@ -68,10 +68,10 @@ public class HangMan extends Game {
             System.out.println("Oh noo!! It seems you have lost   :( ");
         }
     }
-    public static int getNumberOfLettersGuessed() {
+    public int getNumberOfLettersGuessed() {
         return numberOfLettersGuessed;
     }
-    public static ArrayList<String> getAllGuessedLetters() {
+    public ArrayList<String> getAllGuessedLetters() {
         return allGuessedLetters;
     }
     /*
@@ -82,7 +82,7 @@ public class HangMan extends Game {
         return chosenWordLength;
     }
      */
-    public static int getState() {
+    public int getState() {
         return state;
     }
 
@@ -90,7 +90,7 @@ public class HangMan extends Game {
      * Takes the chosen word from the word bank and prints the appropriate
      * number of lines for each letter.
      */
-    public static void printWordGuesser() {
+    public void printWordGuesser() {
         char[] charCorrectGuesses = correctGuesses.toCharArray();
         for (int i = 0; i < chosenWordLength; i++) {
             System.out.print(" " + charCorrectGuesses[i]);
@@ -101,7 +101,7 @@ public class HangMan extends Game {
     /**
      * Prints the HangMan image to represent the number of chances left to guess
      */
-    public static void printHangMan() {
+    public void printHangMan() {
         state = getState();
         switch(state) {
         case 0:
@@ -174,7 +174,7 @@ public class HangMan extends Game {
 
     }
 
-    public static void printLettersGuessed() {
+    public void printLettersGuessed() {
         System.out.println("These are the guesses you have made so far:");
         int numOfLetters = getNumberOfLettersGuessed();
         for (int index = 0; index < numOfLetters; index++) {
@@ -184,21 +184,9 @@ public class HangMan extends Game {
         System.out.println();
     }
 
-    public static int parseGuess(String userInput) {
-        if (userInput == null) {
-            return 0;
-        }
-        int guessType;
-        if (userInput.length() == 1) {
-            guessType = 1;
-        } else {
-            guessType = 2;
-        }
-        return guessType;
-    }
-    public static void addGuess(String userInput) {
+    public void addGuess(String userInput) {
         System.out.println("Checking to see if [" + userInput + "] is part of the word...");
-        int guessType = parseGuess(userInput);
+        int guessType = Parser.parseGuess(userInput);
         if (guessType == 1) { // input is a single character
             allGuessedLetters.add(userInput);
             numberOfLettersGuessed += 1;
@@ -218,8 +206,16 @@ public class HangMan extends Game {
         }
     }
 
-    @Override public void getHelp() {
-        System.out.println("How to play:");
-        //show how to play
+    @Override public void howToPlay() {
+        super.howToPlay();
+        System.out.println("\t- Hangman is a word guessing game played by yourself.");
+        System.out.println("\t- There is a SECRET word which you would have to guess.");
+        System.out.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!" + System.lineSeparator());
+        System.out.println("Commands for the game:");
+        System.out.println("\t- To guess a letter, simply type in an alphabet.");
+        System.out.println("\t- If it is correct, the letter will be shown.");
+        System.out.println("\t- A list of guessed letters will be indicated at the top as well.\"" + System.lineSeparator());
+        System.out.println("Lets put your english to the test! Best of luck :D");
+        System.out.println("----------------------------------------------------");
     }
 }
