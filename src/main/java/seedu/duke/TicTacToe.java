@@ -413,11 +413,13 @@ public class TicTacToe extends Game {
         super.howToPlay();
 
         ui.println(Ui.LINE);
-        System.out.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial by single combat.");
-        System.out.println("\t- A grid, numbering three across and three lengthwise. Each space represents a spot you can occupy.");
+        System.out.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial\n " +
+                "by single combat.");
+        System.out.println("\t- A grid, numbering three across and three lengthwise. Each space represents a\n " +
+                "spot you can occupy.");
         System.out.println("\t- You and your opponent will take turns making your moves. " +
-                "The first to complete a line, either horizontally, diagonally or vertically, will emerge the victorious," +
-                "and give rightful justification to their place in the skies.");
+                "The first to complete a line, either horizontally, diagonally or vertically, will emerge the\n " +
+                "victorious, and give rightful justification to their place in the skies.");
         ui.println(Ui.LINE);
         System.out.println("Commands for the game:");
         System.out.println("\t- To mark a box, simply key in the box's number.");

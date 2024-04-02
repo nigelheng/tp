@@ -31,7 +31,7 @@ public class Duke {
             if (Parser.ifQuit(input)) {
                 ui.quitUser();
                 break;
-            } else if (input.equals("testquit")) {
+            } else if (Parser.ifTestQuit(input)) {
                 ui.println("runtestbat success!");
                 break;
             } else if (Parser.ifShowStats(input)) {
