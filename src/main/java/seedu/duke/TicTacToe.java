@@ -15,7 +15,7 @@ public class TicTacToe extends Game {
         super(line);
     }
 
-    public static void printBoard() {
+    private static void printBoard() {
         System.out.println("  " + board[0] + " | " + board[1] + " | " + board[2] + "  ");
         System.out.println("-------------");
         System.out.println("  " + board[3] + " | " + board[4] + " | " + board[5] + "  ");
@@ -23,7 +23,7 @@ public class TicTacToe extends Game {
         System.out.println("  " + board[6] + " | " + board[7] + " | " + board[8] + "  ");
     }
 
-    public static String checkWinner(int turnCount) {
+    private static String checkWinner(int turnCount) {
         for (int a = 0; a < 8; a++) {
             String line = null;
             switch (a) {
@@ -66,7 +66,156 @@ public class TicTacToe extends Game {
         return "unending";
     }
 
-    @Override public void runGame() {
+    private static int computerBestMove(String[] board) {
+        Random rand = new Random();
+        for (int a = 0; a < 8; a++) {
+            String line;
+            switch (a) {
+            case 0:
+                line = board[0] + board[1] + board[2];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 2;
+                case "O O":
+                case "X X":
+                    return 1;
+                case " OO":
+                case " XX":
+                    return 0;
+                default:
+                    //nothing happens
+                }
+
+                break;
+            case 1:
+                line = board[3] + board[4] + board[5];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 5;
+                case "O O":
+                case "X X":
+                    return 4;
+                case " OO":
+                case " XX":
+                    return 3;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 2:
+                line = board[6] + board[7] + board[8];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 8;
+                case "O O":
+                case "X X":
+                    return 7;
+                case " OO":
+                case " XX":
+                    return 6;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 3:
+                line = board[0] + board[3] + board[6];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 6;
+                case "O O":
+                case "X X":
+                    return 3;
+                case " OO":
+                case " XX":
+                    return 0;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 4:
+                line = board[1] + board[4] + board[7];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 7;
+                case "O O":
+                case "X X":
+                    return 4;
+                case " OO":
+                case " XX":
+                    return 1;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 5:
+                line = board[2] + board[5] + board[8];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 8;
+                case "O O":
+                case "X X":
+                    return 5;
+                case " OO":
+                case " XX":
+                    return 2;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 6:
+                line = board[0] + board[4] + board[8];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 8;
+                case "O O":
+                case "X X":
+                    return 4;
+                case " OO":
+                case " XX":
+                    return 0;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 7:
+                line = board[2] + board[4] + board[6];
+                switch (line) {
+                case "OO ":
+                case "XX ":
+                    return 6;
+                case "O O":
+                case "X X":
+                    return 4;
+                case " OO":
+                case " XX":
+                    return 2;
+                default:
+                    //nothing happens
+                }
+                break;
+            default:
+                //this never happens
+            }
+        }
+        int computerPlacement;
+
+        computerPlacement = rand.nextInt(9);
+        while (board[computerPlacement].equals("X") ||
+                board[computerPlacement].equals("O")) {
+            computerPlacement = rand.nextInt(9);
+        }
+        return computerPlacement;
+    }
+
+    @Override
+    public void runGame() {
         for (int i = 0; i < 9; i++) {
             board[i] = " ";
         }
@@ -77,6 +226,13 @@ public class TicTacToe extends Game {
 
         Scanner in = new Scanner(System.in);
         String line;
+        String strength;
+
+        System.out.println("Choose: 'easy', our first champion, is a benchmark for all challengers to test their mettle," +
+                "or 'hard', our second champion, is an Elder of the clouds. Which opponent do you desire, challenger?");
+
+        strength = in.nextLine();
+
         while (checkWinner(turnCount).equals("unending")) {
             printBoard();
             System.out.println("----------------------------------------------------");
@@ -90,12 +246,13 @@ public class TicTacToe extends Game {
 
             if (Parser.ifShowGuide(line)) {
                 howToPlay();
+                line = in.nextLine();
             }
             try {
                 readTTMove(line);
 
-                while((board[Integer.parseInt(line) - 1].equals("X")) ||
-                        (board[Integer.parseInt(line) - 1].equals("O")) ) {
+                while ((board[Integer.parseInt(line) - 1].equals("X")) ||
+                        (board[Integer.parseInt(line) - 1].equals("O"))) {
                     System.out.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
                     line = in.nextLine();
                     readTTMove(line);
@@ -108,14 +265,19 @@ public class TicTacToe extends Game {
                     break;
                 }
 
-                int randomPlacement = rand.nextInt(9);
+                int computerPlacement;
 
-                while (board[randomPlacement].equals("X") ||
-                        board[randomPlacement].equals("O")) {
-                    randomPlacement = rand.nextInt(9);
+                if (strength.equals("easy")) {
+                    computerPlacement = rand.nextInt(9);
+                    while (board[computerPlacement].equals("X") ||
+                            board[computerPlacement].equals("O")) {
+                        computerPlacement = rand.nextInt(9);
+                    }
+                } else {
+                    computerPlacement = computerBestMove(board);
                 }
 
-                board[randomPlacement] = "O";
+                board[computerPlacement] = "O";
                 turnCount++;
             } catch (InvalidTTMoveException e) {
                 System.out.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again. " +
@@ -150,18 +312,20 @@ public class TicTacToe extends Game {
     /**
      * Prints the game guide when 'guide' is inputted
      */
-    @Override public void howToPlay() {
+    @Override
+    public void howToPlay() {
         super.howToPlay();
-        System.out.println("\t- Tic-Tac-Toe is an 1 VS 1 game. Hence, you will be challenging ME! HAHAHA");
-        System.out.println("\t- There will be a 3x3 grid. Each box represents a spot you can occupy.");
-        System.out.println("\t- We will take turns marking each box. " +
-                "The first to form a row of 3 horizontally, diagonally or vertically wins!"
-                + System.lineSeparator());
+        System.out.println("----------------------------------------------------");
+        System.out.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial by single combat.");
+        System.out.println("\t- A grid, numbering three across and three lengthwise. Each space represents a spot you can occupy.");
+        System.out.println("\t- You and your opponent will take turns making your moves. " +
+                "The first to complete a line, either horizontally, diagonally or vertically, will emerge the victorious," +
+                "and give rightful justification to their place in the skies.");
+        System.out.println("----------------------------------------------------");
         System.out.println("Commands for the game:");
         System.out.println("\t- To mark a box, simply key in the box's number.");
         System.out.println("\t- The grid is marked from left to right, top to bottom, from 1 to 9."
                 + System.lineSeparator());
-        System.out.println("Best of luck challenger!");
         System.out.println("----------------------------------------------------");
     }
 }
