@@ -48,7 +48,10 @@ public class Duke {
                             throw new RuntimeException(e);
                         }
                     } else if (input.equals("hangman")) {
-                        games.add(new HangMan(input));
+                        System.out.println("What category would you like to choose? These are the options:");
+                        System.out.println("animals, countries, fruits & sports");
+                        String category = Parser.readLine();
+                        games.add(new HangMan(category));
                         games.get(gameCounter).runGame();
                         gameCounter ++;
                         System.out.println("Now what would you like to do?");
