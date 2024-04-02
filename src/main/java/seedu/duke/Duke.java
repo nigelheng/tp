@@ -40,9 +40,8 @@ public class Duke {
                     if (input.equals("TTT")) {
                         try {
                             games.add(new TicTacToe(input));
-                            games.get(gameCounter).runTicTacToe();
+                            games.get(gameCounter).runGame();
                             gameCounter ++;
-                            //runTicTacToe();
                             System.out.println("Now what would you like to do?");
                             inGame = false;
                         } catch (InvalidTTMoveException e) {
@@ -50,7 +49,7 @@ public class Duke {
                         }
                     } else if (input.equals("hangman")) {
                         games.add(new HangMan(input));
-                        games.get(gameCounter).runHangMan();
+                        games.get(gameCounter).runGame();
                         gameCounter ++;
                         System.out.println("Now what would you like to do?");
                         inGame = false;
@@ -59,7 +58,9 @@ public class Duke {
                         inGame = false;
                     }
                 } catch (InvalidGameException | NullPointerException e) {
-                    ui.println("Invalid Game.");
+                    ui.println("Invalid Game. Type \'help\' for list of available commands.");
+                } catch (InvalidTTMoveException e) {
+                    throw new RuntimeException(e);
                 }
             }
             input = Parser.readLine();
