@@ -4,6 +4,7 @@ package seedu.duke;
  * The Ui class handles user interface interactions.
  */
 public class Ui {
+    public static final String LINE = "_________________________________________________________________";
     private final Render render;
     /**
      * Constructs Ui object with the specified Render object.
