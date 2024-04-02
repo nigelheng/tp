@@ -34,7 +34,7 @@ public class HangMan extends Game {
         printLettersGuessed();
         printWordGuesser();
 
-        System.out.println("Now what is your first guess?");
+        System.out.println("Now what is your first guess? (\'guide\' for a guide on how to play Hangman!)");
 
         while (state < 6) {
             String userInput;
@@ -45,7 +45,7 @@ public class HangMan extends Game {
                 System.out.println("Thank you!! Hope you had flying good time.");
                 break;
             }
-            if (Parser.ifGuide(userInput)) {
+            if (Parser.ifShowGuide(userInput)) {
                 howToPlay();
             } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
