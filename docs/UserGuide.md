@@ -11,7 +11,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 2. Down the latest version of `AeroCade.jar` from [here](http://link.to/duke).
 3. Copy the file to the folder you want to use as the home folder for your (name).
 4. Open a command terminal, cd into the folder you put the jar file in, and use the java -jar (name).jar command to run the application.
-5. Type commands in the CLI and press Enter to execute it. (Eg. type and enter 'help' for a list of available commands)
+5. Type commands in the CLI and press Enter to execute it. (E.g. type and enter 'help' for a list of available commands)
 6. Refer to the Features below for details of each command.
 
 ## Features
@@ -21,6 +21,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 
 Example of usage: 
  * To start game, type`TTT`.
+ * Choose your difficulty, either `easy` or `hard`, and type it in.
  * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
 ```
   1 | 2 | 3
@@ -42,15 +43,35 @@ _______
 |
 |
 ==============
+These are the guesses you have made so far:
+
+ _ _ _
 ```
 ## FAQ
 
 **Q**: Where can I find a guide on understanding the game? 
 
-**A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`.
+**A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. The below is an example when opening
+`guide` while playing `hangman`
+````
+guide
+----------------------------------------------------
+Let me explain the rules of this game:
+	- Hangman is a word guessing game played by yourself.
+	- There is a SECRET word which you would have to guess.
+	- You will have to guess letter by letter within 7 tries. Else, you lose!!
 
+Commands for the game:
+	- To guess a letter, simply type in an alphabet.
+	- If it is correct, the letter will be shown.
+	- A list of guessed letters will be indicated at the top as well."
+
+Lets put your english to the test! Best of luck :D
+----------------------------------------------------
+````
 ## Command Summary
 
 * See list of commands in menu: `help`
 * See guide on game: `guide`
 * To quit a game anytime: `quit`
+* To see your number of games won: `stats`

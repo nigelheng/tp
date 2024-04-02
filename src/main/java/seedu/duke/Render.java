@@ -91,6 +91,7 @@ public class Render {
                 "'TTT' - Starts Tic-tac-toe Game\n" +
                 "type 'TTT tutorial' for Tic-tac-toe tutorial\n\n" +
                 "'hangman' - Starts Hangman Game\n" +
-                "type 'hangman tutorial' for Hangman tutorial\n" + LINE);
+                "type 'hangman tutorial' for Hangman tutorial\n" + 
+                "'stats' to see games won\n" + LINE);
     }
 }

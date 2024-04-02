@@ -42,6 +42,13 @@ public class Parser {
         return false;
     }
 
+    public static boolean ifShowStats(String input) {
+        if (input != null && input.equals("stats")) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Reads input from user specifiying what game they wish to play.
      * Calls internal function to start the indicated game, if valid.

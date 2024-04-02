@@ -12,6 +12,7 @@ public class Game {
     protected boolean isExit; // true to exit
     protected String gameName;
 
+    protected boolean isWin; //true if won, false if lost, quit or draw (for TTT)
     /**
      * creates a game
      *
@@ -20,13 +21,14 @@ public class Game {
     public Game(String line) {
         gameName = line;
         isExit = false; //not used for nw
-        assert !isExit; //not used for now
+        isWin = false;
+        //assert !isExit; //not used for now
     }
 
     /**
      * runs game for respective class.
      * overridden in TicTacToe and HangMan
-     * @throws InvalidTTMoveException
+     * @throws InvalidTTMoveException if input for TTT game is not 1-9
      */
     public void runGame() throws InvalidTTMoveException {
 
@@ -39,5 +41,9 @@ public class Game {
     public void howToPlay() {
         ui.println(Ui.LINE);
         ui.println("Let me explain the rules of this game:");
+    }
+
+    public void gameWon() {
+        this.isWin = true;
     }
 }

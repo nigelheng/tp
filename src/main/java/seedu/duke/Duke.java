@@ -15,6 +15,8 @@ public class Duke {
     private static ArrayList<Game> games = new ArrayList<>();
     private static int gameCounter = 0;
 
+    private static int numberOfGamesWon;
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -32,6 +34,14 @@ public class Duke {
             } else if (input.equals("testquit")) {
                 ui.println("runtestbat success!");
                 break;
+            } else if (Parser.ifShowStats(input)) {
+                numberOfGamesWon = 0;
+                for (Game item: games) {
+                    if (item.isWin) {
+                        numberOfGamesWon ++;
+                    }
+                }
+                System.out.println("Your victories so far player: " + numberOfGamesWon);
             }
 
 
@@ -50,7 +60,10 @@ public class Duke {
                             throw new RuntimeException(e);
                         }
                     } else if (input.equals("hangman")) {
-                        games.add(new HangMan(input));
+                        System.out.println("What category would you like to choose? These are the options:");
+                        System.out.println("animals, countries, fruits & sports");
+                        String category = Parser.readLine();
+                        games.add(new HangMan(category));
                         games.get(gameCounter).runGame();
                         gameCounter ++;
                         ui.println("Now what would you like to do?");
