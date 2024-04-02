@@ -23,6 +23,7 @@ Example of usage:
  * To start game, type`TTT`.
  * Choose your difficulty, either `easy` or `hard`, and type it in.
  * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
+
 ```
   1 | 2 | 3
 -------------
@@ -30,11 +31,13 @@ Example of usage:
 -------------
   7 | 8 | 9    
 ```
+
 ### 2. Playing a game of `Hangman`
 
 Example of usage:
  * To start a game, type `hangman`.
  * Guess a letter in the secret word by typing in the letter 
+
 ```
 _______
 |     |
@@ -47,12 +50,14 @@ These are the guesses you have made so far:
 
  _ _ _
 ```
+
 ## FAQ
 
 **Q**: Where can I find a guide on understanding the game? 
 
 **A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. The below is an example when opening
 `guide` while playing `hangman`
+
 ````
 guide
 ----------------------------------------------------
@@ -69,6 +74,7 @@ Commands for the game:
 Lets put your english to the test! Best of luck :D
 ----------------------------------------------------
 ````
+
 ## Command Summary
 
 * See list of commands in menu: `help`

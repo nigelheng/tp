@@ -319,7 +319,7 @@ public class TicTacToe extends Game {
         String line;
         String strength;
 
-        System.out.println("Choose: 'easy', our first champion, is a benchmark for all challengers to test their mettle," +
+        ui.println("Choose: 'easy', our first champion, is a benchmark for all challengers to test their mettle," +
                 "or 'hard', our second champion, is an Elder of the clouds. Which opponent do you desire, challenger?");
 
         strength = in.nextLine();
@@ -381,22 +381,26 @@ public class TicTacToe extends Game {
         case "X":
             printBoard();
             gameWon();
-            ui.println("----------------------------------------------------");
+            ui.println(Ui.LINE);
             ui.println("You have claimed victory over the skies. Godspeed, champion.");
+            ui.println(Ui.LINE);
             break;
         case "O":
             printBoard();
-            ui.println("----------------------------------------------------");
+            ui.println(Ui.LINE);
             ui.println("Your defeat has brought shame to the skies. Try again, if you dare.");
+            ui.println(Ui.LINE);
             break;
         case "draw":
             printBoard();
-            ui.println("----------------------------------------------------");
+            ui.println(Ui.LINE);
             ui.println("It seems you have met your match. Try again, and this time, do try to win.");
+            ui.println(Ui.LINE);
             break;
         default:
-            ui.println("----------------------------------------------------");
+            ui.println(Ui.LINE);
             ui.println("Cowards belong on the ground.");
+            ui.println(Ui.LINE);
             break;
         }
     }
@@ -408,17 +412,19 @@ public class TicTacToe extends Game {
     public void howToPlay() {
         super.howToPlay();
 
-        System.out.println("----------------------------------------------------");
-        System.out.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial by single combat.");
-        System.out.println("\t- A grid, numbering three across and three lengthwise. Each space represents a spot you can occupy.");
+        ui.println(Ui.LINE);
+        System.out.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial\n " +
+                "by single combat.");
+        System.out.println("\t- A grid, numbering three across and three lengthwise. Each space represents a\n " +
+                "spot you can occupy.");
         System.out.println("\t- You and your opponent will take turns making your moves. " +
-                "The first to complete a line, either horizontally, diagonally or vertically, will emerge the victorious," +
-                "and give rightful justification to their place in the skies.");
-        System.out.println("----------------------------------------------------");
+                "The first to complete a line, either horizontally, diagonally or vertically, will emerge the\n " +
+                "victorious, and give rightful justification to their place in the skies.");
+        ui.println(Ui.LINE);
         System.out.println("Commands for the game:");
         System.out.println("\t- To mark a box, simply key in the box's number.");
         System.out.println("\t- The grid is marked from left to right, top to bottom, from 1 to 9."
                 + System.lineSeparator());
-        System.out.println("----------------------------------------------------");
+        ui.println(Ui.LINE);
     }
 }

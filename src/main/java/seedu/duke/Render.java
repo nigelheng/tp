@@ -3,7 +3,6 @@ import java.util.Random;
 
 
 public class Render {
-    private static final String LINE = "_________________________________________________________________";
 
     /**
      * Array of sentences to be chosen at random for quitUser()
@@ -15,7 +14,7 @@ public class Render {
         "Permission to depart granted. Execute your flight plan with discipline."
     };
 
-    private final String logo = "\n\n\n" + LINE + "\n" +
+    private final String logo = "\n\n\n" + Ui.LINE + "\n" +
             "               _______  _______  ______    _______              \n" +
             "              |   _   ||       ||    _ |  |       |             \n" +
             "  __|____|__  |  |_|  ||    ___||   | ||  |   _   |             \n" +
@@ -43,7 +42,7 @@ public class Render {
 
 
     private final String menu =
-            "\n              [      Welcome to the AeroCade      ]\n" + LINE + "\n" +
+            "\n              [      Welcome to the AeroCade      ]\n" + Ui.LINE + "\n" +
             "              [          Choose your game:        ]                \n" +
             "                                |                                  \n" +
             "        X  |  -  |  -           |          _______                 \n" +
@@ -72,7 +71,7 @@ public class Render {
      * Greets the user by displaying the AeroCade logo, boeing, and game menu.
      */
     public void displayGameMenu() {
-        println(logo + boeing + LINE + menu + LINE);
+        println(logo + boeing + Ui.LINE + menu + Ui.LINE);
     }
 
     /**
@@ -80,18 +79,18 @@ public class Render {
      */
     public void displayFarewellMessage() {
         int randomIndex = new Random().nextInt(BYE_SENTENCES.length);
-        println(LINE + "\n\n" + boeing + BYE_SENTENCES[randomIndex] + "\n");
+        println(Ui.LINE + "\n\n" + boeing + BYE_SENTENCES[randomIndex] + "\n");
     }
 
     /**
      * Prints a help message listing the available commands.
      */
     public void displayHelpMessage() {
-        println(LINE + "\nHere are the list of commands:\n" +
+        println(Ui.LINE + "\nHere are the list of commands:\n" +
                 "'TTT' - Starts Tic-tac-toe Game\n" +
                 "type 'TTT tutorial' for Tic-tac-toe tutorial\n\n" +
                 "'hangman' - Starts Hangman Game\n" +
                 "type 'hangman tutorial' for Hangman tutorial\n" + 
-                "'stats' to see games won\n" + LINE);
+                "'stats' to see games won\n" + Ui.LINE);
     }
 }
