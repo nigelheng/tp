@@ -19,6 +19,26 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 
 ### 1. Playing a game of `TicTacToe`
 
+Entering `tutorial` mode: type `TTT tutorial`
+* Detailed tutorial showing the gameplay mechanics of how to win TicTacToe.
+* Timed aspect of 4 seconds per frame.
+
+```
+[Tutorial Mode is playing, do not input any commands!]
+Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
+                a stellar gameplay of TTT for you!
+
+    |   |    
+-------------
+    |   |    
+-------------
+    |   |    
+
+Tutorial Pilot: This is a TTT board which I'll be placing an 'X' depending on
+                the number I put, here is the numbered layout!
+_________________________________________________________________
+```
+
 Example of usage: 
  * To start game, type`TTT`.
  * Choose your difficulty, either `easy` or `hard`, and type it in.
@@ -33,6 +53,12 @@ Example of usage:
 ```
 
 ### 2. Playing a game of `Hangman`
+
+Entering `tutorial` mode: type `hangman tutorial`
+* Detailed tutorial showing the ideal thought process of playing while showing
+the number of mistakes allowed
+* Timed aspect of 4 seconds per frame.
+
 
 Example of usage:
  * To start a game, type `hangman`.
