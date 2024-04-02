@@ -11,7 +11,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 2. Down the latest version of `AeroCade.jar` from [here](http://link.to/duke).
 3. Copy the file to the folder you want to use as the home folder for your (name).
 4. Open a command terminal, cd into the folder you put the jar file in, and use the java -jar (name).jar command to run the application.
-5. Type commands in the CLI and press Enter to execute it. (Eg. type and enter 'help' for a list of available commands)
+5. Type commands in the CLI and press Enter to execute it. (E.g. type and enter 'help' for a list of available commands)
 6. Refer to the Features below for details of each command.
 
 ## Features
