@@ -1,6 +1,7 @@
 package seedu.duke;
 import seedu.duke.exceptions.InvalidTTMoveException;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,24 +11,58 @@ import java.util.Scanner;
  * Class handles the running of the hangman game, its interfaces and interaction with inputs by user
  */
 public class HangMan extends Game {
-    protected String[] wordBank = new String[11];
+    protected String[] wordBank;
     protected ArrayList<String> allGuessedLetters = new ArrayList<>();
+    protected ArrayList<String> wordsFromCategory = new ArrayList<>();
     protected int numberOfLettersGuessed = 0;
     protected String chosenWord;
     protected int chosenWordLength;
     protected String correctGuesses;
     protected int state = 0;
     protected final String LETTER_SPACE = "_";
+    protected final String LINE = "___________________________________________________";
 
 
     public HangMan(String line) {
         super(line);
-        String words = "ant baboon badger bat bear beaver camel cat clam cobra cougar";
-        wordBank = words.split(" ",11);
+        String words = "ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck " +
+                "eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt otter owl " +
+                "panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep skunk sloth snake spider " +
+                "stork swan tiger toad trout turkey turtle weasel whale wolf wombat zebra afghanistan argentina australia " +
+                "austria angola bangladesh belgium bolivia brazil brunei bulgaria cambodia canada chad chile china colombia " +
+                "croatia cuba denmark ecuador egypt estonia ethiopia finland france germany guinea haiti hungary iceland india " +
+                "indonesia iran iraq ireland israel italy jamaica japan kenya korea laos latvia lebanon luxembourg malaysia " +
+                "maldives mexico mongolia morocco myanmar nepal netherlands nigeria norway pakistan peru philippines poland " +
+                "portugal qatar romania russia serbia singapore spain sudan sweden switzerland syria taiwan thailand turkey " +
+                "uganda ukraine uzbekistan venezuela vietnam yemen zambia zimbabwe acai apple apricot avocado banana blackberry " +
+                "blackcurrant blueberry boysenberry breadfruit cherry coconut cranberry date dragonfruit durian elderberry " +
+                "fig grape raisin grapefruit guava jackfruit jujube kiwi kumquat lemon lime longan lychee mango mangosteen " +
+                "cantaloupe honeydew watermelon mulberry orange mandarine tangerine papaya passionfruit peach pear persimmon " +
+                "plum prune pineapple pomegranate pomelo raspberry rambutan soursop strawberry tamarind yuzu tomato eggplant " +
+                "pumpkin cheerleading canoeing kayaking rafting rowing dragonboat waterpolo swimming diving archery baseball " +
+                "softball cricket basketball netball soccer rugby tchoukball hockey floorball lacrosse polo curling badminton " +
+                "pickleball tennis volleyball squash skating surfing wakeboarding bouldering cycling aikido judo sumo wrestling " +
+                "boxing capoeira kickboxing silat taekwondo kendo kungfu frisbee gymanastic running";
+
+        wordBank = words.split(" ",251);
+        switch(line) {
+        case "animals":
+            wordsFromCategory.addAll(Arrays.asList(wordBank).subList(0, 63));
+            break;
+        case "countries":
+            wordsFromCategory.addAll(Arrays.asList(wordBank).subList(64, 145));
+            break;
+        case "fruits":
+            wordsFromCategory.addAll(Arrays.asList(wordBank).subList(146, 203));
+            break;
+        case "sports":
+            wordsFromCategory.addAll(Arrays.asList(wordBank).subList(204, 250));
+            break;
+        }
         Random rand = new Random();
-        int whichWord = rand.nextInt(11);
-        chosenWord = wordBank[whichWord];
-        chosenWordLength = wordBank[whichWord].length();
+        int whichWord = rand.nextInt(wordsFromCategory.size());
+        chosenWord = wordsFromCategory.get(whichWord);
+        chosenWordLength = chosenWord.length();
         correctGuesses = "";
         for (int i = 0; i < chosenWordLength; i++) {
             correctGuesses += LETTER_SPACE;
@@ -55,9 +90,19 @@ public class HangMan extends Game {
                 howToPlay();
             } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
-                printHangMan();
-                printLettersGuessed();
-                printWordGuesser();
+                if (!Parser.checkCorrectGuess(correctGuesses)) {
+                    System.out.println(LINE);
+                    printWordGuesser();
+                    System.out.println("Woahhhh you got it!!");
+                    System.out.println(LINE);
+                    break;
+                } else {
+                    System.out.println(LINE);
+                    printHangMan();
+                    System.out.println(LINE);
+                    printLettersGuessed();
+                    printWordGuesser();
+                }
             } else {
                 System.out.println("you've already guessed this before");
                 System.out.println("now try something else");
@@ -210,6 +255,12 @@ public class HangMan extends Game {
                     lastSearchedIndex++;
                 }
                 correctGuesses = String.valueOf(charCorrectGuesses);
+            } else {
+                state += 1;
+            }
+        } else if (guessType == 2) { // input is the entire word
+            if (userInput.equals(chosenWord)) {
+                correctGuesses = chosenWord;
             } else {
                 state += 1;
             }
