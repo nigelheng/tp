@@ -123,10 +123,6 @@ public class Parser {
      */
     public static String readLine() {
         try {
-            // Clear the input buffer
-            while (System.in.available() > 0) {
-                System.in.skip(System.in.available());
-            }
             return br.readLine();
         } catch (IOException e) {
             System.out.println("Error reading user input.");

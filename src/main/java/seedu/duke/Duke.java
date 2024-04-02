@@ -83,7 +83,7 @@ public class Duke {
                         inGame = false;
                     }
                 } catch (InvalidGameException | NullPointerException e) {
-                    ui.println("Invalid Game. Type \'help\' for list of available commands.");
+                    ui.println("Invalid Game. Type \'help\' for list of available commands. siuu");
                 } catch (InvalidTTMoveException | IOException e) {
                     throw new RuntimeException(e);
                 }
