@@ -1,17 +1,22 @@
 package seedu.duke;
 
+import java.io.IOException;
+
 /**
  * The Ui class handles user interface interactions.
  */
 public class Ui {
+    public static final String LINE = "_________________________________________________________________";
     private final Render render;
+    private final TimerTutorial tutorial;
     /**
      * Constructs Ui object with the specified Render object.
      *
      * @param render The Render object used to render UI elements.
      */
-    public Ui(Render render) {
+    public Ui(Render render, TimerTutorial tutorial) {
         this.render = render;
+        this.tutorial = tutorial;
     }
 
     /**
@@ -36,6 +41,14 @@ public class Ui {
      */
     public void printHelp() {
         render.displayHelpMessage();
+    }
+
+    public void printTTTTutorial() throws IOException {
+        tutorial.displayTTTTutorial();
+    }
+
+    public void printHangmanTutorial() throws IOException {
+        tutorial.displayHangmanTutorial();
     }
 
     /**

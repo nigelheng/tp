@@ -28,6 +28,13 @@ public class Parser {
         return false;
     }
 
+    public static boolean ifTutorial(String input) {
+        if (input != null && (input.equals("TTT tutorial") || input.equals("hangman tutorial"))) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean ifShowGuide(String input) {
         if (input != null && input.equals("guide")) {
             return true;
@@ -49,7 +56,7 @@ public class Parser {
      * whatever makes it flow easier
      */
     public static void readGame(String input) throws InvalidGameException {
-        if (!input.equals("TTT") && !input.equals("hangman") && !ifHelp(input) && !ifQuit(input)) {
+        if (!input.equals("TTT") && !input.equals("hangman") && !ifHelp(input) && !ifQuit(input) && !ifTutorial(input)) {
             throw new InvalidGameException();
         }
     }
@@ -108,6 +115,11 @@ public class Parser {
      */
     public static String readLine() {
         try {
+            // Clear the input buffer
+            while (System.in.available() > 0) {
+                System.in.skip(System.in.available());
+            }
+
             return br.readLine();
         } catch (IOException e) {
             System.out.println("Error reading user input.");

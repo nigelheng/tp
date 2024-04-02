@@ -16,11 +16,11 @@ public class TicTacToe extends Game {
     }
 
     private static void printBoard() {
-        System.out.println("  " + board[0] + " | " + board[1] + " | " + board[2] + "  ");
-        System.out.println("-------------");
-        System.out.println("  " + board[3] + " | " + board[4] + " | " + board[5] + "  ");
-        System.out.println("-------------");
-        System.out.println("  " + board[6] + " | " + board[7] + " | " + board[8] + "  ");
+        ui.println("  " + board[0] + " | " + board[1] + " | " + board[2] + "  ");
+        ui.println("-------------");
+        ui.println("  " + board[3] + " | " + board[4] + " | " + board[5] + "  ");
+        ui.println("-------------");
+        ui.println("  " + board[6] + " | " + board[7] + " | " + board[8] + "  ");
     }
 
     private static String checkWinner(int turnCount) {
@@ -326,8 +326,8 @@ public class TicTacToe extends Game {
 
         while (checkWinner(turnCount).equals("unending")) {
             printBoard();
-            System.out.println("----------------------------------------------------");
-            System.out.println("Make your move, challenger.");
+            ui.println(Ui.LINE);
+            ui.println("Make your move, challenger.");
             line = in.nextLine();
             assert line != null;
 
@@ -344,7 +344,7 @@ public class TicTacToe extends Game {
 
                 while ((board[Integer.parseInt(line) - 1].equals("X")) ||
                         (board[Integer.parseInt(line) - 1].equals("O"))) {
-                    System.out.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
+                    ui.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
                     line = in.nextLine();
                     readTTMove(line);
                 }
@@ -371,8 +371,9 @@ public class TicTacToe extends Game {
                 board[computerPlacement] = "O";
                 turnCount++;
             } catch (InvalidTTMoveException e) {
-                System.out.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again. " +
+                ui.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again. " +
                         "Type 'guide' for tutorial guide");
+
             }
         }
         String whoWon = checkWinner(turnCount);
@@ -380,22 +381,22 @@ public class TicTacToe extends Game {
         case "X":
             printBoard();
             gameWon();
-            System.out.println("----------------------------------------------------");
-            System.out.println("You have claimed victory over the skies. Godspeed, champion.");
+            ui.println("----------------------------------------------------");
+            ui.println("You have claimed victory over the skies. Godspeed, champion.");
             break;
         case "O":
             printBoard();
-            System.out.println("----------------------------------------------------");
-            System.out.println("Your defeat has brought shame to the skies. Try again, if you dare.");
+            ui.println("----------------------------------------------------");
+            ui.println("Your defeat has brought shame to the skies. Try again, if you dare.");
             break;
         case "draw":
             printBoard();
-            System.out.println("----------------------------------------------------");
-            System.out.println("It seems you have met your match. Try again, and this time, do try to win.");
+            ui.println("----------------------------------------------------");
+            ui.println("It seems you have met your match. Try again, and this time, do try to win.");
             break;
         default:
-            System.out.println("----------------------------------------------------");
-            System.out.println("Cowards belong on the ground.");
+            ui.println("----------------------------------------------------");
+            ui.println("Cowards belong on the ground.");
             break;
         }
     }
@@ -406,6 +407,7 @@ public class TicTacToe extends Game {
     @Override
     public void howToPlay() {
         super.howToPlay();
+
         System.out.println("----------------------------------------------------");
         System.out.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial by single combat.");
         System.out.println("\t- A grid, numbering three across and three lengthwise. Each space represents a spot you can occupy.");

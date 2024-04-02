@@ -16,6 +16,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 
 ## Features
 
+
 ### 1. Playing a game of `TicTacToe`
 
 Example of usage: 

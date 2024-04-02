@@ -75,7 +75,8 @@ public class HangMan extends Game {
         printLettersGuessed();
         printWordGuesser();
 
-        System.out.println("Now what is your first guess? (\'guide\' for a guide on how to play Hangman!)");
+        ui.println("Now what is your first guess? (\'guide\' for a guide on how to play Hangman!)");
+        ui.println(Ui.LINE);
 
         while (state < 6) {
             String userInput;
@@ -104,24 +105,24 @@ public class HangMan extends Game {
                     printWordGuesser();
                 }
             } else {
-                System.out.println("you've already guessed this before");
-                System.out.println("now try something else");
-                System.out.println("___________________________________");
+                ui.println("you've already guessed this before");
+                ui.println("now try something else!");
+                ui.println(Ui.LINE);
             }
 
             if (!Parser.checkCorrectGuess(correctGuesses)) {
-                System.out.println("Woahhhh you got it!!");
+                ui.println("Woahhhh you got it!!");
                 gameWon();
                 break;
             }
-            System.out.println("give me your next guess");
+            ui.println("give me your next guess");
+            ui.println(Ui.LINE);
         }
 
         // once state = 6, game ends in failure.
         if (state == 6) {
             printHangMan();
-            System.out.println();
-            System.out.println("Oh noo!! It seems you have lost   :( ");
+            ui.println("\nOh noo!! It seems you have lost   :( ");
         }
     }
     public int getNumberOfLettersGuessed() {
@@ -161,77 +162,77 @@ public class HangMan extends Game {
         state = getState();
         switch(state) {
         case 0:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 1:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 2:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |     |");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |     |");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 3:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 4:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|\\");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|\\");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 5:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|\\");
-            System.out.println("  |     |");
-            System.out.println("  |    /");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|\\");
+            ui.println("  |     |");
+            ui.println("  |    /");
+            ui.println("==============");
             break;
         case 6:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|\\");
-            System.out.println("  |     |");
-            System.out.println("  |    / \\");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|\\");
+            ui.println("  |     |");
+            ui.println("  |    / \\");
+            ui.println("==============");
             break;
         default:
-            System.out.println("default");
+            ui.println("default");
             break;
         }
 
     }
 
     public void printLettersGuessed() {
-        System.out.println("These are the guesses you have made so far:");
+        ui.println("These are the guesses you have made so far:");
         int numOfLetters = getNumberOfLettersGuessed();
         for (int index = 0; index < numOfLetters; index++) {
             String letterToDisplay = getAllGuessedLetters().get(index);
@@ -241,7 +242,7 @@ public class HangMan extends Game {
     }
 
     public void addGuess(String userInput) {
-        System.out.println("Checking to see if [" + userInput + "] is part of the word...");
+        ui.println("Checking to see if [" + userInput + "] is part of the word...");
         int guessType = Parser.parseGuess(userInput);
         if (guessType == 1) { // input is a single character
             allGuessedLetters.add(userInput);
@@ -273,16 +274,14 @@ public class HangMan extends Game {
      */
     @Override public void howToPlay() {
         super.howToPlay();
-        System.out.println("\t- Hangman is a word guessing game played by yourself.");
-        System.out.println("\t- There is a SECRET word which you would have to guess.");
-        System.out.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!"
-                            + System.lineSeparator());
-        System.out.println("Commands for the game:");
-        System.out.println("\t- To guess a letter, simply type in an alphabet.");
-        System.out.println("\t- If it is correct, the letter will be shown.");
-        System.out.println("\t- A list of guessed letters will be indicated at the top as well.\""
-                            + System.lineSeparator());
-        System.out.println("Lets put your english to the test! Best of luck :D");
-        System.out.println("----------------------------------------------------");
+        ui.println("\t- Hangman is a word guessing game played by yourself.");
+        ui.println("\t- There is a SECRET word which you would have to guess.");
+        ui.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!\n");
+        ui.println("Commands for the game:");
+        ui.println("\t- To guess a letter, simply type in an alphabet.");
+        ui.println("\t- If it is correct, the letter will be shown.");
+        ui.println("\t- A list of guessed letters will be indicated at the top as well.\n");
+        ui.println("Lets put your english to the test! Best of luck :D");
+        ui.println(Ui.LINE);
     }
 }
