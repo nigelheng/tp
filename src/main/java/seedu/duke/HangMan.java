@@ -111,6 +111,7 @@ public class HangMan extends Game {
 
             if (!Parser.checkCorrectGuess(correctGuesses)) {
                 System.out.println("Woahhhh you got it!!");
+                gameWon();
                 break;
             }
             System.out.println("give me your next guess");

@@ -89,8 +89,7 @@ public class Render {
     public void displayHelpMessage() {
         println(LINE + "\nHere are the list of commands:\n" +
                 "'TTT' - Starts Tic-tac-toe Game\n" +
-                "type 'help TTT' for Tic-tac-toe commands\n\n" +
                 "'hangman' - Starts Hangman Game\n" +
-                "type 'help hangman' for Hangman commands\n" + LINE);
+                "'stats' to see games won\n" + LINE);
     }
 }
