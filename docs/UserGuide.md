@@ -1,15 +1,18 @@
-# User Guide
+# AeroCade User Guide
 
 ## Introduction
 
-{Give a product intro}
+AeroCade is an In-Flight Entertainment app designed to keep users entertained during travels, 
+optimized for use via a Command Line Interface (CLI) while still having the core functionalities and features.
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+2. Down the latest version of `AeroCade.jar` from [here](http://link.to/duke).
+3. Copy the file to the folder you want to use as the home folder for your (name).
+4. Open a command terminal, cd into the folder you put the jar file in, and use the java -jar (name).jar command to run the application.
+5. Type commands in the CLI and press Enter to execute it. (Eg. type and enter 'help' for a list of available commands)
+6. Refer to the Features below for details of each command.
 
 ## Features 
 
