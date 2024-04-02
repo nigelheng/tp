@@ -7,7 +7,8 @@ import seedu.duke.exceptions.InvalidTTMoveException;
  */
 public class Game {
     protected static final Render render = new Render();
-    protected static final Ui ui = new Ui(render);
+    private static final TimerTutorial tutorial = new TimerTutorial();
+    protected static final Ui ui = new Ui(render, tutorial);
     protected boolean isExit; // true to exit
     protected String gameName;
 

@@ -80,7 +80,7 @@ public class Render {
      */
     public void displayFarewellMessage() {
         int randomIndex = new Random().nextInt(BYE_SENTENCES.length);
-        System.out.println(LINE + "\n\n" + boeing + BYE_SENTENCES[randomIndex] + "\n");
+        println(LINE + "\n\n" + boeing + BYE_SENTENCES[randomIndex] + "\n");
     }
 
     /**
@@ -89,8 +89,8 @@ public class Render {
     public void displayHelpMessage() {
         println(LINE + "\nHere are the list of commands:\n" +
                 "'TTT' - Starts Tic-tac-toe Game\n" +
-                "type 'help TTT' for Tic-tac-toe commands\n\n" +
+                "type 'TTT tutorial' for Tic-tac-toe tutorial\n\n" +
                 "'hangman' - Starts Hangman Game\n" +
-                "type 'help hangman' for Hangman commands\n" + LINE);
+                "type 'hangman tutorial' for Hangman tutorial\n" + LINE);
     }
 }
