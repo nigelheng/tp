@@ -20,6 +20,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 
 Example of usage: 
  * To start game, type`TTT`.
+ * Choose your difficulty, either `easy` or `hard`, and type it in.
  * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
 ```
   1 | 2 | 3
@@ -49,7 +50,8 @@ These are the guesses you have made so far:
 
 **Q**: Where can I find a guide on understanding the game? 
 
-**A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`.
+**A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. The below is an example when opening
+`guide` while playing `hangman`
 ````
 guide
 ----------------------------------------------------
