@@ -66,7 +66,7 @@ public class TicTacToe extends Game {
         return "unending";
     }
 
-    @Override public void runTicTacToe() throws InvalidTTMoveException {
+    @Override public void runTicTacToe() {
         for (int i = 0; i < 9; i++) {
             board[i] = " ";
         }
@@ -84,11 +84,11 @@ public class TicTacToe extends Game {
             line = in.nextLine();
             assert line != null;
 
-            if (line.equals("quit")) {
+            if (Parser.ifQuit(line)) {
                 break;
             }
 
-            if (line.equals("guide")) {
+            if (Parser.ifShowGuide(line)) {
                 howToPlay();
             }
             try {
