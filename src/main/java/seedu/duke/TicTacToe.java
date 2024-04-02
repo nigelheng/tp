@@ -66,8 +66,14 @@ public class TicTacToe extends Game {
         return "unending";
     }
 
-    private static int computerBestMove(String[] board) {
+    private static int computerBestMove(String[] board, int turnCount) {
         Random rand = new Random();
+        if (turnCount == 1 && board[4].equals(" ")) {
+            return 4;
+        }
+        if (turnCount == 1 && board[4].equals("X")) {
+            return 0;
+        }
         for (int a = 0; a < 8; a++) {
             String line;
             switch (a) {
@@ -75,13 +81,10 @@ public class TicTacToe extends Game {
                 line = board[0] + board[1] + board[2];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 2;
                 case "O O":
-                case "X X":
                     return 1;
                 case " OO":
-                case " XX":
                     return 0;
                 default:
                     //nothing happens
@@ -92,13 +95,10 @@ public class TicTacToe extends Game {
                 line = board[3] + board[4] + board[5];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 5;
                 case "O O":
-                case "X X":
                     return 4;
                 case " OO":
-                case " XX":
                     return 3;
                 default:
                     //nothing happens
@@ -108,13 +108,10 @@ public class TicTacToe extends Game {
                 line = board[6] + board[7] + board[8];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 8;
                 case "O O":
-                case "X X":
                     return 7;
                 case " OO":
-                case " XX":
                     return 6;
                 default:
                     //nothing happens
@@ -124,13 +121,10 @@ public class TicTacToe extends Game {
                 line = board[0] + board[3] + board[6];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 6;
                 case "O O":
-                case "X X":
                     return 3;
                 case " OO":
-                case " XX":
                     return 0;
                 default:
                     //nothing happens
@@ -140,13 +134,10 @@ public class TicTacToe extends Game {
                 line = board[1] + board[4] + board[7];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 7;
                 case "O O":
-                case "X X":
                     return 4;
                 case " OO":
-                case " XX":
                     return 1;
                 default:
                     //nothing happens
@@ -156,13 +147,10 @@ public class TicTacToe extends Game {
                 line = board[2] + board[5] + board[8];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 8;
                 case "O O":
-                case "X X":
                     return 5;
                 case " OO":
-                case " XX":
                     return 2;
                 default:
                     //nothing happens
@@ -172,13 +160,10 @@ public class TicTacToe extends Game {
                 line = board[0] + board[4] + board[8];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 8;
                 case "O O":
-                case "X X":
                     return 4;
                 case " OO":
-                case " XX":
                     return 0;
                 default:
                     //nothing happens
@@ -188,12 +173,118 @@ public class TicTacToe extends Game {
                 line = board[2] + board[4] + board[6];
                 switch (line) {
                 case "OO ":
-                case "XX ":
                     return 6;
                 case "O O":
-                case "X X":
                     return 4;
                 case " OO":
+                    return 2;
+                default:
+                    //nothing happens
+                }
+                break;
+            default:
+                //this never happens
+            }
+            switch (a) {
+            case 0:
+                line = board[0] + board[1] + board[2];
+                switch (line) {
+                case "XX ":
+                    return 2;
+                case "X X":
+                    return 1;
+                case " XX":
+                    return 0;
+                default:
+                    //nothing happens
+                }
+
+                break;
+            case 1:
+                line = board[3] + board[4] + board[5];
+                switch (line) {
+                case "XX ":
+                    return 5;
+                case "X X":
+                    return 4;
+                case " XX":
+                    return 3;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 2:
+                line = board[6] + board[7] + board[8];
+                switch (line) {
+                case "XX ":
+                    return 8;
+                case "X X":
+                    return 7;
+                case " XX":
+                    return 6;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 3:
+                line = board[0] + board[3] + board[6];
+                switch (line) {
+                case "XX ":
+                    return 6;
+                case "X X":
+                    return 3;
+                case " XX":
+                    return 0;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 4:
+                line = board[1] + board[4] + board[7];
+                switch (line) {
+                case "XX ":
+                    return 7;
+                case "X X":
+                    return 4;
+                case " XX":
+                    return 1;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 5:
+                line = board[2] + board[5] + board[8];
+                switch (line) {
+                case "XX ":
+                    return 8;
+                case "X X":
+                    return 5;
+                case " XX":
+                    return 2;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 6:
+                line = board[0] + board[4] + board[8];
+                switch (line) {
+                case "XX ":
+                    return 8;
+                case "X X":
+                    return 4;
+                case " XX":
+                    return 0;
+                default:
+                    //nothing happens
+                }
+                break;
+            case 7:
+                line = board[2] + board[4] + board[6];
+                switch (line) {
+                case "XX ":
+                    return 6;
+                case "X X":
+                    return 4;
                 case " XX":
                     return 2;
                 default:
@@ -274,7 +365,7 @@ public class TicTacToe extends Game {
                         computerPlacement = rand.nextInt(9);
                     }
                 } else {
-                    computerPlacement = computerBestMove(board);
+                    computerPlacement = computerBestMove(board, turnCount);
                 }
 
                 board[computerPlacement] = "O";
