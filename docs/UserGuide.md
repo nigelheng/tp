@@ -41,15 +41,34 @@ _______
 |
 |
 ==============
+These are the guesses you have made so far:
+
+ _ _ _
 ```
 ## FAQ
 
 **Q**: Where can I find a guide on understanding the game? 
 
 **A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`.
+````
+guide
+----------------------------------------------------
+Let me explain the rules of this game:
+	- Hangman is a word guessing game played by yourself.
+	- There is a SECRET word which you would have to guess.
+	- You will have to guess letter by letter within 7 tries. Else, you lose!!
 
+Commands for the game:
+	- To guess a letter, simply type in an alphabet.
+	- If it is correct, the letter will be shown.
+	- A list of guessed letters will be indicated at the top as well."
+
+Lets put your english to the test! Best of luck :D
+----------------------------------------------------
+````
 ## Command Summary
 
 * See list of commands in menu: `help`
 * See guide on game: `guide`
 * To quit a game anytime: `quit`
+* To see your number of games won: `stats`
