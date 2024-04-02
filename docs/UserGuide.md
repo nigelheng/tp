@@ -20,14 +20,28 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 
 Example of usage: 
  * To start game, type`TTT`.
- * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`. 
-
+ * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
+```
+  1 | 2 | 3
+-------------
+  4 | 5 | 6    
+-------------
+  7 | 8 | 9    
+```
 ### 2. Playing a game of `Hangman`
 
 Example of usage:
  * To start a game, type `hangman`.
  * Guess a letter in the secret word by typing in the letter 
-
+```
+_______
+|     |
+|
+|
+|
+|
+==============
+```
 ## FAQ
 
 **Q**: Where can I find a guide on understanding the game? 
