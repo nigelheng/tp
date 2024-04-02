@@ -66,7 +66,7 @@ public class TicTacToe extends Game {
         return "unending";
     }
 
-    @Override public void runTicTacToe() {
+    @Override public void runGame() {
         for (int i = 0; i < 9; i++) {
             board[i] = " ";
         }
@@ -146,6 +146,9 @@ public class TicTacToe extends Game {
         }
     }
 
+    /**
+     * Prints the game guide when 'guide' is inputted
+     */
     @Override public void howToPlay() {
         super.howToPlay();
         System.out.println("\t- Tic-Tac-Toe is an 1 VS 1 game. Hence, you will be challenging ME! HAHAHA");
