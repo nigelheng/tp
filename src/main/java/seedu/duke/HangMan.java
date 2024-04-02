@@ -20,7 +20,6 @@ public class HangMan extends Game {
     protected String correctGuesses;
     protected int state = 0;
     protected final String LETTER_SPACE = "_";
-    protected final String LINE = "___________________________________________________";
 
 
     public HangMan(String line) {
@@ -84,7 +83,7 @@ public class HangMan extends Game {
             userInput = in.nextLine();
 
             if (Parser.ifQuit(userInput)) {
-                System.out.println("Thank you!! Hope you had flying good time.");
+                ui.println("Thank you!! Hope you had flying good time.");
                 break;
             }
             if (Parser.ifShowGuide(userInput)) {
@@ -92,15 +91,15 @@ public class HangMan extends Game {
             } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
                 if (!Parser.checkCorrectGuess(correctGuesses)) {
-                    System.out.println(LINE);
+                    ui.println(Ui.LINE);
                     printWordGuesser();
-                    System.out.println("Woahhhh you got it!!");
-                    System.out.println(LINE);
+                    ui.println("Woahhhh you got it!!");
+                    ui.println(Ui.LINE);
                     break;
                 } else {
-                    System.out.println(LINE);
+                    ui.println(Ui.LINE);
                     printHangMan();
-                    System.out.println(LINE);
+                    ui.println(Ui.LINE);
                     printLettersGuessed();
                     printWordGuesser();
                 }

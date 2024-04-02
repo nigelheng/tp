@@ -41,7 +41,8 @@ public class Duke {
                         numberOfGamesWon ++;
                     }
                 }
-                System.out.println("Your victories so far player: " + numberOfGamesWon);
+                System.out.println("Your victories so far, player: " + numberOfGamesWon);
+                input = Parser.readLine();
             }
 
 
