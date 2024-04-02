@@ -28,7 +28,7 @@ public class Parser {
         return false;
     }
 
-    public static boolean ifGuide(String input) {
+    public static boolean ifShowGuide(String input) {
         if (input != null && input.equals("guide")) {
             return true;
         }

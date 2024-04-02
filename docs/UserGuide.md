@@ -1,42 +1,55 @@
-# User Guide
+# AeroCade User Guide
 
 ## Introduction
 
-{Give a product intro}
+AeroCade is an In-Flight Entertainment app designed to keep users entertained during travels, 
+optimized for use via a Command Line Interface (CLI) while still having the core functionalities and features.
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+2. Down the latest version of `AeroCade.jar` from [here](http://link.to/duke).
+3. Copy the file to the folder you want to use as the home folder for your (name).
+4. Open a command terminal, cd into the folder you put the jar file in, and use the java -jar (name).jar command to run the application.
+5. Type commands in the CLI and press Enter to execute it. (Eg. type and enter 'help' for a list of available commands)
+6. Refer to the Features below for details of each command.
 
-## Features 
+## Features
 
-{Give detailed description of each feature}
-
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
-
-Format: `todo n/TODO_NAME d/DEADLINE`
-
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+### 1. Playing a game of `TicTacToe`
 
 Example of usage: 
+ * To start game, type`TTT`.
+ * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
+```
+  1 | 2 | 3
+-------------
+  4 | 5 | 6    
+-------------
+  7 | 8 | 9    
+```
+### 2. Playing a game of `Hangman`
 
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
-
+Example of usage:
+ * To start a game, type `hangman`.
+ * Guess a letter in the secret word by typing in the letter 
+```
+_______
+|     |
+|
+|
+|
+|
+==============
+```
 ## FAQ
 
-**Q**: How do I transfer my data to another computer? 
+**Q**: Where can I find a guide on understanding the game? 
 
-**A**: {your answer here}
+**A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`.
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+* See list of commands in menu: `help`
+* See guide on game: `guide`
+* To quit a game anytime: `quit`

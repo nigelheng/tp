@@ -1,8 +1,14 @@
 package seedu.duke;
+import seedu.duke.exceptions.InvalidTTMoveException;
+
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The HangMan class is a child class of Game
+ * Class handles the running of the hangman game, its interfaces and interaction with inputs by user
+ */
 public class HangMan extends Game {
     protected String[] wordBank = new String[11];
     protected ArrayList<String> allGuessedLetters = new ArrayList<>();
@@ -28,13 +34,13 @@ public class HangMan extends Game {
         }
     }
 
-    @Override public void runHangMan() {
+    @Override public void runGame() throws InvalidTTMoveException {
 
         printHangMan();
         printLettersGuessed();
         printWordGuesser();
 
-        System.out.println("Now what is your first guess?");
+        System.out.println("Now what is your first guess? (\'guide\' for a guide on how to play Hangman!)");
 
         while (state < 6) {
             String userInput;
@@ -45,7 +51,7 @@ public class HangMan extends Game {
                 System.out.println("Thank you!! Hope you had flying good time.");
                 break;
             }
-            if (Parser.ifGuide(userInput)) {
+            if (Parser.ifShowGuide(userInput)) {
                 howToPlay();
             } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
@@ -210,6 +216,9 @@ public class HangMan extends Game {
         }
     }
 
+    /**
+     * Prints the game guide when 'guide' is inputted
+     */
     @Override public void howToPlay() {
         super.howToPlay();
         System.out.println("\t- Hangman is a word guessing game played by yourself.");
