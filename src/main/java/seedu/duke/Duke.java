@@ -9,9 +9,11 @@ import java.util.ArrayList;
 public class Duke {
     private static final Render render = new Render();
     private static final Ui ui = new Ui(render);
-    //private static final HangMan hangman = new HangMan();
+
     private static ArrayList<Game> games = new ArrayList<>();
     private static int gameCounter = 0;
+
+    private static int numberOfGamesWon;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -30,6 +32,14 @@ public class Duke {
             } else if (input.equals("testquit")) {
                 ui.println("runtestbat success!");
                 break;
+            } else if (Parser.ifShowStats(input)) {
+                numberOfGamesWon = 0;
+                for (Game item: games) {
+                    if (item.isWin) {
+                        numberOfGamesWon ++;
+                    }
+                }
+                System.out.println("Your victories so far player: " + numberOfGamesWon);
             }
 
 

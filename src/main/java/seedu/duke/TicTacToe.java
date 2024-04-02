@@ -119,13 +119,14 @@ public class TicTacToe extends Game {
                 turnCount++;
             } catch (InvalidTTMoveException e) {
                 System.out.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again. " +
-                        "Type \'guide\' for tutorial guide");
+                        "Type 'guide' for tutorial guide");
             }
         }
         String whoWon = checkWinner(turnCount);
         switch (whoWon) {
         case "X":
             printBoard();
+            gameWon();
             System.out.println("----------------------------------------------------");
             System.out.println("You have claimed victory over the skies. Godspeed, champion.");
             break;
