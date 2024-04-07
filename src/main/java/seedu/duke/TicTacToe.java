@@ -323,6 +323,10 @@ public class TicTacToe extends Game {
                 "or 'hard', our second champion, is an Elder of the clouds. Which opponent do you desire, challenger?");
 
         strength = in.nextLine();
+        while (!strength.equals("easy") && !strength.equals("hard")) {
+            ui.println("I said 'easy' or 'hard,' that's it.");
+            strength = in.nextLine();
+        }
 
         while (checkWinner(turnCount).equals("unending")) {
             printBoard();
@@ -337,7 +341,7 @@ public class TicTacToe extends Game {
 
             if (Parser.ifShowGuide(line)) {
                 howToPlay();
-                line = in.nextLine();
+                continue; // keeps TTT from hanging
             }
             try {
                 readTTMove(line);
@@ -356,7 +360,7 @@ public class TicTacToe extends Game {
                     break;
                 }
 
-                int computerPlacement;
+                int computerPlacement = 0;
 
                 if (strength.equals("easy")) {
                     computerPlacement = rand.nextInt(9);
@@ -373,7 +377,6 @@ public class TicTacToe extends Game {
             } catch (InvalidTTMoveException e) {
                 ui.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again. " +
                         "Type 'guide' for tutorial guide");
-
             }
         }
         String whoWon = checkWinner(turnCount);

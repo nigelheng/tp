@@ -72,8 +72,7 @@ public class Duke {
                     } else if (Parser.ifHelp(input)) {
                         ui.printHelp();
                         inGame = false;
-                    }
-                    else if (Parser.ifTutorial(input)) {
+                    } else if (Parser.ifTutorial(input)) {
                         if (input.equals("TTT tutorial")) {
                             ui.printTTTTutorial();
 
