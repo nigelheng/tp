@@ -11,6 +11,7 @@ exception InvalidGameException #DarkSalmon {
 InvalidTTMoveException --> Exception
 InvalidGameException --> Exception
 
+skinparam classAttributeIconSize 0
 class Parser #LightBlue {
   --
   +ifQuit(input): boolean
@@ -30,4 +31,9 @@ Parser --> InvalidGameException: <<throws>>
 BufferedReader -right[hidden]- Parser
 InvalidGameException -right[hidden]- InvalidTTMoveException
 
+hide Parser circle
+hide InvalidTTMoveException circle
+hide InvalidGameException circle
+hide BufferedReader circle
+hide Exception circle
 @enduml

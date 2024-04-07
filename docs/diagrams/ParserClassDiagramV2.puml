@@ -15,6 +15,7 @@ InvalidTTMoveException --> Exception
 InvalidGameException --> Exception
 InvalidHMMoveException --> Exception
 
+skinparam classAttributeIconSize 0
 class Parser #LightBlue {
   --
   +ifQuit(input): boolean
@@ -35,4 +36,8 @@ Parser --> InvalidHMMoveException: <<throws>>
 BufferedReader -right[hidden]- Parser
 InvalidGameException -right[hidden]- InvalidTTMoveException
 
+hide Parser circle
+hide InvalidGameException circle
+hide BufferedReader circle
+hide Exception circle
 @enduml
