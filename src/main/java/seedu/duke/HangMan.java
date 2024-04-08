@@ -92,6 +92,9 @@ public class HangMan extends Game {
             }
             if (Parser.ifShowGuide(userInput)) {
                 howToPlay();
+            } else if (userInput.isEmpty()){
+                ui.println("but that's nothing :/");
+                ui.println(Ui.LINE);
             } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
                 if (!Parser.checkCorrectGuess(correctGuesses)) {
