@@ -8,6 +8,7 @@ import java.util.Random;
 
 import static seedu.duke.Parser.readTTMove;
 
+
 public class TicTacToe extends Game {
     protected static String[] board = new String[9];
 
@@ -15,6 +16,7 @@ public class TicTacToe extends Game {
         super(line);
     }
 
+    //@@author nicknamenic
     private static void printBoard() {
         ui.println("  " + board[0] + " | " + board[1] + " | " + board[2] + "  ");
         ui.println("-------------");
@@ -305,6 +307,7 @@ public class TicTacToe extends Game {
         return computerPlacement;
     }
 
+    //@@author nicknamenic
     @Override
     public void runGame() {
         for (int i = 0; i < 9; i++) {
@@ -408,6 +411,7 @@ public class TicTacToe extends Game {
         }
     }
 
+    //@@author nicknamenic
     /**
      * Prints the game guide when 'guide' is inputted
      */
