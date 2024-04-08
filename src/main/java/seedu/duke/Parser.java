@@ -133,7 +133,7 @@ public class Parser {
 
     public static boolean validHMCategory(String category) {
         String [] cats = {"animals", "countries", "sports", "fruits"};
-        return Arrays.stream(cats).anyMatch(category::contains);
+        return Arrays.stream(cats).anyMatch(category::equals);
     }
 }
 
