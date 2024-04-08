@@ -5,7 +5,6 @@ import seedu.duke.exceptions.InvalidTTMoveException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Duke {
@@ -67,6 +66,9 @@ public class Duke {
 
                         String category = Parser.readLine().trim();
                         while (!Parser.validHMCategory(category)) {
+                            if (Parser.ifQuit(category)) {
+                                // how to quit in this loop ???
+                            }
                             ui.println("That's not a category :O.");
                             category = Parser.readLine().trim();
                         }
