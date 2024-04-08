@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * read user input and call other functions accordingly
@@ -128,6 +129,11 @@ public class Parser {
             System.out.println("Error reading user input.");
         }
         return null;
+    }
+
+    public static boolean validHMCategory(String category) {
+        String [] cats = {"animals", "countries", "sports", "fruits"};
+        return Arrays.stream(cats).anyMatch(category::contains);
     }
 }
 

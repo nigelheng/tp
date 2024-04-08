@@ -5,6 +5,7 @@ import seedu.duke.exceptions.InvalidTTMoveException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Duke {
@@ -63,7 +64,13 @@ public class Duke {
                     } else if (input.equals("hangman")) {
                         System.out.println("What category would you like to choose? These are the options:");
                         System.out.println("animals, countries, fruits & sports");
+
                         String category = Parser.readLine().trim();
+                        while (!Parser.validHMCategory(category)) {
+                            ui.println("That's not a category :O.");
+                            category = Parser.readLine().trim();
+                        }
+
                         games.add(new HangMan(category));
                         games.get(gameCounter).runGame();
                         gameCounter ++;
