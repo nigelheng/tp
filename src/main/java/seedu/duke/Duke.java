@@ -24,7 +24,7 @@ public class Duke {
         ui.greetUser();
 
         boolean inGame = false;
-        String input = Parser.readLine();
+        String input = Parser.readLine().trim();
         assert input != null;
 
         while (true) {
@@ -42,7 +42,7 @@ public class Duke {
                     }
                 }
                 System.out.println("Your victories so far, player: " + numberOfGamesWon);
-                input = Parser.readLine();
+                input = Parser.readLine().trim();
             }
 
 
@@ -63,7 +63,7 @@ public class Duke {
                     } else if (input.equals("hangman")) {
                         System.out.println("What category would you like to choose? These are the options:");
                         System.out.println("animals, countries, fruits & sports");
-                        String category = Parser.readLine();
+                        String category = Parser.readLine().trim();
                         games.add(new HangMan(category));
                         games.get(gameCounter).runGame();
                         gameCounter ++;
@@ -87,7 +87,7 @@ public class Duke {
                     throw new RuntimeException(e);
                 }
             }
-            input = Parser.readLine();
+            input = Parser.readLine().trim();
         }
     }
 }

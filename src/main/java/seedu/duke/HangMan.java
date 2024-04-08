@@ -84,7 +84,7 @@ public class HangMan extends Game {
         while (state < 6) {
             String userInput;
             Scanner in = new Scanner(System.in);
-            userInput = in.nextLine();
+            userInput = in.nextLine().trim();
 
             if (Parser.ifQuit(userInput)) {
                 ui.println("Thank you!! Hope you had flying good time.");

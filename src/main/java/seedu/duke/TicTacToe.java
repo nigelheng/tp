@@ -322,17 +322,17 @@ public class TicTacToe extends Game {
         ui.println("Choose: 'easy', our first champion, is a benchmark for all challengers to test their mettle," +
                 "or 'hard', our second champion, is an Elder of the clouds. Which opponent do you desire, challenger?");
 
-        strength = in.nextLine();
+        strength = in.nextLine().trim();
         while (!strength.equals("easy") && !strength.equals("hard")) {
             ui.println("I said 'easy' or 'hard,' that's it.");
-            strength = in.nextLine();
+            strength = in.nextLine().trim();
         }
 
         while (checkWinner(turnCount).equals("unending")) {
             printBoard();
             ui.println(Ui.LINE);
             ui.println("Make your move, challenger.");
-            line = in.nextLine();
+            line = in.nextLine().trim();
             assert line != null;
 
             if (Parser.ifQuit(line)) {
@@ -349,7 +349,7 @@ public class TicTacToe extends Game {
                 while ((board[Integer.parseInt(line) - 1].equals("X")) ||
                         (board[Integer.parseInt(line) - 1].equals("O"))) {
                     ui.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
-                    line = in.nextLine();
+                    line = in.nextLine().trim();
                     readTTMove(line);
                 }
 
