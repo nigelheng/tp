@@ -79,9 +79,9 @@ These are the guesses you have made so far:
 
 ## FAQ
 
-**Q**: Where can I find a guide on understanding the game? 
+**Q**: Where can I find a guide on understanding the game rules? 
 
-**A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. The below is an example when opening
+**A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. Below is an example when opening
 `guide` while playing `hangman`
 
 ````
@@ -101,9 +101,37 @@ Lets put your english to the test! Best of luck :D
 ----------------------------------------------------
 ````
 
+**Q**: Where can I learn how to play the game?
+
+**A**: In the main menu on the CLI, start a tutorial with either `TTT tutorial` or `hangman tutorial`. Below is an example of the start of a tutorial when calling `TTT tutorial`.
+````
+TTT tutorial
+_________________________________________________________________
+[Tutorial Mode is playing, do not input any commands!]
+Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
+                a stellar gameplay of TTT for you!
+
+    |   |    
+-------------
+    |   |    
+-------------
+    |   |    
+
+Tutorial Pilot: This is a TTT board which I'll be placing an 'X' depending on
+                the number I put, here is the numbered layout!
+_________________________________________________________________
+````
+
 ## Command Summary
 
 * See list of commands in menu: `help`
+
+* Start a game of Tic-tac-toe: `TTT`
+* View Tic-tac-toe tutorial: `TTT tutorial`
+
+* Start a game of Hangman: `hangman`
+* View Hangman tutorial: `hangman tutorial`
+
 * See guide on game: `guide`
 * To quit a game anytime: `quit`
 * To see your number of games won: `stats`
