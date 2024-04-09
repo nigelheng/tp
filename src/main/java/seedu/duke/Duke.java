@@ -84,15 +84,16 @@ public class Duke {
                     } else if (Parser.ifTutorial(input)) {
                         if (input.equals("TTT tutorial")) {
                             ui.printTTTTutorial();
-
                         } else {
                             ui.printHangmanTutorial();
                         }
                         inGame = false;
+                    } else if (tutorial.isTutorialRunning()) {
+                        ui.println("A tutorial is already running."); // Notify the user that a tutorial is already running
                     }
                 } catch (InvalidGameException | NullPointerException e) {
-                    ui.println("Invalid Game. Type \'help\' for list of available commands. siuu");
-                } catch (InvalidTTMoveException | IOException e) {
+                    ui.println("Invalid Game. Type \'help\' for list of available commands.");
+                } catch (InvalidTTMoveException e) {
                     throw new RuntimeException(e);
                 }
             }
