@@ -112,15 +112,12 @@ public class Parser {
         return allGuessedLetters.contains(userInput);
     }
 
+    //@@author nigelheng
     public static boolean checkCorrectGuess(String currentString) {
         return currentString.contains("_");
     }
 
     /**
-     * Reads input from user by line
-     * Catches IOException if thrown
-     *
-     * @returns String representation of user input
      */
     public static String readLine() {
         try {

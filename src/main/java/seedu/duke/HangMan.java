@@ -1,5 +1,4 @@
 package seedu.duke;
-import seedu.duke.exceptions.InvalidTTMoveException;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -72,7 +71,7 @@ public class HangMan extends Game {
         }
     }
 
-    @Override public void runGame() throws InvalidTTMoveException {
+    @Override public void runGame() {
 
         printHangMan();
         printLettersGuessed();
