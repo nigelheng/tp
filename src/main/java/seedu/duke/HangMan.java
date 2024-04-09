@@ -1,5 +1,4 @@
 package seedu.duke;
-import seedu.duke.exceptions.InvalidTTMoveException;
 
 import java.util.Arrays;
 import java.util.Random;
