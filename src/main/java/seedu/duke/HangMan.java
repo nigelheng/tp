@@ -72,7 +72,7 @@ public class HangMan extends Game {
         }
     }
 
-    @Override public void runGame() throws InvalidTTMoveException {
+    @Override public void runGame() {
 
         printHangMan();
         printLettersGuessed();
