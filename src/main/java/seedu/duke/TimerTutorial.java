@@ -4,7 +4,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+
+
 public class TimerTutorial {
+    private boolean tutorialRunning = false; // Flag to track if tutorial is running
+
+    public boolean isTutorialRunning() {
+        return tutorialRunning;
+    }
 
     /**
      * Displays the Tic-tac-toe (TTT) tutorial.
@@ -65,7 +72,7 @@ public class TimerTutorial {
                 "    |   | X  \n\n" +
                 "Tutorial Pilot: I won! Hope this tutorial gameplay was helpful.\n" +
                 "                Tutorial Pilot, signing off~\n" +
-                "[Tutorial Mode over, resume commands!]\n" + Ui.LINE
+                "[Tutorial Mode over, resuming commands in 4 seconds!]\n" + Ui.LINE
         };
         int tttInterval = 4000; // 4 seconds interval
 
@@ -169,7 +176,7 @@ public class TimerTutorial {
             "g l y p h      \n\n" +
                 "Tutorial Pilot: Whew that was a close one! Hope this tutorial gameplay was helpful.\n" +
                 "                Tutorial Pilot, signing off~\n" +
-                "[Tutorial Mode over, resume commands!]\n" + Ui.LINE
+                "[Tutorial Mode over, resuming commands in 4 seconds!]\n" + Ui.LINE
         };
         int hangmanInterval = 4000; // 4 seconds interval
 
@@ -187,27 +194,24 @@ public class TimerTutorial {
         Timer timer = new Timer();
         int[] index = {0}; // Array to store the current frame index
 
+        tutorialRunning = true;
+
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 if (index[0] < frames.length) {
+                    tutorialRunning = true;
                     System.out.println(frames[index[0]]); // Print the current frame
                     index[0]++;
                 } else {
                     timer.cancel(); // Cancel the timer when all frames are printed
+                    tutorialRunning = false;
+
                 }
             }
         };
 
         timer.scheduleAtFixedRate(task, 0, interval); // Schedule the task to run at fixed intervals
-
-        while (index[0] < frames.length) {
-            try {
-                Thread.sleep(interval);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
 
     }
 }
