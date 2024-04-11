@@ -294,7 +294,7 @@ public class TicTacToe extends Game {
      * @return The number of turns taken thus far.
      * @throws InvalidTTMoveException If the input is not between 1-9, the error message is outputted.
      */
-    private static int TTTLogic(Scanner in, Random rand, String line, String strength, int turnCount)
+    private static int gameLogic(Scanner in, Random rand, String line, String strength, int turnCount)
             throws InvalidTTMoveException {
 
         readTTMove(line);
@@ -377,7 +377,7 @@ public class TicTacToe extends Game {
             }
 
             try {
-                turnCount = TTTLogic(in, rand, line, strength, turnCount);
+                turnCount = gameLogic(in, rand, line, strength, turnCount);
                 if (turnCount == 9 || turnCount == -1) {
                     break;
                 }
