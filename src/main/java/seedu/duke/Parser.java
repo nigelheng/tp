@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * read user input and call other functions accordingly
@@ -21,8 +22,22 @@ public class Parser {
         return false;
     }
 
+    public static boolean ifTestQuit(String input) {
+        if (input != null && input.equals("testquit")) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean ifHelp(String input) {
         if (input != null && input.equals("help")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean ifTutorial(String input) {
+        if (input != null && (input.equals("TTT tutorial") || input.equals("hangman tutorial"))) {
             return true;
         }
         return false;
@@ -49,7 +64,8 @@ public class Parser {
      * whatever makes it flow easier
      */
     public static void readGame(String input) throws InvalidGameException {
-        if (!input.equals("TTT") && !input.equals("hangman") && !ifHelp(input) && !ifQuit(input)) {
+        if (!input.equals("TTT") && !input.equals("hangman") && !ifHelp(input) &&
+            !ifQuit(input) && !ifTestQuit(input) && !ifTutorial(input)) {
             throw new InvalidGameException();
         }
     }
@@ -96,15 +112,12 @@ public class Parser {
         return allGuessedLetters.contains(userInput);
     }
 
+    //@@author nigelheng
     public static boolean checkCorrectGuess(String currentString) {
         return currentString.contains("_");
     }
 
     /**
-     * Reads input from user by line
-     * Catches IOException if thrown
-     *
-     * @returns String representation of user input
      */
     public static String readLine() {
         try {
@@ -113,6 +126,11 @@ public class Parser {
             System.out.println("Error reading user input.");
         }
         return null;
+    }
+
+    public static boolean validHMCategory(String category) {
+        String [] cats = {"animals", "countries", "sports", "fruits"};
+        return Arrays.stream(cats).anyMatch(category::equals);
     }
 }
 

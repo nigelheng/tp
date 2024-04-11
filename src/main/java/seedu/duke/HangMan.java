@@ -1,5 +1,4 @@
 package seedu.duke;
-import seedu.duke.exceptions.InvalidTTMoveException;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -20,28 +19,30 @@ public class HangMan extends Game {
     protected String correctGuesses;
     protected int state = 0;
     protected final String LETTER_SPACE = "_";
-    protected final String LINE = "___________________________________________________";
 
-
+    //@@author nigelheng
     public HangMan(String line) {
         super(line);
-        String words = "ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck " +
-                "eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt otter owl " +
-                "panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep skunk sloth snake spider " +
-                "stork swan tiger toad trout turkey turtle weasel whale wolf wombat zebra afghanistan argentina australia " +
-                "austria angola bangladesh belgium bolivia brazil brunei bulgaria cambodia canada chad chile china colombia " +
-                "croatia cuba denmark ecuador egypt estonia ethiopia finland france germany guinea haiti hungary iceland india " +
-                "indonesia iran iraq ireland israel italy jamaica japan kenya korea laos latvia lebanon luxembourg malaysia " +
-                "maldives mexico mongolia morocco myanmar nepal netherlands nigeria norway pakistan peru philippines poland " +
-                "portugal qatar romania russia serbia singapore spain sudan sweden switzerland syria taiwan thailand turkey " +
-                "uganda ukraine uzbekistan venezuela vietnam yemen zambia zimbabwe acai apple apricot avocado banana blackberry " +
-                "blackcurrant blueberry boysenberry breadfruit cherry coconut cranberry date dragonfruit durian elderberry " +
-                "fig grape raisin grapefruit guava jackfruit jujube kiwi kumquat lemon lime longan lychee mango mangosteen " +
-                "cantaloupe honeydew watermelon mulberry orange mandarine tangerine papaya passionfruit peach pear persimmon " +
-                "plum prune pineapple pomegranate pomelo raspberry rambutan soursop strawberry tamarind yuzu tomato eggplant " +
-                "pumpkin cheerleading canoeing kayaking rafting rowing dragonboat waterpolo swimming diving archery baseball " +
-                "softball cricket basketball netball soccer rugby tchoukball hockey floorball lacrosse polo curling badminton " +
-                "pickleball tennis volleyball squash skating surfing wakeboarding bouldering cycling aikido judo sumo wrestling " +
+
+        String words = "ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey " +
+                "duck eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt " +
+                "otter owl panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep skunk swan " +
+                "snake spider stork sloth tiger toad trout turkey turtle weasel whale wolf wombat zebra afghanistan " +
+                "argentina australia austria angola bangladesh belgium bolivia brazil brunei bulgaria cambodia " +
+                "canada chad chile china colombia croatia cuba denmark ecuador egypt estonia ethiopia finland " +
+                "france germany guinea haiti hungary iceland india indonesia iran iraq ireland israel italy jamaica " +
+                "japan kenya korea laos latvia lebanon luxembourg malaysia maldives mexico mongolia morocco myanmar " +
+                "nepal netherlands nigeria norway pakistan peru philippines poland portugal qatar romania russia " +
+                "serbia singapore spain sudan sweden switzerland syria taiwan thailand turkey uganda ukraine " +
+                "uzbekistan venezuela vietnam yemen zambia zimbabwe acai apple apricot avocado banana blackberry " +
+                "blackcurrant blueberry boysenberry breadfruit cherry coconut cranberry date dragonfruit durian " +
+                "elderberry fig grape raisin grapefruit guava jackfruit jujube kiwi kumquat lemon lime longan " +
+                "lychee mango mangosteen cantaloupe honeydew watermelon mulberry orange mandarine tangerine papaya " +
+                "passionfruit peach pear persimmon plum prune pineapple pomegranate pomelo raspberry rambutan " +
+                "soursop strawberry tamarind yuzu tomato eggplant pumpkin cheerleading canoeing kayaking rafting " +
+                "rowing dragonboat waterpolo swimming diving archery baseball softball cricket basketball netball " +
+                "soccer rugby tchoukball hockey floorball lacrosse polo curling badminton pickleball tennis " +
+                "volleyball squash skating surfing wakeboarding bouldering cycling aikido judo sumo wrestling " +
                 "boxing capoeira kickboxing silat taekwondo kendo kungfu frisbee gymanastic running";
 
         wordBank = words.split(" ",251);
@@ -58,6 +59,8 @@ public class HangMan extends Game {
         case "sports":
             wordsFromCategory.addAll(Arrays.asList(wordBank).subList(204, 250));
             break;
+        default:
+            break;
         }
         Random rand = new Random();
         int whichWord = rand.nextInt(wordsFromCategory.size());
@@ -69,59 +72,63 @@ public class HangMan extends Game {
         }
     }
 
-    @Override public void runGame() throws InvalidTTMoveException {
+    @Override public void runGame() {
 
         printHangMan();
         printLettersGuessed();
         printWordGuesser();
 
-        System.out.println("Now what is your first guess? (\'guide\' for a guide on how to play Hangman!)");
+        ui.println("Now what is your first guess? (\'guide\' for a guide on how to play Hangman!)");
+        ui.println(Ui.LINE);
 
         while (state < 6) {
             String userInput;
             Scanner in = new Scanner(System.in);
-            userInput = in.nextLine();
+            userInput = in.nextLine().trim();
 
             if (Parser.ifQuit(userInput)) {
-                System.out.println("Thank you!! Hope you had flying good time.");
+                ui.println("Thank you!! Hope you had flying good time.");
                 break;
             }
             if (Parser.ifShowGuide(userInput)) {
                 howToPlay();
+            } else if (userInput.isEmpty()){
+                ui.println("but that's nothing :/");
+                ui.println(Ui.LINE);
             } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
                 if (!Parser.checkCorrectGuess(correctGuesses)) {
-                    System.out.println(LINE);
+                    ui.println(Ui.LINE);
                     printWordGuesser();
-                    System.out.println("Woahhhh you got it!!");
-                    System.out.println(LINE);
+                    ui.println("Woahhhh you got it!!");
+                    ui.println(Ui.LINE);
                     break;
                 } else {
-                    System.out.println(LINE);
+                    ui.println(Ui.LINE);
                     printHangMan();
-                    System.out.println(LINE);
+                    ui.println(Ui.LINE);
                     printLettersGuessed();
                     printWordGuesser();
                 }
             } else {
-                System.out.println("you've already guessed this before");
-                System.out.println("now try something else");
-                System.out.println("___________________________________");
+                ui.println("you've already guessed this before");
+                ui.println("now try something else!");
+                ui.println(Ui.LINE);
             }
 
             if (!Parser.checkCorrectGuess(correctGuesses)) {
-                System.out.println("Woahhhh you got it!!");
+                ui.println("Woahhhh you got it!!");
                 gameWon();
                 break;
             }
-            System.out.println("give me your next guess");
+            ui.println("give me your next guess");
+            ui.println(Ui.LINE);
         }
 
         // once state = 6, game ends in failure.
         if (state == 6) {
             printHangMan();
-            System.out.println();
-            System.out.println("Oh noo!! It seems you have lost   :( ");
+            ui.println("\nOh noo!! It seems you have lost   :( ");
         }
     }
     public int getNumberOfLettersGuessed() {
@@ -161,77 +168,77 @@ public class HangMan extends Game {
         state = getState();
         switch(state) {
         case 0:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 1:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 2:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |     |");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |     |");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 3:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 4:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|\\");
-            System.out.println("  |     |");
-            System.out.println("  |");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|\\");
+            ui.println("  |     |");
+            ui.println("  |");
+            ui.println("==============");
             break;
         case 5:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|\\");
-            System.out.println("  |     |");
-            System.out.println("  |    /");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|\\");
+            ui.println("  |     |");
+            ui.println("  |    /");
+            ui.println("==============");
             break;
         case 6:
-            System.out.println("  _______");
-            System.out.println("  |     |");
-            System.out.println("  |     @");
-            System.out.println("  |    /|\\");
-            System.out.println("  |     |");
-            System.out.println("  |    / \\");
-            System.out.println("==============");
+            ui.println("  _______");
+            ui.println("  |     |");
+            ui.println("  |     @");
+            ui.println("  |    /|\\");
+            ui.println("  |     |");
+            ui.println("  |    / \\");
+            ui.println("==============");
             break;
         default:
-            System.out.println("default");
+            ui.println("default");
             break;
         }
 
     }
 
     public void printLettersGuessed() {
-        System.out.println("These are the guesses you have made so far:");
+        ui.println("These are the guesses you have made so far:");
         int numOfLetters = getNumberOfLettersGuessed();
         for (int index = 0; index < numOfLetters; index++) {
             String letterToDisplay = getAllGuessedLetters().get(index);
@@ -241,7 +248,7 @@ public class HangMan extends Game {
     }
 
     public void addGuess(String userInput) {
-        System.out.println("Checking to see if [" + userInput + "] is part of the word...");
+        ui.println("Checking to see if [" + userInput + "] is part of the word...");
         int guessType = Parser.parseGuess(userInput);
         if (guessType == 1) { // input is a single character
             allGuessedLetters.add(userInput);
@@ -273,16 +280,14 @@ public class HangMan extends Game {
      */
     @Override public void howToPlay() {
         super.howToPlay();
-        System.out.println("\t- Hangman is a word guessing game played by yourself.");
-        System.out.println("\t- There is a SECRET word which you would have to guess.");
-        System.out.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!"
-                            + System.lineSeparator());
-        System.out.println("Commands for the game:");
-        System.out.println("\t- To guess a letter, simply type in an alphabet.");
-        System.out.println("\t- If it is correct, the letter will be shown.");
-        System.out.println("\t- A list of guessed letters will be indicated at the top as well.\""
-                            + System.lineSeparator());
-        System.out.println("Lets put your english to the test! Best of luck :D");
-        System.out.println("----------------------------------------------------");
+        ui.println("\t- Hangman is a word guessing game played by yourself.");
+        ui.println("\t- There is a SECRET word which you would have to guess.");
+        ui.println("\t- You will have to guess letter by letter within 7 tries. Else, you lose!!\n");
+        ui.println("Commands for the game:");
+        ui.println("\t- To guess a letter, simply type in an alphabet.");
+        ui.println("\t- If it is correct, the letter will be shown.");
+        ui.println("\t- A list of guessed letters will be indicated at the top as well.\n");
+        ui.println("Lets put your english to the test! Best of luck :D");
+        ui.println(Ui.LINE);
     }
 }

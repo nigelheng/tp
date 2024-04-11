@@ -45,10 +45,13 @@ The `UI` consists of the AeroCade `logo`, the `help` menu, the `tutorial`, and s
 The `UI` component,
 
 * reads user commands using `Parser` component.
-* displays a `help` menu with instructions.
-* creates a `tutorial` to assist user.
+* displays various ASCII art and messages through `Render`.
+* creates a `tutorial` to assist user in `TimerTutorial`.
+  * Executes tutorial frames using the TimerTask mechanism.
+  * Provides interactive learning experience for users.
+  * Depends on the Ui component for displaying tutorial frames and managing user interaction.
 
-(image)
+
 
 ### <span style="color:grey;">Game Implementation:</span>
 The `Game` class, is the parent class for our games, `TicTacToe` and `Hangman`.

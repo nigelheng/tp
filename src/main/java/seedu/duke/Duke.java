@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 public class Duke {
     private static final Render render = new Render();
-    private static final Ui ui = new Ui(render);
-
+    private static final TimerTutorial tutorial = new TimerTutorial();
+    private static final Ui ui = new Ui(render, tutorial);
+    //private static final HangMan hangman = new HangMan();
     private static ArrayList<Game> games = new ArrayList<>();
     private static int gameCounter = 0;
 
@@ -22,14 +23,14 @@ public class Duke {
         ui.greetUser();
 
         boolean inGame = false;
-        String input = Parser.readLine();
+        String input = Parser.readLine().trim();
         assert input != null;
 
         while (true) {
             if (Parser.ifQuit(input)) {
                 ui.quitUser();
                 break;
-            } else if (input.equals("testquit")) {
+            } else if (Parser.ifTestQuit(input)) {
                 ui.println("runtestbat success!");
                 break;
             } else if (Parser.ifShowStats(input)) {
@@ -39,7 +40,8 @@ public class Duke {
                         numberOfGamesWon ++;
                     }
                 }
-                System.out.println("Your victories so far player: " + numberOfGamesWon);
+                System.out.println("Your victories so far, player: " + numberOfGamesWon);
+                input = Parser.readLine().trim();
             }
 
 
@@ -52,7 +54,7 @@ public class Duke {
                             games.add(new TicTacToe(input));
                             games.get(gameCounter).runGame();
                             gameCounter ++;
-                            System.out.println("Now what would you like to do?");
+                            ui.println("Now what would you like to do?");
                             inGame = false;
                         } catch (InvalidTTMoveException e) {
                             throw new RuntimeException(e);
@@ -60,15 +62,33 @@ public class Duke {
                     } else if (input.equals("hangman")) {
                         System.out.println("What category would you like to choose? These are the options:");
                         System.out.println("animals, countries, fruits & sports");
-                        String category = Parser.readLine();
+
+                        String category = Parser.readLine().trim();
+                        while (!Parser.validHMCategory(category)) {
+                            if (Parser.ifQuit(category)) {
+                                // how to quit in this loop ???
+                            }
+                            ui.println("That's not a category :O.");
+                            category = Parser.readLine().trim();
+                        }
+
                         games.add(new HangMan(category));
                         games.get(gameCounter).runGame();
                         gameCounter ++;
-                        System.out.println("Now what would you like to do?");
+                        ui.println("Now what would you like to do?");
                         inGame = false;
                     } else if (Parser.ifHelp(input)) {
                         ui.printHelp();
                         inGame = false;
+                    } else if (Parser.ifTutorial(input)) {
+                        if (input.equals("TTT tutorial")) {
+                            ui.printTTTTutorial();
+                        } else {
+                            ui.printHangmanTutorial();
+                        }
+                        inGame = false;
+                    } else if (tutorial.isTutorialRunning()) {
+                        ui.println("A tutorial is already running.");
                     }
                 } catch (InvalidGameException | NullPointerException e) {
                     ui.println("Invalid Game. Type \'help\' for list of available commands.");
@@ -76,7 +96,7 @@ public class Duke {
                     throw new RuntimeException(e);
                 }
             }
-            input = Parser.readLine();
+            input = Parser.readLine().trim();
         }
     }
 }

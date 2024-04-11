@@ -1,7 +1,13 @@
 package seedu.duke;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileReader;
 
+//@@author ttasnim5
 public class Storage {
     private static String filepath = "data.txt";
     private static File outfile = new File(filepath);

@@ -6,6 +6,9 @@ import seedu.duke.exceptions.InvalidTTMoveException;
  * Contains methods for handling running of game and showing of game guide
  */
 public class Game {
+    protected static final Render render = new Render();
+    private static final TimerTutorial tutorial = new TimerTutorial();
+    protected static final Ui ui = new Ui(render, tutorial);
     protected boolean isExit; // true to exit
     protected String gameName;
 
@@ -36,8 +39,8 @@ public class Game {
      * overridden in TicTacToe and Hangman
      */
     public void howToPlay() {
-        System.out.println("----------------------------------------------------");
-        System.out.println("Let me explain the rules of this game:");
+        ui.println(Ui.LINE);
+        ui.println("Let me explain the rules of this game:");
     }
 
     public void gameWon() {
