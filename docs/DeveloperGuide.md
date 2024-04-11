@@ -72,12 +72,15 @@ The `TicTacToe` class:
 * stores the `board` upon which the game is played on. 
   * The `board` is a `String` `array` with `9` slots, indicating the possible inputs from the user.
   * The `board` is also printed at the start of the game and after every move by the user.
+* has a perfect `TTT` algorithm in `computerBestMove(String[] board, int turnCount)`, and should the player choose to play against the `hard` computer, they will never win.
+  * also has an `easy` mode, which is really just randomly populating the board.
 * checks the winner using the `checkWinner(int turnCount)` method, which takes in the number of turns taken so far.
   * Returns the following based on the state of the game:
     * `unending` if the game is unfinished or the user inputs `quit`.
     * `X` if the user wins the game
     * `O` if the user loses the game
     * `draw` if the user and the computer draw
+* outputs very stylised `ui` elements that improve player interaction and engagement!
 
 
 ### <span style="color:grey;">Hangman Implementation:</span>

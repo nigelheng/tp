@@ -40,9 +40,10 @@ _________________________________________________________________
 ```
 
 Example of usage: 
- * To start game, type`TTT`.
+ * To start a game, type `TTT`.
  * Choose your difficulty, either `easy` or `hard`, and type it in.
  * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
+ * At any point, if you want to quit, simply type `quit`
 
 ```
   1 | 2 | 3
