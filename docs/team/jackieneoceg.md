@@ -34,6 +34,7 @@ displays every frame of the tutorial, and a schedule method `scheduleTutorialFra
 
 * Made 5 pull requests for debugging purposes, ensuring Gradle CheckStyles and I/O redirection tests passed successfully
 * Included assertions and exceptions in the main `Duke.java`, ensuring no NullPointer Exceptions during testing.
+* Executed 100% Class, Method and Line Test Coverage for the whole Ui Component
 
 **Contributions to Developer Guide and User Guide:**
 * Added the Ui implementation section to both Developer Guide and User Guide

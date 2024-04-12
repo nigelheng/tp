@@ -58,7 +58,7 @@ public class UiTest {
     @Test
     public void greetUser_displaysCorrectMessage() {
         Ui ui = new Ui(new Render(), new TimerTutorial());
-        ui.quitUser();
+        ui.greetUser();
         assertTrue(outContent.toString().contains(Render.logo));
     }
 
