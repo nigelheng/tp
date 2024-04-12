@@ -10,7 +10,7 @@ public class Ui {
     public static final String LINE = "_________________________________________________________________";
     private final Render render;
     private final TimerTutorial tutorial;
-    private static final Logger logger = Logger.getLogger(Ui.class.getName());
+    private final Logger logger = Logger.getLogger(Ui.class.getName());
 
 
     /**

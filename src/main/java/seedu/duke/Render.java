@@ -7,7 +7,7 @@ public class Render {
     /**
      * Array of sentences to be chosen at random for quitUser()
      */
-    private static final String[] BYE_SENTENCES = {
+    public static String[] BYE_SENTENCES = {
         "AeroCade dismissed. Fly with honor and return victorious.",
         "Departure clearance granted. Execute your aero-maneuvers with expertise.",
         "Aero-Launch sequence initiated. Depart with purpose.",
