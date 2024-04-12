@@ -14,7 +14,7 @@ public class Render {
         "Permission to depart granted. Execute your flight plan with discipline."
     };
 
-    private final String logo = "\n\n\n" + Ui.LINE + "\n" +
+    public static String logo = "\n\n\n" + Ui.LINE + "\n" +
             "               _______  _______  ______    _______              \n" +
             "              |   _   ||       ||    _ |  |       |             \n" +
             "  __|____|__  |  |_|  ||    ___||   | ||  |   _   |             \n" +
@@ -30,7 +30,7 @@ public class Render {
             "              |     |_ |   _   ||       ||   |___     |  |      \n" +
             "              |_______||__| |__||______| |_______|    | / \\  \n\n" ;
 
-    private final String boeing =
+    public static String boeing =
             "                                |                              \n" +
             "                              .-'-.                            \n" +
             "                             ' ___ '                           \n" +
