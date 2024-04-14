@@ -72,6 +72,11 @@ public class HangMan extends Game {
         }
     }
 
+    /**
+     * Runs the HangMan game, taking in inputs of words and english alphabets as guesses for the hidden word.
+     * Continues to take in inputs till game completion, either by making 6 incorrect guesses or correctly guessing
+     * the hidden word.
+     */
     @Override public int runGame() {
 
         printHangMan();
@@ -97,7 +102,7 @@ public class HangMan extends Game {
                 ui.println(Ui.LINE);
             } else if (!Parser.repeatGuess(allGuessedLetters, userInput)) {
                 addGuess(userInput);
-                if (!Parser.checkCorrectGuess(correctGuesses)) {
+                if (Parser.checkRemainingBlanks(correctGuesses)) {
                     ui.println(Ui.LINE);
                     printWordGuesser();
                     ui.println("Woahhhh you won it!!");
@@ -116,7 +121,7 @@ public class HangMan extends Game {
                 ui.println(Ui.LINE);
             }
 
-            if (!Parser.checkCorrectGuess(correctGuesses)) {
+            if (Parser.checkRemainingBlanks(correctGuesses)) {
                 ui.println("Woahhhh you got it!!");
                 break;
             }
@@ -129,6 +134,7 @@ public class HangMan extends Game {
             printHangMan();
             ui.println("\nOh noo!! It seems you have lost   :( ");
             //returns 0 if lost
+            ui.println("The correct answer is " + chosenWord);
             return 0;
         }
         return 4;
@@ -139,14 +145,7 @@ public class HangMan extends Game {
     public ArrayList<String> getAllGuessedLetters() {
         return allGuessedLetters;
     }
-    /*
-    public static String getChosenWord() {
-        return chosenWord;
-    }
-    public static int getChosenWordLength() {
-        return chosenWordLength;
-    }
-     */
+
     public int getState() {
         return state;
     }
@@ -238,7 +237,9 @@ public class HangMan extends Game {
         }
 
     }
-
+    /**
+     * Iterates through the array of letters guessed and prints each element.
+     */
     public void printLettersGuessed() {
         ui.println("These are the guesses you have made so far:");
         int numOfLetters = getNumberOfLettersGuessed();
@@ -249,30 +250,42 @@ public class HangMan extends Game {
         System.out.println();
     }
 
+    /**
+     * Adds single letter guesses to a list of guessed letters to be printed
+     * and checks if letter is found in hidden word. Full word guesses are compared directly to the hidden word.
+     */
     public void addGuess(String userInput) {
-        ui.println("Checking to see if [" + userInput + "] is part of the word...");
         int guessType = Parser.parseGuess(userInput);
         if (guessType == 1) { // input is a single character
-            allGuessedLetters.add(userInput);
-            numberOfLettersGuessed += 1;
-            if (chosenWord.contains(userInput)) { // if guess is correct
-                String tempWord = chosenWord;
-                char[] charCorrectGuesses = correctGuesses.toCharArray();
-                int lastSearchedIndex = 0;
-                while (tempWord.indexOf(userInput,lastSearchedIndex) != -1) {
-                    lastSearchedIndex = tempWord.indexOf(userInput,lastSearchedIndex);
-                    charCorrectGuesses[lastSearchedIndex] = userInput.charAt(0);
-                    lastSearchedIndex++;
+            if (Parser.containsEnglishAlphabetsOnly(userInput)) {
+                ui.println("Checking to see if [" + userInput + "] is part of the word...");
+                allGuessedLetters.add(userInput);
+                numberOfLettersGuessed += 1;
+                if (chosenWord.contains(userInput)) { // if guess is correct
+                    String tempWord = chosenWord;
+                    char[] charCorrectGuesses = correctGuesses.toCharArray();
+                    int lastSearchedIndex = 0;
+                    while (tempWord.indexOf(userInput, lastSearchedIndex) != -1) {
+                        lastSearchedIndex = tempWord.indexOf(userInput, lastSearchedIndex);
+                        charCorrectGuesses[lastSearchedIndex] = userInput.charAt(0);
+                        lastSearchedIndex++;
+                    }
+                    correctGuesses = String.valueOf(charCorrectGuesses);
+                } else {
+                    state += 1;
                 }
-                correctGuesses = String.valueOf(charCorrectGuesses);
             } else {
-                state += 1;
+                ui.println("That's not a valid guess, please try something else");
             }
         } else if (guessType == 2) { // input is the entire word
-            if (userInput.equals(chosenWord)) {
-                correctGuesses = chosenWord;
+            if (Parser.containsEnglishAlphabetsOnly(userInput)) {
+                if (userInput.equals(chosenWord)) {
+                    correctGuesses = chosenWord;
+                } else {
+                    state += 1;
+                }
             } else {
-                state += 1;
+                ui.println("That's not an English alphabet");
             }
         }
     }

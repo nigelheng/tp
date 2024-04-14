@@ -63,7 +63,10 @@ the number of mistakes allowed
 
 Example of usage:
  * To start a game, type `hangman`.
- * Guess a letter in the secret word by typing in the letter 
+ * You will be prompted to choose a category between `animals`, `fruits`, `countries` & `sports`
+ * Type in one of the 4 categories
+ * Guess a letter in the secret word by typing in the letter or if you are confident
+ * Guess the whole secret word.
 
 ```
 _______
