@@ -30,17 +30,8 @@ collaboratively with JackieNeoCEG
 
 **Contributions to Developer Guide:**
 * added the Parser implementation section to UG
-  * added 2 Parser class diagrams 
+  * added and updated a Parser class diagram 
   * added a sequence diagram showing interaction between classes in the main Duke class
 
 **Contributions to team-based tasks:**
-* 
-
-**Review/mentoring contributions:** 
-* Links to PRs reviewed, instances of helping team members in other ways.
-
-**Contributions beyond the project team:**
-* Evidence of helping others e.g. responses you posted in our forum, bugs you reported in other team's products, 
-* Evidence of technical leadership e.g. sharing useful information in the forum
-
-
+* Prioritized adding comprehensive UML diagrams to the team's documentation
