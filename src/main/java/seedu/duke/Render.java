@@ -7,14 +7,14 @@ public class Render {
     /**
      * Array of sentences to be chosen at random for quitUser()
      */
-    private static final String[] BYE_SENTENCES = {
+    public static String[] BYE_SENTENCES = {
         "AeroCade dismissed. Fly with honor and return victorious.",
         "Departure clearance granted. Execute your aero-maneuvers with expertise.",
         "Aero-Launch sequence initiated. Depart with purpose.",
         "Permission to depart granted. Execute your flight plan with discipline."
     };
 
-    private final String logo = "\n\n\n" + Ui.LINE + "\n" +
+    public static String logo = "\n\n\n" + Ui.LINE + "\n" +
             "               _______  _______  ______    _______              \n" +
             "              |   _   ||       ||    _ |  |       |             \n" +
             "  __|____|__  |  |_|  ||    ___||   | ||  |   _   |             \n" +
@@ -30,7 +30,7 @@ public class Render {
             "              |     |_ |   _   ||       ||   |___     |  |      \n" +
             "              |_______||__| |__||______| |_______|    | / \\  \n\n" ;
 
-    private final String boeing =
+    public static String boeing =
             "                                |                              \n" +
             "                              .-'-.                            \n" +
             "                             ' ___ '                           \n" +
@@ -86,11 +86,14 @@ public class Render {
      * Prints a help message listing the available commands.
      */
     public void displayHelpMessage() {
-        println(Ui.LINE + "\nHere are the list of commands:\n" +
+        println(Ui.LINE + "\nHere are the list of commands:\n" + Ui.LINE +
+                "\n[Gameplay:]" +
+                "\ntype 'TTT tutorial' for a Tic-tac-toe example gameplay\n" +
                 "'TTT' - Starts Tic-tac-toe Game\n" +
-                "type 'TTT tutorial' for Tic-tac-toe tutorial\n\n" +
+                "type 'hangman tutorial' for a Hangman example gameplay\n" +
                 "'hangman' - Starts Hangman Game\n" +
-                "type 'hangman tutorial' for Hangman tutorial\n" + 
-                "'stats' to see games won\n" + Ui.LINE);
+                "[Miscellaneous:]\n" +
+                "'stats' to see games won\n"  +
+                "'quit' to exit the program\n"+ Ui.LINE);
     }
 }

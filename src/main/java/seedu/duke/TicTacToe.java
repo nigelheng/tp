@@ -8,7 +8,7 @@ import java.util.Random;
 
 import static seedu.duke.Parser.readTTMove;
 
-
+//@@author nicknamenic
 public class TicTacToe extends Game {
     protected static String[] board = new String[9];
 
@@ -17,6 +17,9 @@ public class TicTacToe extends Game {
     }
 
     //@@author nicknamenic
+    /**
+     * Prints the current board state.
+     */
     private static void printBoard() {
         ui.println("  " + board[0] + " | " + board[1] + " | " + board[2] + "  ");
         ui.println("-------------");
@@ -25,6 +28,71 @@ public class TicTacToe extends Game {
         ui.println("  " + board[6] + " | " + board[7] + " | " + board[8] + "  ");
     }
 
+    //@@author nicknamenic
+    /**
+     * Checks a line for the computer, and if a win is in sight for the computer,
+     * outputs the box that will secure it.
+     *
+     * @param line The line to be evaluated.
+     * @param firstBox The index of the first box in the line.
+     * @param secondBox The index of the second box in the line.
+     * @param thirdBox The index of the third box in the line.
+     * @return The index of the box for the computer to win,
+     *         null if no winning combination for the computer is seen.
+     */
+    private static Integer lineCheckComputer(String line,
+                                            int firstBox,
+                                            int secondBox,
+                                            int thirdBox) {
+        switch (line) {
+        case "OO ":
+            return thirdBox;
+        case "O O":
+            return secondBox;
+        case " OO":
+            return firstBox;
+        default:
+            return null;
+        }
+    }
+
+    //@@author nicknamenic
+    /**
+     * Checks a line for the computer, and if a win is in sight for the player,
+     * outputs the box that prevents the win.
+     *
+     * @param line The line to be evaluated.
+     * @param firstBox The index of the first box in the line.
+     * @param secondBox The index of the second box in the line.
+     * @param thirdBox The index of the third box in the line.
+     * @return The index of the box for the computer to block the win,
+     *         null if no winning combination for the player is seen.
+     */
+    private static Integer lineCheckPlayer(String line,
+                                         int firstBox,
+                                         int secondBox,
+                                         int thirdBox) {
+        switch (line) {
+        case "XX ":
+            return thirdBox;
+        case "X X":
+            return secondBox;
+        case " XX":
+            return firstBox;
+        default:
+            return null;
+        }
+    }
+
+    //@@author nicknamenic
+    /**
+     * Checks the board for the winner.
+     *
+     * @param turnCount The number of turns taken thus far.
+     * @return X if the player won, O if the computer won,
+     *         draw if the board is full and no one won and
+     *         unending if the board is not full and no one has won.
+     */
     private static String checkWinner(int turnCount) {
         for (int a = 0; a < 8; a++) {
             String line = null;
@@ -68,229 +136,136 @@ public class TicTacToe extends Game {
         return "unending";
     }
 
+    //@@author nicknamenic
+    /**
+     * Computes the best move for the computer based on the current board state.
+     *
+     * @param board The current state of the board.
+     * @param turnCount The number of turns taken thus far.
+     * @return The index of the box for the computer to either win or block the player's win.
+     */
     private static int computerBestMove(String[] board, int turnCount) {
         Random rand = new Random();
+        Integer result;
         if (turnCount == 1 && board[4].equals(" ")) {
             return 4;
         }
         if (turnCount == 1 && board[4].equals("X")) {
             return 0;
         }
-        for (int a = 0; a < 8; a++) {
+        for (int a = 0; a < 16; a++) {
             String line;
             switch (a) {
             case 0:
                 line = board[0] + board[1] + board[2];
-                switch (line) {
-                case "OO ":
-                    return 2;
-                case "O O":
-                    return 1;
-                case " OO":
-                    return 0;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 0, 1, 2);
+                if (result != null) {
+                    return result;
                 }
-
                 break;
             case 1:
                 line = board[3] + board[4] + board[5];
-                switch (line) {
-                case "OO ":
-                    return 5;
-                case "O O":
-                    return 4;
-                case " OO":
-                    return 3;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 3, 4, 5);
+                if (result != null) {
+                    return result;
                 }
                 break;
             case 2:
                 line = board[6] + board[7] + board[8];
-                switch (line) {
-                case "OO ":
-                    return 8;
-                case "O O":
-                    return 7;
-                case " OO":
-                    return 6;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 6, 7, 8);
+                if (result != null) {
+                    return result;
                 }
                 break;
             case 3:
                 line = board[0] + board[3] + board[6];
-                switch (line) {
-                case "OO ":
-                    return 6;
-                case "O O":
-                    return 3;
-                case " OO":
-                    return 0;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 0, 3, 6);
+                if (result != null) {
+                    return result;
                 }
                 break;
             case 4:
                 line = board[1] + board[4] + board[7];
-                switch (line) {
-                case "OO ":
-                    return 7;
-                case "O O":
-                    return 4;
-                case " OO":
-                    return 1;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 1, 4, 7);
+                if (result != null) {
+                    return result;
                 }
                 break;
             case 5:
                 line = board[2] + board[5] + board[8];
-                switch (line) {
-                case "OO ":
-                    return 8;
-                case "O O":
-                    return 5;
-                case " OO":
-                    return 2;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 2, 5, 8);
+                if (result != null) {
+                    return result;
                 }
                 break;
             case 6:
                 line = board[0] + board[4] + board[8];
-                switch (line) {
-                case "OO ":
-                    return 8;
-                case "O O":
-                    return 4;
-                case " OO":
-                    return 0;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 0, 4, 8);
+                if (result != null) {
+                    return result;
                 }
                 break;
             case 7:
                 line = board[2] + board[4] + board[6];
-                switch (line) {
-                case "OO ":
-                    return 6;
-                case "O O":
-                    return 4;
-                case " OO":
-                    return 2;
-                default:
-                    //nothing happens
+                result = lineCheckComputer(line, 2, 4, 6);
+                if (result != null) {
+                    return result;
                 }
                 break;
-            default:
-                //this never happens
-            }
-            switch (a) {
-            case 0:
+            case 8:
                 line = board[0] + board[1] + board[2];
-                switch (line) {
-                case "XX ":
-                    return 2;
-                case "X X":
-                    return 1;
-                case " XX":
-                    return 0;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 0, 1, 2);
+                if (result != null) {
+                    return result;
                 }
-
                 break;
-            case 1:
+            case 9:
                 line = board[3] + board[4] + board[5];
-                switch (line) {
-                case "XX ":
-                    return 5;
-                case "X X":
-                    return 4;
-                case " XX":
-                    return 3;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 3, 4, 5);
+                if (result != null) {
+                    return result;
                 }
                 break;
-            case 2:
+            case 10:
                 line = board[6] + board[7] + board[8];
-                switch (line) {
-                case "XX ":
-                    return 8;
-                case "X X":
-                    return 7;
-                case " XX":
-                    return 6;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 6, 7, 8);
+                if (result != null) {
+                    return result;
                 }
                 break;
-            case 3:
+            case 11:
                 line = board[0] + board[3] + board[6];
-                switch (line) {
-                case "XX ":
-                    return 6;
-                case "X X":
-                    return 3;
-                case " XX":
-                    return 0;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 0, 3, 6);
+                if (result != null) {
+                    return result;
                 }
                 break;
-            case 4:
+            case 12:
                 line = board[1] + board[4] + board[7];
-                switch (line) {
-                case "XX ":
-                    return 7;
-                case "X X":
-                    return 4;
-                case " XX":
-                    return 1;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 1, 4, 7);
+                if (result != null) {
+                    return result;
                 }
                 break;
-            case 5:
+            case 13:
                 line = board[2] + board[5] + board[8];
-                switch (line) {
-                case "XX ":
-                    return 8;
-                case "X X":
-                    return 5;
-                case " XX":
-                    return 2;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 2, 5, 8);
+                if (result != null) {
+                    return result;
                 }
                 break;
-            case 6:
+            case 14:
                 line = board[0] + board[4] + board[8];
-                switch (line) {
-                case "XX ":
-                    return 8;
-                case "X X":
-                    return 4;
-                case " XX":
-                    return 0;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 0, 4, 8);
+                if (result != null) {
+                    return result;
                 }
                 break;
-            case 7:
+            case 15:
                 line = board[2] + board[4] + board[6];
-                switch (line) {
-                case "XX ":
-                    return 6;
-                case "X X":
-                    return 4;
-                case " XX":
-                    return 2;
-                default:
-                    //nothing happens
+                result = lineCheckPlayer(line, 2, 4, 6);
+                if (result != null) {
+                    return result;
                 }
                 break;
             default:
@@ -308,6 +283,55 @@ public class TicTacToe extends Game {
     }
 
     //@@author nicknamenic
+    /**
+     * Facilitates the TTT game.
+     *
+     * @param in The scanner object.
+     * @param rand The random object.
+     * @param line The line input from the player.
+     * @param strength The strength of the computer chosen by the player.
+     * @param turnCount The number of turns taken thus far.
+     * @return The number of turns taken thus far.
+     * @throws InvalidTTMoveException If the input is not between 1-9, the error message is outputted.
+     */
+    private static int gameLogic(Scanner in, Random rand, String line, String strength, int turnCount)
+            throws InvalidTTMoveException {
+
+        readTTMove(line);
+        int computerPlacement;
+        while ((board[Integer.parseInt(line) - 1].equals("X")) ||
+                (board[Integer.parseInt(line) - 1].equals("O"))) {
+            ui.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
+            line = in.nextLine().trim();
+            if (Parser.ifQuit(line)) {
+                return -1;
+            }
+            readTTMove(line);
+        }
+        board[Integer.parseInt(line) - 1] = "X";
+        turnCount++;
+        if (turnCount == 9) {
+            return turnCount;
+        }
+        if (strength.equals("easy")) {
+            computerPlacement = rand.nextInt(9);
+            while (board[computerPlacement].equals("X") ||
+                    board[computerPlacement].equals("O")) {
+                computerPlacement = rand.nextInt(9);
+            }
+        } else {
+            computerPlacement = computerBestMove(board, turnCount);
+        }
+        board[computerPlacement] = "O";
+        turnCount++;
+        return turnCount;
+    }
+
+    //@@author nicknamenic
+    /**
+     * Runs the TTT game and outputs the winner.
+     *
+     */
     @Override
     public void runGame() {
         for (int i = 0; i < 9; i++) {
@@ -315,23 +339,28 @@ public class TicTacToe extends Game {
         }
 
         Random rand = new Random();
-
         int turnCount = 0;
-
         Scanner in = new Scanner(System.in);
         String line;
         String strength;
 
-        ui.println("Choose: 'easy', our first champion, is a benchmark for all challengers to test their mettle," +
-                "or 'hard', our second champion, is an Elder of the clouds. Which opponent do you desire, challenger?");
+        ui.println("Choose: 'easy', our first champion, is a benchmark \n" +
+                "for all challengers to test their mettle against, \n" +
+                "or 'hard', our second champion, is an Elder of the clouds. \n" +
+                "Which opponent do you desire, challenger?");
 
-        strength = in.nextLine().trim();
-        while (!strength.equals("easy") && !strength.equals("hard")) {
-            ui.println("I said 'easy' or 'hard,' that's it.");
-            strength = in.nextLine().trim();
+        strength = in.nextLine().trim().toLowerCase();
+        while (!strength.equals("easy") && !strength.equals("hard") && !strength.equals("quit")) {
+            ui.println("Is it so hard to follow simple instructions, \n" +
+                    "fledgling? Choose: champion 'easy', or elder 'hard'. \n" +
+                    "Do not make me ask again.");
+            strength = in.nextLine().trim().toLowerCase();
         }
 
         while (checkWinner(turnCount).equals("unending")) {
+            if (Parser.ifQuit(strength)) {
+                break;
+            }
             printBoard();
             ui.println(Ui.LINE);
             ui.println("Make your move, challenger.");
@@ -346,47 +375,35 @@ public class TicTacToe extends Game {
                 howToPlay();
                 continue; // keeps TTT from hanging
             }
+
             try {
-                readTTMove(line);
-
-                while ((board[Integer.parseInt(line) - 1].equals("X")) ||
-                        (board[Integer.parseInt(line) - 1].equals("O"))) {
-                    ui.println("Hilarious. Try selecting a tile that is not already occupied, fledgling.");
-                    line = in.nextLine().trim();
-                    readTTMove(line);
-                }
-
-                board[Integer.parseInt(line) - 1] = "X";
-                turnCount++;
-
-                if (turnCount == 9) {
+                turnCount = gameLogic(in, rand, line, strength, turnCount);
+                if (turnCount == 9 || turnCount == -1) {
                     break;
                 }
 
-                int computerPlacement = 0;
-
-                if (strength.equals("easy")) {
-                    computerPlacement = rand.nextInt(9);
-                    while (board[computerPlacement].equals("X") ||
-                            board[computerPlacement].equals("O")) {
-                        computerPlacement = rand.nextInt(9);
-                    }
-                } else {
-                    computerPlacement = computerBestMove(board, turnCount);
-                }
-
-                board[computerPlacement] = "O";
-                turnCount++;
             } catch (InvalidTTMoveException e) {
-                ui.println("Your move is invalid, invalid. Enter only 1-9, and do not make me ask again. " +
+                if (Parser.ifQuit(line)) {
+                    break;
+                }
+                ui.println("Your move is invalid, invalid. \n" +
+                        "Enter only 1-9, and do not make me ask again. \n" +
                         "Type 'guide' for tutorial guide");
             }
         }
-        String whoWon = checkWinner(turnCount);
+        printWinner(checkWinner(turnCount));
+    }
+
+    //@@author nicknamenic
+    /**
+     * Prints the winner of the game.
+     *
+     * @param whoWon The string of who won the game.
+     */
+    private static void printWinner(String whoWon) {
         switch (whoWon) {
         case "X":
             printBoard();
-            gameWon();
             ui.println(Ui.LINE);
             ui.println("You have claimed victory over the skies. Godspeed, champion.");
             ui.println(Ui.LINE);
@@ -420,17 +437,17 @@ public class TicTacToe extends Game {
         super.howToPlay();
 
         ui.println(Ui.LINE);
-        System.out.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial\n " +
+        ui.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial\n " +
                 "by single combat.");
-        System.out.println("\t- A grid, numbering three across and three lengthwise. Each space represents a\n " +
+        ui.println("\t- A grid, numbering three across and three lengthwise. Each space represents a\n " +
                 "spot you can occupy.");
-        System.out.println("\t- You and your opponent will take turns making your moves. " +
+        ui.println("\t- You and your opponent will take turns making your moves. " +
                 "The first to complete a line, either horizontally, diagonally or vertically, will emerge the\n " +
                 "victorious, and give rightful justification to their place in the skies.");
         ui.println(Ui.LINE);
-        System.out.println("Commands for the game:");
-        System.out.println("\t- To mark a box, simply key in the box's number.");
-        System.out.println("\t- The grid is marked from left to right, top to bottom, from 1 to 9."
+        ui.println("Commands for the game:");
+        ui.println("\t- To mark a box, simply key in the box's number.");
+        ui.println("\t- The grid is marked from left to right, top to bottom, from 1 to 9."
                 + System.lineSeparator());
         ui.println(Ui.LINE);
     }

@@ -12,7 +12,7 @@ validate user input and help direct exception handling. ifQuit(), ifHelp(), read
 collaboratively with JackieNeoCEG
   * ifQuit() and ifHelp() returns true if the given user input matches the 'quit' or 'help' commands, respectively.
   * readTTMove() throws an exception if the given user input does not match necessary parameters for TicTacToe.
-  * readLine() reads a sigle line of user input, validates it, and returns it
+  * readLine() reads a single line of user input, validates it, and returns it
   * validHMCategory() ensures that the given user input for the question of HM category is, in fact, a valid hangman category.
   * my contribution to readGame was screening for the possibility that the user input was not a valid game name, not 'quit', and not 'help'
 

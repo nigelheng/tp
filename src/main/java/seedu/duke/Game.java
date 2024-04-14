@@ -22,7 +22,7 @@ public class Game {
         gameName = line;
         isExit = false; //not used for nw
         isWin = false;
-        //assert !isExit; //not used for now
+        assert !isWin; //not used for now
     }
 
     /**
