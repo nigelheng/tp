@@ -11,8 +11,7 @@ public class Game {
     protected static final Ui ui = new Ui(render, tutorial);
     protected boolean isExit; // true to exit
     protected String gameName;
-
-    protected boolean isWin; //true if won, false if lost, quit or draw (for TTT)
+    protected int isWin; //0 for lose, 1 for win, 2 for draw (TTT only), 3 for quit.
     /**
      * creates a game
      *
@@ -21,8 +20,8 @@ public class Game {
     public Game(String line) {
         gameName = line;
         isExit = false; //not used for nw
-        isWin = false;
-        assert !isWin; //not used for now
+        isWin = 0;
+        assert (isWin == 0); //not used for now
     }
 
     /**
@@ -44,6 +43,15 @@ public class Game {
     }
 
     public void gameWon() {
-        this.isWin = true;
+        this.isWin = 1;
+    }
+
+    public void gameQuit() {
+        this.isWin = 3;
+    }
+
+    public void gameDraw() {
+        this.isWin = 2;
     }
 }
+
