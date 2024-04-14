@@ -84,7 +84,7 @@ public class HangMan extends Game {
         printLettersGuessed();
         printWordGuesser();
 
-        ui.println("Now what is your first guess? (\'guide\' for a guide on how to play Hangman!)");
+        ui.println("Now what is your first guess? ('guide' for a guide on how to play Hangman!)");
         ui.println(Ui.LINE);
 
         while (state < 6) {
