@@ -10,11 +10,11 @@ public class Duke {
     private static final Render render = new Render();
     private static final TimerTutorial tutorial = new TimerTutorial();
     private static final Ui ui = new Ui(render, tutorial);
-    //private static final HangMan hangman = new HangMan();
     private static ArrayList<Game> games = new ArrayList<>();
     private static int gameCounter = 0;
-
     private static int numberOfGamesWon;
+    private static int numberOfGamesLost;
+    private static int numberOfGamesQuit;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -35,12 +35,22 @@ public class Duke {
                 break;
             } else if (Parser.ifShowStats(input)) {
                 numberOfGamesWon = 0;
+                numberOfGamesLost = 0;
+                numberOfGamesQuit = 0;
                 for (Game item: games) {
-                    if (item.isWin) {
+                    if (item.isWin == 3) {
+                        numberOfGamesQuit++;
+                    } else if (item.isWin == 1) {
                         numberOfGamesWon ++;
+                    } else if (item.isWin == 0) {
+                        numberOfGamesLost ++;
                     }
+
                 }
-                System.out.println("Your victories so far, player: " + numberOfGamesWon);
+                System.out.println("Total games played: " + (gameCounter));
+                System.out.println("Your victories thus far, player: " + numberOfGamesWon);
+                System.out.println("Your Defeats, player: " + numberOfGamesLost);
+                System.out.println("Number of times you fled: " + numberOfGamesQuit);
                 input = Parser.readLine().trim();
             }
 
@@ -54,16 +64,19 @@ public class Duke {
                             games.add(new TicTacToe(input));
                             switch (games.get(gameCounter).runGame()) {
                             case 0:
-                                System.out.println("this line is working for lose");
+                                //Game lost
                                 break;
                             case 1:
+                                //Game won
                                 games.get(gameCounter).gameWon();
                                 break;
                             case 2:
-                                System.out.println("this line is working for draw");
+                                //Game tied
+                                games.get(gameCounter).gameDraw();
                                 break;
                             case 3:
-                                System.out.println("this line is working for quit");
+                                //Game quit
+                                games.get(gameCounter).gameQuit();
                                 break;
                             }
                             gameCounter ++;
@@ -96,13 +109,15 @@ public class Duke {
                         switch(games.get(gameCounter).runGame())
                         {
                         case 0:
-                            System.out.println("this line is working for hangman lose");
+                            //Game lost
                             break;
                         case 1:
+                            //Game won
                             games.get(gameCounter).gameWon();
                             break;
                         case 3:
-                            System.out.println("this line is working for hangman quit");
+                            //Game quit
+                            games.get(gameCounter).gameQuit();
                             break;
                         }
                         gameCounter ++;
