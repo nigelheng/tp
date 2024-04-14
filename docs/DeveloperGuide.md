@@ -24,20 +24,15 @@ Here is a quick overview of the main components and how they interact with each 
 - [Hangman](https://ay2324s2-cs2113-w13-1.github.io/tp/DeveloperGuide.html#hangman-implementation): Game 2
 
 ### <span style="color:grey;">Parser Implementation:</span>
-Parser Class (v1.0) reads user input from the standard input stream, checks the input, 
+Parser Class (v2.1) reads user input from the standard input stream, checks the input, 
 tests the validity, and conveys the validity back to the class it is called from.
-![img.png](img.png)
+![ParserClassDiagramV2](ParserClassDiagramV2.png)
 
-Briefly, the Parser class interacts with the main program by reading the inputs and throwing exceptions
-if the inputs are unexpected. These exceptions are then handled by the Duke class or the 
-TicTacToe class. 
-![img_4.png](img_4.png)
-
-Currently, the Parser class only covers the reading of the chosen game by the user and 
-the moves performed in TicTacToe. A future implementation for v2.0 would integrate methods
-to read and verify user input for the HangMan class as well, such as readLetters(String: input) 
-or readHMMove(String: input).
-![img_1.png](img_1.png)
+Briefly, the Parser class interacts with the main program by reading the inputs and throwing exceptions or returning specific
+values if the inputs are unexpected. This behavior is then handled by the Duke class or TicTacToe class. Parser
+also screens for the content of the input, specifically if the content is one of the non-gaming commands such as 'quit'
+or 'help'
+![ParserSequence.png](ParserSequence.png)
 
 ### <span style="color:grey;">UI Implementation:</span>
 The `UI` consists of the AeroCade `logo`, the `help` menu, the `tutorial`, and sends farewell to the user upon `quit`
