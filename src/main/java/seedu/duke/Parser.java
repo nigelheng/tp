@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 
 /**
@@ -109,13 +110,18 @@ public class Parser {
         return guessType;
     }
 
+    public static boolean containsEnglishAlphabetsOnly(String input) {
+        Pattern pattern = Pattern.compile("[^a-zA-Z]");
+        return !pattern.matcher(input).find();
+    }
+
     public static boolean repeatGuess(ArrayList<String> allGuessedLetters, String input) {
         return allGuessedLetters.contains(input);
     }
 
     //@@author nigelheng
-    public static boolean checkCorrectGuess(String currentGuess) {
-        return currentGuess.contains("_");
+    public static boolean checkRemainingBlanks(String currentGuess) {
+        return !currentGuess.contains("_");
     }
 
     public static boolean validHMCategory(String category) {
