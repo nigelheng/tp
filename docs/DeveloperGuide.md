@@ -54,6 +54,9 @@ The `UI` component,
   * Provides interactive learning experience for users.
   * Depends on the Ui component for displaying tutorial frames and managing user interaction.
 
+A log file will also be made at `FILE_PATH "./text-ui-test/UiLog.log"` at start of program, that records all Ui-related 
+information and can be used for troubleshooting.
+
 
 
 ### <span style="color:grey;">Game Implementation:</span>

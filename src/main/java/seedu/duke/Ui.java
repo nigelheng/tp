@@ -13,12 +13,14 @@ import java.util.logging.ConsoleHandler;
  * The Ui class handles user interface interactions.
  */
 public class Ui {
+
     public static final String LINE = "_________________________________________________________________";
     public static boolean stopTutorial = false;
-    private final Render render;
-    private final TimerTutorial tutorial;
     private static final Logger logger = Logger.getLogger(Ui.class.getName());
     private static final String FILE_PATH = "./text-ui-test/UiLog.log";
+    private final Render render;
+    private final TimerTutorial tutorial;
+
 
     static {
         try {
@@ -93,64 +95,42 @@ public class Ui {
 
     }
 
-    /**
-     * Displays a timed TTT tutorial to see an example gameplay.
-     * Any input during this tutorial is ignored.
-     */
     public void printTTTTutorial() {
-        Scanner in = new Scanner(System.in);
-        stopTutorial = false;
-        tutorial.displayTTTTutorial();
-        logger.info("Started TTT Tutorial.");
+        handleTutorial(tutorial::displayTTTTutorial, "TTT Tutorial");
+    }
 
-        while (tutorial.isTutorialRunning()) {
-            if (in.hasNextLine()) {
-                String input = in.nextLine().trim();  // Read and trim the input each time
-
-                // Check for the "quit" command
-                if (Parser.ifQuit(input)) {
-                    stopTutorial = true;
-                    println("TTT Tutorial exited! Returning back to the Main Menu...\n" + Ui.LINE);
-                    break;
-                } else {
-                    // Ignore any other input during the tutorial
-                    println("Tutorial Pilot: Hey! I'm still teaching a tutorial here!");
-                    logger.info("Ignored input during TTT Tutorial: " + input);
-                }
-            }
-        }
-        logger.info("Ended TTT Tutorial.");
+    public void printHangmanTutorial() {
+        handleTutorial(tutorial::displayHangmanTutorial, "Hangman Tutorial");
     }
 
     /**
-     * Displays a timed Hangman tutorial to see an example gameplay.
-     * Any input during this tutorial is ignored.
+     * Handles the common logic for displaying tutorials.
+     *
+     * @param displayMethod The method reference to display the specific tutorial.
+     * @param tutorialName The name of the tutorial for logging purposes.
      */
-    public void printHangmanTutorial() {
+    private void handleTutorial(Runnable displayMethod, String tutorialName) {
         Scanner in = new Scanner(System.in);
         stopTutorial = false;
-        tutorial.displayHangmanTutorial();
-        logger.info("Started Hangman Tutorial.");
+        displayMethod.run();
+        logger.info("Started " + tutorialName + ".");
 
         while (tutorial.isTutorialRunning()) {
             if (in.hasNextLine()) {
-                String input = in.nextLine().trim();  // Read and trim the input each time
+                String input = in.nextLine().trim();
 
-                // Check for the "quit" command
                 if (Parser.ifQuit(input)) {
                     stopTutorial = true;
-                    println("Hangman Tutorial exited! Returning back to the Main Menu...\n" + Ui.LINE);
+                    println(tutorialName + " exited! Returning back to the Main Menu...\n" + Ui.LINE);
                     break;
                 } else {
-                    // Ignore any other input during the tutorial
                     println("Tutorial Pilot: Hey! I'm still teaching a tutorial here!");
-                    logger.info("Ignored input during Hangman Tutorial: " + input);
+                    logger.info("Ignored input during " + tutorialName + ": " + input);
                 }
             }
         }
-        logger.info("Ended Hangman Tutorial.");
+        logger.info("Ended " + tutorialName + ".");
     }
-
     /**
      * Prints the specified string to the console, followed by a newline.
      *
