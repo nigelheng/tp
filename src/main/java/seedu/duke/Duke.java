@@ -56,6 +56,7 @@ public class Duke {
                 System.out.println("Your Draws, player: " + numberOfGamesDraw);
                 System.out.println("Number of times you fled: " + numberOfGamesQuit);
                 input = Parser.readLine().trim();
+                continue;
             }
 
 

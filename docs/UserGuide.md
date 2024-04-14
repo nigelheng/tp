@@ -8,7 +8,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-2. Down the latest version of `AeroCade.jar` from [here](http://link.to/duke).
+2. Download the latest version of `AeroCade.jar` from [here](http://link.to/duke).
 3. Copy the file to the folder you want to use as the home folder for your (name).
 4. Open a command terminal, cd into the folder you put the jar file in, and use the java -jar (name).jar command to run the application.
 5. Type commands in the CLI and press Enter to execute it. (E.g. type and enter 'help' for a list of available commands)
@@ -23,7 +23,9 @@ Entering `tutorial` mode: type `TTT tutorial`
 * Detailed tutorial showing the gameplay mechanics of how to win TicTacToe.
 * Timed aspect of 4 seconds per frame.
 
+Start of TicTacToe tutorial:
 ```
+_________________________________________________________________
 [Tutorial Mode is playing, do not input any commands!]
 Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
                 a stellar gameplay of TTT for you!
@@ -52,6 +54,32 @@ Example of usage:
 -------------
   7 | 8 | 9    
 ```
+```
+Which opponent do you desire, challenger?
+easy
+    |   |    
+-------------
+    |   |    
+-------------
+    |   |    
+_________________________________________________________________
+```
+
+```
+_________________________________________________________________
+Make your move, challenger.
+7
+  X | O |    
+-------------
+  X |   | O  
+-------------
+  X |   | O  
+_________________________________________________________________
+You have claimed victory over the skies. Godspeed, champion.
+_________________________________________________________________
+Now what would you like to do?
+
+```
 
 ### 2. Playing a game of `Hangman`
 
@@ -60,6 +88,27 @@ Entering `tutorial` mode: type `hangman tutorial`
 the number of mistakes allowed
 * Timed aspect of 4 seconds per frame.
 
+Start of Hangman tutorial:
+```
+_________________________________________________________________
+[Tutorial Mode is playing, do not input any commands!]
+Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
+                a stellar gameplay of Hangman for you!
+
+_______        
+|     |        
+|              
+|              
+|              
+|              
+============== 
+_ _ _ _ _      
+
+Tutorial Pilot: This is the start of the game, for this tutorial, I'll need to
+                guess a 5-letter word before the 'hangman' is drawn out, which
+                means I can only make 5 wrong guesses! Let's try the letter 'a'
+_________________________________________________________________
+```
 
 Example of usage:
  * To start a game, type `hangman`.
@@ -80,8 +129,27 @@ These are the guesses you have made so far:
 
  _ _ _
 ```
+```
+_________________________________________________________________
+These are the guesses you have made so far:
+a  o  i  u  e  b  r  h  
+ _ _ o r _
+give me your next guess
+_________________________________________________________________
+  _______
+  |     |
+  |     @
+  |    /|\
+  |     |
+  |    / \
+==============
 
-## FAQ
+Oh noo!! It seems you have lost   :( 
+Now what would you like to do?
+
+```
+
+## In-Game Guides
 
 **Q**: Where can I find a guide on understanding the game rules? 
 
@@ -90,7 +158,7 @@ These are the guesses you have made so far:
 
 ````
 guide
-----------------------------------------------------
+_________________________________________________________________
 Let me explain the rules of this game:
 	- Hangman is a word guessing game played by yourself.
 	- There is a SECRET word which you would have to guess.
@@ -99,10 +167,9 @@ Let me explain the rules of this game:
 Commands for the game:
 	- To guess a letter, simply type in an alphabet.
 	- If it is correct, the letter will be shown.
-	- A list of guessed letters will be indicated at the top as well."
+	- A list of guessed letters will be indicated at the top as well.
 
 Lets put your english to the test! Best of luck :D
-----------------------------------------------------
 ````
 
 **Q**: Where can I learn how to play the game?
