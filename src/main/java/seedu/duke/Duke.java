@@ -15,6 +15,7 @@ public class Duke {
     private static int numberOfGamesWon;
     private static int numberOfGamesLost;
     private static int numberOfGamesQuit;
+    private static int numberOfGamesDraw;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -37,6 +38,7 @@ public class Duke {
                 numberOfGamesWon = 0;
                 numberOfGamesLost = 0;
                 numberOfGamesQuit = 0;
+                numberOfGamesDraw = 0;
                 for (Game item: games) {
                     if (item.isWin == 3) {
                         numberOfGamesQuit++;
@@ -44,12 +46,14 @@ public class Duke {
                         numberOfGamesWon ++;
                     } else if (item.isWin == 0) {
                         numberOfGamesLost ++;
+                    }  else if (item.isWin == 2) {
+                        numberOfGamesDraw++;
                     }
-
                 }
                 System.out.println("Total games played: " + (gameCounter));
                 System.out.println("Your victories thus far, player: " + numberOfGamesWon);
                 System.out.println("Your Defeats, player: " + numberOfGamesLost);
+                System.out.println("Your Draws, player: " + numberOfGamesDraw);
                 System.out.println("Number of times you fled: " + numberOfGamesQuit);
                 input = Parser.readLine().trim();
             }
