@@ -8,6 +8,7 @@ import java.util.logging.Logger;
  */
 public class Ui {
     public static final String LINE = "_________________________________________________________________";
+    public static boolean stopTutorial = false;
     private final Render render;
     private final TimerTutorial tutorial;
     private final Logger logger = Logger.getLogger(Ui.class.getName());
@@ -59,12 +60,15 @@ public class Ui {
      */
     public void printTTTTutorial() {
         Scanner in = new Scanner(System.in);
+        stopTutorial = false;
         tutorial.displayTTTTutorial();
-        String input = Parser.readLine().trim();
         logger.info("Started TTT Tutorial.");
+        String input = in.nextLine();
 
-        while (tutorial.isTutorialRunning()) {
-            if (input.equals("quit")) {
+        while (tutorial.isTutorialRunning() || Parser.ifQuit(input)) {
+            if (Parser.ifQuit(input)) {
+                stopTutorial = true;
+                println("Tutorial exited! returning back to the Main Menu...\n" + Ui.LINE);
                 break;
             }
             else if (in.hasNextLine()) {
@@ -75,6 +79,7 @@ public class Ui {
                 in.nextLine();
             }
         }
+
         logger.info("Ended TTT Tutorial.");
     }
 
@@ -84,12 +89,18 @@ public class Ui {
      */
     public void printHangmanTutorial() {
         Scanner in = new Scanner(System.in);
+        stopTutorial = false;
         tutorial.displayHangmanTutorial();
         logger.info("Started Hangman Tutorial.");
+        String input = in.nextLine();
 
-
-        while (tutorial.isTutorialRunning()) {
-            if (in.hasNextLine()) {
+        while (tutorial.isTutorialRunning() || Parser.ifQuit(input)) {
+            if (Parser.ifQuit(input)) {
+                stopTutorial = true;
+                println("Tutorial exited! returning back to the Main Menu...\n" + Ui.LINE);
+                break;
+            }
+            else if (in.hasNextLine()) {
                 // Ignore any input during the tutorial,
                 println("Tutorial Pilot: Hey! I'm still teaching a tutorial here!");
                 logger.info("Input received during TTT Tutorial, to be ignored.");
@@ -98,7 +109,6 @@ public class Ui {
             }
         }
         logger.info("Ended Hangman Tutorial.");
-
     }
 
     /**

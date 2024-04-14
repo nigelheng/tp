@@ -9,6 +9,7 @@ import java.util.TimerTask;
 public class TimerTutorial {
     private boolean tutorialRunning = false; // Flag to track if tutorial is running
 
+
     public boolean isTutorialRunning() {
         return tutorialRunning;
     }
@@ -199,14 +200,19 @@ public class TimerTutorial {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
+                if (Ui.stopTutorial) { // Check if stop command has been issued
+                    timer.cancel();
+                    tutorialRunning = false;
+                    return;
+                }
                 if (index[0] < frames.length) {
                     tutorialRunning = true;
                     System.out.println(frames[index[0]]); // Print the current frame
                     index[0]++;
-                } else {
-                    timer.cancel(); // Cancel the timer when all frames are printed
-                    tutorialRunning = false;
-
+                    if (index[0] == frames.length) {
+                        tutorialRunning = false;
+                        timer.cancel(); // Stop the timer immediately after the last frame
+                    }
                 }
             }
         };
