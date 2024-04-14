@@ -63,13 +63,20 @@ public class Duke {
                         System.out.println("What category would you like to choose? These are the options:");
                         System.out.println("animals, countries, fruits & sports");
 
+                        boolean isQuit = false;
                         String category = Parser.readLine().trim();
                         while (!Parser.validHMCategory(category)) {
                             if (Parser.ifQuit(category)) {
-                                // how to quit in this loop ???
+                                isQuit = true;
+                                break;
                             }
                             ui.println("That's not a category :O.");
                             category = Parser.readLine().trim();
+                        }
+
+                        if (isQuit) {
+                            ui.quitUser();
+                            break;
                         }
 
                         games.add(new HangMan(category));
