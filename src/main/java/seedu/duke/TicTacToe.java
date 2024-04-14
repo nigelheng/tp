@@ -350,10 +350,16 @@ public class TicTacToe extends Game {
                 "Which opponent do you desire, challenger?");
 
         strength = in.nextLine().trim().toLowerCase();
-        while (!strength.equals("easy") && !strength.equals("hard") && !strength.equals("quit")) {
-            ui.println("Is it so hard to follow simple instructions, \n" +
-                    "fledgling? Choose: champion 'easy', or elder 'hard'. \n" +
-                    "Do not make me ask again.");
+        while (!strength.equals("easy") &&
+                !strength.equals("hard") &&
+                !strength.equals("quit")) {
+            if (Parser.ifShowGuide(strength)) {
+                howToPlay();
+            } else {
+                ui.println("Is it so hard to follow simple instructions, \n" +
+                        "fledgling? Choose: champion 'easy', or elder 'hard'. \n" +
+                        "Do not make me ask again.");
+            }
             strength = in.nextLine().trim().toLowerCase();
         }
 
@@ -435,7 +441,6 @@ public class TicTacToe extends Game {
     @Override
     public void howToPlay() {
         super.howToPlay();
-
         ui.println(Ui.LINE);
         ui.println("\t- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial\n " +
                 "by single combat.");
@@ -447,8 +452,7 @@ public class TicTacToe extends Game {
         ui.println(Ui.LINE);
         ui.println("Commands for the game:");
         ui.println("\t- To mark a box, simply key in the box's number.");
-        ui.println("\t- The grid is marked from left to right, top to bottom, from 1 to 9."
-                + System.lineSeparator());
+        ui.println("\t- The grid is marked from left to right, top to bottom, from 1 to 9.");
         ui.println(Ui.LINE);
     }
 }
