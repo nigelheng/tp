@@ -333,7 +333,7 @@ public class TicTacToe extends Game {
      *
      */
     @Override
-    public void runGame() {
+    public int runGame() {
         for (int i = 0; i < 9; i++) {
             board[i] = " ";
         }
@@ -391,7 +391,7 @@ public class TicTacToe extends Game {
                         "Type 'guide' for tutorial guide");
             }
         }
-        printWinner(checkWinner(turnCount));
+        return(printWinner(checkWinner(turnCount)));
     }
 
     //@@author nicknamenic
@@ -400,31 +400,35 @@ public class TicTacToe extends Game {
      *
      * @param whoWon The string of who won the game.
      */
-    private static void printWinner(String whoWon) {
+    private static int printWinner(String whoWon) {
         switch (whoWon) {
         case "X":
             printBoard();
             ui.println(Ui.LINE);
             ui.println("You have claimed victory over the skies. Godspeed, champion.");
             ui.println(Ui.LINE);
-            break;
+            return 1;
+            //break;
         case "O":
             printBoard();
             ui.println(Ui.LINE);
             ui.println("Your defeat has brought shame to the skies. Try again, if you dare.");
             ui.println(Ui.LINE);
-            break;
+            return 0;
+            //break;
         case "draw":
             printBoard();
             ui.println(Ui.LINE);
             ui.println("It seems you have met your match. Try again, and this time, do try to win.");
             ui.println(Ui.LINE);
-            break;
+            return 2;
+            //break;
         default:
             ui.println(Ui.LINE);
             ui.println("Cowards belong on the ground.");
             ui.println(Ui.LINE);
-            break;
+            return 3;
+            //break;
         }
     }
 

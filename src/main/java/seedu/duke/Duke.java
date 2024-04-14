@@ -52,7 +52,20 @@ public class Duke {
                     if (input.equals("TTT")) {
                         try {
                             games.add(new TicTacToe(input));
-                            games.get(gameCounter).runGame();
+                            switch (games.get(gameCounter).runGame()) {
+                            case 0:
+                                System.out.println("this line is working for lose");
+                                break;
+                            case 1:
+                                games.get(gameCounter).gameWon();
+                                break;
+                            case 2:
+                                System.out.println("this line is working for draw");
+                                break;
+                            case 3:
+                                System.out.println("this line is working for quit");
+                                break;
+                            }
                             gameCounter ++;
                             ui.println("Now what would you like to do?");
                             inGame = false;
@@ -73,7 +86,18 @@ public class Duke {
                         }
 
                         games.add(new HangMan(category));
-                        games.get(gameCounter).runGame();
+                        switch(games.get(gameCounter).runGame())
+                        {
+                        case 0:
+                            System.out.println("this line is working for hangman lose");
+                            break;
+                        case 1:
+                            games.get(gameCounter).gameWon();
+                            break;
+                        case 3:
+                            System.out.println("this line is working for hangman quit");
+                            break;
+                        }
                         gameCounter ++;
                         ui.println("Now what would you like to do?");
                         inGame = false;

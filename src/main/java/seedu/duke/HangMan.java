@@ -72,7 +72,7 @@ public class HangMan extends Game {
         }
     }
 
-    @Override public void runGame() {
+    @Override public int runGame() {
 
         printHangMan();
         printLettersGuessed();
@@ -88,7 +88,7 @@ public class HangMan extends Game {
 
             if (Parser.ifQuit(userInput)) {
                 ui.println("Thank you!! Hope you had flying good time.");
-                break;
+                return 3;
             }
             if (Parser.ifShowGuide(userInput)) {
                 howToPlay();
@@ -100,9 +100,9 @@ public class HangMan extends Game {
                 if (!Parser.checkCorrectGuess(correctGuesses)) {
                     ui.println(Ui.LINE);
                     printWordGuesser();
-                    ui.println("Woahhhh you got it!!");
+                    ui.println("Woahhhh you won it!!");
                     ui.println(Ui.LINE);
-                    break;
+                    return 1;
                 } else {
                     ui.println(Ui.LINE);
                     printHangMan();
@@ -118,7 +118,6 @@ public class HangMan extends Game {
 
             if (!Parser.checkCorrectGuess(correctGuesses)) {
                 ui.println("Woahhhh you got it!!");
-                gameWon();
                 break;
             }
             ui.println("give me your next guess");
@@ -129,7 +128,10 @@ public class HangMan extends Game {
         if (state == 6) {
             printHangMan();
             ui.println("\nOh noo!! It seems you have lost   :( ");
+            //returns 0 if lost
+            return 0;
         }
+        return 4;
     }
     public int getNumberOfLettersGuessed() {
         return numberOfLettersGuessed;
