@@ -43,7 +43,7 @@ public class HangMan extends Game {
                 "rowing dragonboat waterpolo swimming diving archery baseball softball cricket basketball netball " +
                 "soccer rugby tchoukball hockey floorball lacrosse polo curling badminton pickleball tennis " +
                 "volleyball squash skating surfing wakeboarding bouldering cycling aikido judo sumo wrestling " +
-                "boxing capoeira kickboxing silat taekwondo kendo kungfu frisbee gymanastic running";
+                "boxing capoeira kickboxing silat taekwondo kendo kungfu frisbee gymnastic running";
 
         wordBank = words.split(" ",251);
         switch(line) {
