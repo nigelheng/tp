@@ -1,0 +1,27 @@
+Apr 15, 2024 12:57:12 AM seedu.duke.Ui greetUser
+INFO: Displayed game menu to user.
+Apr 15, 2024 12:57:19 AM seedu.duke.Ui printTTTTutorial
+INFO: Started TTT Tutorial.
+Apr 15, 2024 12:57:22 AM seedu.duke.Ui println
+FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
+Apr 15, 2024 12:57:22 AM seedu.duke.Ui printTTTTutorial
+INFO: Ignored input during TTT Tutorial: tes
+Apr 15, 2024 12:57:23 AM seedu.duke.Ui println
+FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
+Apr 15, 2024 12:57:23 AM seedu.duke.Ui printTTTTutorial
+INFO: Ignored input during TTT Tutorial: 
+Apr 15, 2024 12:57:24 AM seedu.duke.Ui println
+FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
+Apr 15, 2024 12:57:24 AM seedu.duke.Ui printTTTTutorial
+INFO: Ignored input during TTT Tutorial: s
+Apr 15, 2024 12:57:28 AM seedu.duke.Ui println
+FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
+Apr 15, 2024 12:57:28 AM seedu.duke.Ui printTTTTutorial
+INFO: Ignored input during TTT Tutorial: it
+Apr 15, 2024 12:57:30 AM seedu.duke.Ui println
+FINE: Printed to console: TTT Tutorial exited! Returning back to the Main Menu...
+_________________________________________________________________
+Apr 15, 2024 12:57:30 AM seedu.duke.Ui printTTTTutorial
+INFO: Ended TTT Tutorial.
+Apr 15, 2024 12:57:36 AM seedu.duke.Ui quitUser
+INFO: Displayed farewell message to user.

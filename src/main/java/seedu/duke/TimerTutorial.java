@@ -18,6 +18,7 @@ public class TimerTutorial {
      * Displays the Tic-tac-toe (TTT) tutorial.
      */
     public void displayTTTTutorial() {
+        tutorialRunning = true;
 
         String[] tttFrames = { Ui.LINE +
                 "\n[Tutorial Mode is playing, do not input any commands!]\n" +
@@ -84,6 +85,7 @@ public class TimerTutorial {
      * Displays the Hangman tutorial.
      */
     public void displayHangmanTutorial() {
+        tutorialRunning = true;
 
         // Define frames and interval for Hangman tutorial
         String[] hangmanFrames = { Ui.LINE +
