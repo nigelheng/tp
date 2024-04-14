@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import seedu.duke.exceptions.InvalidTTMoveException;
+import seedu.duke.ui.*;
 
 import java.util.Scanner;
 

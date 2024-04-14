@@ -1,7 +1,10 @@
 package seedu.duke;
 
+
 import seedu.duke.exceptions.InvalidGameException;
 import seedu.duke.exceptions.InvalidTTMoveException;
+import seedu.duke.ui.*;
+
 
 import java.util.ArrayList;
 
@@ -83,6 +86,8 @@ public class Duke {
                                 //Game quit
                                 games.get(gameCounter).gameQuit();
                                 break;
+                            default:
+                                break;
                             }
                             gameCounter ++;
                             ui.println("Now what would you like to do?");
@@ -111,8 +116,7 @@ public class Duke {
                         }
 
                         games.add(new HangMan(category));
-                        switch(games.get(gameCounter).runGame())
-                        {
+                        switch(games.get(gameCounter).runGame()) {
                         case 0:
                             //Game lost
                             break;
@@ -123,6 +127,8 @@ public class Duke {
                         case 3:
                             //Game quit
                             games.get(gameCounter).gameQuit();
+                            break;
+                        default:
                             break;
                         }
                         gameCounter ++;

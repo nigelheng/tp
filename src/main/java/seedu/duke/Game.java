@@ -1,5 +1,6 @@
 package seedu.duke;
 import seedu.duke.exceptions.InvalidTTMoveException;
+import seedu.duke.ui.*;
 
 /**
  * Game class with 2 subclasses TicTacToe and HangMan
