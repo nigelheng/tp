@@ -35,7 +35,10 @@ or 'help'
 ![ParserSequence.png](ParserSequence.png)
 
 ### <span style="color:grey;">UI Implementation:</span>
-The `UI` consists of the AeroCade `logo`, the `help` menu, the `tutorial`, and sends farewell to the user upon `quit`
+The `UI` consists of three classes: `Ui.java`, `Render.java`, and `TimerTutorial.java`.
+The (partial) class diagram is illustrated below: 
+
+![Ui.png](Ui.png)
 
 The `UI` component,
 
@@ -45,6 +48,9 @@ The `UI` component,
   * Executes tutorial frames using the TimerTask mechanism.
   * Provides interactive learning experience for users.
   * Depends on the Ui component for displaying tutorial frames and managing user interaction.
+
+A log file will also be made at `FILE_PATH "./text-ui-test/UiLog.log"` at start of program, that records all Ui-related 
+information and can be used for troubleshooting.
 
 
 

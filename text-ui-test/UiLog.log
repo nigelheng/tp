@@ -1,0 +1,14 @@
+Apr 15, 2024 1:13:11 AM seedu.duke.Ui greetUser
+INFO: Displayed game menu to user.
+Apr 15, 2024 1:13:21 AM seedu.duke.Ui println
+FINE: Printed to console: Invalid Game. Type 'help' for list of available commands.
+Apr 15, 2024 1:13:26 AM seedu.duke.Ui handleTutorial
+INFO: Started Hangman Tutorial.
+Apr 15, 2024 1:14:06 AM seedu.duke.Ui println
+FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
+Apr 15, 2024 1:14:06 AM seedu.duke.Ui handleTutorial
+INFO: Ignored input during Hangman Tutorial: tets
+Apr 15, 2024 1:14:06 AM seedu.duke.Ui handleTutorial
+INFO: Ended Hangman Tutorial.
+Apr 15, 2024 1:14:10 AM seedu.duke.Ui println
+FINE: Printed to console: Invalid Game. Type 'help' for list of available commands.
