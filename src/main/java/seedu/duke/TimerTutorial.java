@@ -210,8 +210,6 @@ public class TimerTutorial {
                 }
             }
         };
-
         timer.scheduleAtFixedRate(task, 0, interval); // Schedule the task to run at fixed intervals
-
     }
 }

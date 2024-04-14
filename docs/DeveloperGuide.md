@@ -40,7 +40,10 @@ or readHMMove(String: input).
 ![img_1.png](img_1.png)
 
 ### <span style="color:grey;">UI Implementation:</span>
-The `UI` consists of the AeroCade `logo`, the `help` menu, the `tutorial`, and sends farewell to the user upon `quit`
+The `UI` consists of three classes: `Ui.java`, `Render.java`, and `TimerTutorial.java`.
+The (partial) class diagram is illustrated below: 
+
+![Ui.png](Ui.png)
 
 The `UI` component,
 

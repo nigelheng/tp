@@ -104,7 +104,8 @@ Lets put your english to the test! Best of luck :D
 
 **Q**: Where can I learn how to play the game?
 
-**A**: In the main menu on the CLI, start a tutorial with either `TTT tutorial` or `hangman tutorial`. Below is an example of the start of a tutorial when calling `TTT tutorial`.
+**A**: In the main menu on the CLI, start a tutorial with either `TTT tutorial` or `hangman tutorial`. Below is an 
+example of the start of a tutorial (frame 1 only) when calling `TTT tutorial`.
 ````
 TTT tutorial
 _________________________________________________________________
@@ -121,6 +122,7 @@ Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
 Tutorial Pilot: This is a TTT board which I'll be placing an 'X' depending on
                 the number I put, here is the numbered layout!
 _________________________________________________________________
+(... More Frames to be shown)
 ````
 
 ## Command Summary

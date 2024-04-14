@@ -60,11 +60,14 @@ public class Ui {
     public void printTTTTutorial() {
         Scanner in = new Scanner(System.in);
         tutorial.displayTTTTutorial();
+        String input = Parser.readLine().trim();
         logger.info("Started TTT Tutorial.");
 
-
         while (tutorial.isTutorialRunning()) {
-            if (in.hasNextLine()) {
+            if (input.equals("quit")) {
+                break;
+            }
+            else if (in.hasNextLine()) {
                 // Ignore any input during the tutorial
                 println("Tutorial Pilot: Hey! I'm still teaching a tutorial here!");
                 logger.info("Input received during TTT Tutorial, to be ignored.");

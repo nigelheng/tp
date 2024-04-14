@@ -1,0 +1,53 @@
+@startuml
+!define UI_COLOR #1D8900
+!define UI_COLOR_T4 #0E4100
+
+hide footbox
+hide members
+hide circle
+
+skinparam Class {
+    FontColor #FFFFFF
+    FontSize 15
+    BorderThickness 1
+    BorderColor #FFFFFF
+    StereotypeFontColor #FFFFFF
+    FontName Arial
+}
+
+skinparam MinClassWidth 50
+
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+package UI <<Rectangle>>{
+Class "Ui" as Ui
+Class Render
+Class TimerTutorial
+}
+
+package Parser <<Rectangle>> {
+Class HiddenParser #FFFFFF
+}
+
+package Duke <<Rectangle>> {
+Class HiddenDuke #FFFFFF
+}
+
+
+Class HiddenOutside #FFFFFF
+HiddenOutside ..> Ui
+
+Class HiddenUnderDuke #FFFFFF
+HiddenUnderDuke -[hidden]- Duke
+
+Ui -down-> TimerTutorial
+
+Duke -left-> Ui
+Duke --> Parser
+
+
+Ui -right-> Render
+
+
+@enduml
