@@ -30,8 +30,8 @@ public class Game {
      * overridden in TicTacToe and HangMan
      * @throws InvalidTTMoveException if input for TTT game is not 1-9
      */
-    public void runGame() throws InvalidTTMoveException {
-
+    public int runGame() throws InvalidTTMoveException {
+        return 0;
     }
 
     /**
