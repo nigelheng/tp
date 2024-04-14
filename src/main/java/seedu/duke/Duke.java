@@ -40,13 +40,13 @@ public class Duke {
                 numberOfGamesQuit = 0;
                 numberOfGamesDraw = 0;
                 for (Game item: games) {
-                    if (item.isWin == 3) {
+                    if (item.gameOutcome == 3) {
                         numberOfGamesQuit++;
-                    } else if (item.isWin == 1) {
+                    } else if (item.gameOutcome == 1) {
                         numberOfGamesWon ++;
-                    } else if (item.isWin == 0) {
+                    } else if (item.gameOutcome == 0) {
                         numberOfGamesLost ++;
-                    }  else if (item.isWin == 2) {
+                    }  else if (item.gameOutcome == 2) {
                         numberOfGamesDraw++;
                     }
                 }

@@ -13,7 +13,9 @@ This class has 4 methods that interacts with the other classes such as HangMan a
 It is the parent class of HangMan and TicTacToe, and has methods that encapsulates common functionalities such as runGame(), howToPlay() and gameWon(). 
 - runGame() is an overridden method that a HangMan class or TicTacToe class uses to start its respective game.
 - howToPlay() is called when 'guide' command is called during a game. It prints the rules of the respective game, along with the available commands for the CLI.
-- gameWon() returns the value of that Game class's boolean variable, "isWin" such that the CLI will be able to compute and print user's game statistics.
+- gameWon() sets the int variable 'gameOutcome' to 1, denoting a win for that game.
+- gameQuit() sets the int variable 'gameOutcome' to 3, denoting the game was quit before finishing.
+- gameDraw() sets the int variable 'gameOutcome' to 2, denoting a draw for the Tic-Tac-Toe game.
 
 **Parser Class:** 
 Added some methods to parser class such as ifShowGuide() and ifShowStats
