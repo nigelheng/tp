@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import seedu.duke.ui.*;
+import seedu.duke.ui.Render;
+import seedu.duke.ui.TimerTutorial;
+import seedu.duke.ui.Ui;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

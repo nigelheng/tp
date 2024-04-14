@@ -3,7 +3,9 @@ package seedu.duke;
 
 import seedu.duke.exceptions.InvalidGameException;
 import seedu.duke.exceptions.InvalidTTMoveException;
-import seedu.duke.ui.*;
+import seedu.duke.ui.Render;
+import seedu.duke.ui.TimerTutorial;
+import seedu.duke.ui.Ui;
 
 
 import java.util.ArrayList;
