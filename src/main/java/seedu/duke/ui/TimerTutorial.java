@@ -1,10 +1,7 @@
-package seedu.duke;
+package seedu.duke.ui;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-
-
 
 public class TimerTutorial {
     private boolean tutorialRunning = false; // Flag to track if tutorial is running
@@ -51,19 +48,19 @@ public class TimerTutorial {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                if (Ui.stopTutorial) { // Check if stop command has been issued
+                if (Ui.stopTutorial) { // Check if stop command
                     timer.cancel();
                     tutorialRunning = false;
                     return;
                 }
-                if (index[0] < frames.length) {
+                if (index[0] != frames.length) {
                     tutorialRunning = true;
                     System.out.println(frames[index[0]]); // Print the current frame
                     index[0]++;
-                    if (index[0] == frames.length) {
-                        tutorialRunning = false;
-                        timer.cancel(); // Stop the timer immediately after the last frame
-                    }
+                } else {
+                    tutorialRunning = false;
+                    timer.cancel();
+                    return;
                 }
             }
         };

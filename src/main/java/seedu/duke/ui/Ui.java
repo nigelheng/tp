@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.ui;
 
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -8,6 +8,7 @@ import java.util.logging.SimpleFormatter;
 import java.io.IOException;
 import java.io.File;
 import java.util.logging.ConsoleHandler;
+import seedu.duke.Parser;
 
 /**
  * The Ui class handles user interface interactions.
