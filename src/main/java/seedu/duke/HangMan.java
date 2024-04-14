@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
+import seedu.duke.ui.Ui;
 
 /**
  * The HangMan class is a child class of Game
