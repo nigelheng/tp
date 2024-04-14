@@ -42,6 +42,7 @@ public class Duke {
                 }
                 System.out.println("Your victories so far, player: " + numberOfGamesWon);
                 input = Parser.readLine().trim();
+                continue;
             }
 
 
