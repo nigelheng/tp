@@ -8,20 +8,25 @@ exception InvalidTTMoveException #DarkSalmon {
 exception InvalidGameException #DarkSalmon {
 }
 
-exception InvalidHMMoveException #DarkSalmon {
-}
 
 InvalidTTMoveException --> Exception
 InvalidGameException --> Exception
-InvalidHMMoveException --> Exception
 
 skinparam classAttributeIconSize 0
 class Parser #LightBlue {
   --
   +ifQuit(input): boolean
+  +ifTestQuit(input): boolean
   +ifHelp(input): boolean
+  +ifTutorial(input): boolean
+  +ifShowGuide(input): boolean
+  +ifShowStats(input): boolean
   +readGame(input)
   +readTTMove(input)
+  +parseGuess(input)
+  +repeatGuess(allGuessedLetters, input)
+  +checkCorrectGuess(currentGuess)
+  +validHMCategory(category)
   +readLine(): String
 }
 
@@ -31,7 +36,6 @@ class java.io.BufferedReader #d9effa {
 Parser --> BufferedReader: 1
 Parser --> InvalidTTMoveException: <<throws>>
 Parser --> InvalidGameException: <<throws>>
-Parser --> InvalidHMMoveException: <<throws>>
 
 BufferedReader -right[hidden]- Parser
 InvalidGameException -right[hidden]- InvalidTTMoveException
