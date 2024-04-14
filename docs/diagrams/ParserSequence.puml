@@ -1,0 +1,111 @@
+@startuml
+participant ":Duke" #237bf7
+participant ":Ui" #BAFFFE
+participant ":Parser" #c6b3ff
+participant ":Game" #2442ed
+participant ":HangMan" #2abd06
+
+[-> ":Duke": main()
+activate ":Duke" #237bf7
+
+":Duke" -> ":Ui": greetUser()
+activate ":Ui" #BAFFFE
+":Ui" --> ":Duke":
+deactivate ":Ui"
+
+
+loop#f0af0a #LightBlue true
+    ":Duke" -> ":Parser": ifQuit(input)
+        activate ":Parser" #c6b3ff
+        ":Parser" --> ":Duke"
+        deactivate ":Parser"
+
+        alt#Gold #LightPink ifQuit(input) = true
+            ":Duke" -> ":Ui": quitUser()
+            activate ":Ui" #BAFFFE
+            ":Ui" --> ":Duke":
+            deactivate ":Ui"
+            note right
+            Ends the program
+            end note
+            [<- ":Duke": break
+        end
+
+    alt#Gold #LightBlue while inGame = false
+        note right
+        inGame gets updated within the loop accordingly
+        end note
+
+        alt#Gold #faf7fa try
+
+            alt#Gold #c6f7e8 input.equals('TTT')
+                alt#Gold try
+                    ":Duke" -> ":Game": add(newTicTacToe(input))
+                    activate ":Game" #c6b3ff
+                    ":Game" --> ":Duke"
+                    deactivate ":Game"
+
+                    ":Duke" -> ":Game": runGame()
+                        activate ":Game" #c6b3ff
+                        ":Game" --> ":Duke"
+                        deactivate ":Game"
+                else catch InvalidTTMoveException e
+                       [<- ":Duke": throw new RunTimeException(e)
+                end
+
+            else #e9f7c6 else if input.equals('hangman')
+                ":Duke" -> ":Parser": validHMCategory()
+                    activate ":Parser" #c6b3ff
+                    ":Parser" --> ":Duke"
+                    deactivate ":Parser"
+                alt#Gold #fafcf2 while validHMCategory() = false
+                    ":Duke" -> ":Parser": validHMCategory()
+                        activate ":Parser" #c6b3ff
+                        ":Parser" --> ":Duke"
+                        deactivate ":Parser"
+                end
+
+                ":Duke" -> ":Game": add(HangMan(input))
+                activate ":Game" #c6b3ff
+                ":Game" --> ":Duke"
+                deactivate ":Game"
+
+                ":Duke" -> ":Game": runGame()
+                    activate ":Game" #c6b3ff
+                    ":Game" --> ":Duke"
+                    deactivate ":Game"
+
+            else #e7d7f7 else if ifHelp()
+               ":Duke" -> ":Ui": printHelp()
+               activate ":Ui" #BAFFFE
+               ":Ui" --> ":Duke":
+               deactivate ":Ui"
+
+            else #f7e0d7 else if ifTutorial()
+               alt#Gold #fafcf2 if input.equals('TTT Tutorial')
+                   ":Duke" -> ":Ui": printTTTTutorial()
+                       activate ":Ui" #c6b3ff
+                       ":Ui" --> ":Duke"
+                       deactivate ":Ui"
+               else
+                   ":Duke" -> ":Ui": printHangmanTutorial()
+                       activate ":Ui" #c6b3ff
+                       ":Ui" --> ":Duke"
+                       deactivate ":Ui"
+                   end
+
+
+        else catch (InvalidGameException e | NullPointerException e)
+        ":Duke" -> ":Ui": println()
+           activate ":Ui" #c6b3ff
+           ":Ui" --> ":Duke"
+           deactivate ":Ui"
+           note right
+           Handle exceptions
+           end note
+       end
+    end
+end
+[<- ":Duke":
+deactivate ":Duke"
+@enduml

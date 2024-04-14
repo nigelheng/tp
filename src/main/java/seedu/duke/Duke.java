@@ -10,11 +10,12 @@ public class Duke {
     private static final Render render = new Render();
     private static final TimerTutorial tutorial = new TimerTutorial();
     private static final Ui ui = new Ui(render, tutorial);
-    //private static final HangMan hangman = new HangMan();
     private static ArrayList<Game> games = new ArrayList<>();
     private static int gameCounter = 0;
-
     private static int numberOfGamesWon;
+    private static int numberOfGamesLost;
+    private static int numberOfGamesQuit;
+    private static int numberOfGamesDraw;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -35,13 +36,27 @@ public class Duke {
                 break;
             } else if (Parser.ifShowStats(input)) {
                 numberOfGamesWon = 0;
+                numberOfGamesLost = 0;
+                numberOfGamesQuit = 0;
+                numberOfGamesDraw = 0;
                 for (Game item: games) {
-                    if (item.isWin) {
+                    if (item.isWin == 3) {
+                        numberOfGamesQuit++;
+                    } else if (item.isWin == 1) {
                         numberOfGamesWon ++;
+                    } else if (item.isWin == 0) {
+                        numberOfGamesLost ++;
+                    }  else if (item.isWin == 2) {
+                        numberOfGamesDraw++;
                     }
                 }
-                System.out.println("Your victories so far, player: " + numberOfGamesWon);
+                System.out.println("Total games played: " + (gameCounter));
+                System.out.println("Your victories thus far, player: " + numberOfGamesWon);
+                System.out.println("Your Defeats, player: " + numberOfGamesLost);
+                System.out.println("Your Draws, player: " + numberOfGamesDraw);
+                System.out.println("Number of times you fled: " + numberOfGamesQuit);
                 input = Parser.readLine().trim();
+                continue;
             }
 
 
@@ -52,7 +67,23 @@ public class Duke {
                     if (input.equals("TTT")) {
                         try {
                             games.add(new TicTacToe(input));
-                            games.get(gameCounter).runGame();
+                            switch (games.get(gameCounter).runGame()) {
+                            case 0:
+                                //Game lost
+                                break;
+                            case 1:
+                                //Game won
+                                games.get(gameCounter).gameWon();
+                                break;
+                            case 2:
+                                //Game tied
+                                games.get(gameCounter).gameDraw();
+                                break;
+                            case 3:
+                                //Game quit
+                                games.get(gameCounter).gameQuit();
+                                break;
+                            }
                             gameCounter ++;
                             ui.println("Now what would you like to do?");
                             inGame = false;
@@ -63,17 +94,37 @@ public class Duke {
                         System.out.println("What category would you like to choose? These are the options:");
                         System.out.println("animals, countries, fruits & sports");
 
+                        boolean isQuit = false;
                         String category = Parser.readLine().trim();
                         while (!Parser.validHMCategory(category)) {
                             if (Parser.ifQuit(category)) {
-                                // how to quit in this loop ???
+                                isQuit = true;
+                                break;
                             }
                             ui.println("That's not a category :O.");
                             category = Parser.readLine().trim();
                         }
 
+                        if (isQuit) {
+                            ui.quitUser();
+                            break;
+                        }
+
                         games.add(new HangMan(category));
-                        games.get(gameCounter).runGame();
+                        switch(games.get(gameCounter).runGame())
+                        {
+                        case 0:
+                            //Game lost
+                            break;
+                        case 1:
+                            //Game won
+                            games.get(gameCounter).gameWon();
+                            break;
+                        case 3:
+                            //Game quit
+                            games.get(gameCounter).gameQuit();
+                            break;
+                        }
                         gameCounter ++;
                         ui.println("Now what would you like to do?");
                         inGame = false;

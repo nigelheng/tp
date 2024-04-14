@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 
 /**
@@ -96,12 +97,12 @@ public class Parser {
     }
 
     //@@author nigelheng
-    public static int parseGuess(String userInput) {
-        if (userInput == null) {
+    public static int parseGuess(String input) {
+        if (input == null) {
             return 0;
         }
         int guessType;
-        if (userInput.length() == 1) {
+        if (input.length() == 1) {
             guessType = 1;
         } else {
             guessType = 2;
@@ -109,13 +110,23 @@ public class Parser {
         return guessType;
     }
 
-    public static boolean repeatGuess(ArrayList<String> allGuessedLetters, String userInput) {
-        return allGuessedLetters.contains(userInput);
+    public static boolean containsEnglishAlphabetsOnly(String input) {
+        Pattern pattern = Pattern.compile("[^a-zA-Z]");
+        return !pattern.matcher(input).find();
+    }
+
+    public static boolean repeatGuess(ArrayList<String> allGuessedLetters, String input) {
+        return allGuessedLetters.contains(input);
     }
 
     //@@author nigelheng
-    public static boolean checkCorrectGuess(String currentString) {
-        return currentString.contains("_");
+    public static boolean checkRemainingBlanks(String currentGuess) {
+        return !currentGuess.contains("_");
+    }
+
+    public static boolean validHMCategory(String category) {
+        String [] cats = {"animals", "countries", "sports", "fruits"};
+        return Arrays.stream(cats).anyMatch(category::equals);
     }
 
     /**
@@ -127,11 +138,6 @@ public class Parser {
             System.out.println("Error reading user input.");
         }
         return null;
-    }
-
-    public static boolean validHMCategory(String category) {
-        String [] cats = {"animals", "countries", "sports", "fruits"};
-        return Arrays.stream(cats).anyMatch(category::equals);
     }
 }
 
