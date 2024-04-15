@@ -283,5 +283,5 @@ _________________________________________________________________
 | `hangman tutorial`       | View Hangman tutorial          |
 | `hangman`                | Start a game of Hangman        |
 | `guide` _(only in-game)_ | View guide while in-game       |
-| `stats`                  | See number of games won        |
+| `stats`                  | View game statistics           |
 | `quit`                   | Ends the game/tutorial/program |

@@ -95,7 +95,7 @@ public class HangMan extends Game {
             userInput = in.nextLine().trim();
 
             if (Parser.ifQuit(userInput)) {
-                ui.println("Thank you!! Hope you had flying good time.");
+                ui.println("Thank you!! Hope you had flying good time.\n" + Ui.LINE);
                 return 3;
             }
             if (Parser.ifShowGuide(userInput)) {
