@@ -6,13 +6,13 @@ AeroCade is an In-Flight Entertainment app designed to keep users entertained du
 optimized for use via a Command Line Interface (CLI) while still having the core functionalities and features.
 
 ## Table of Contents
-* Quick Start
-* Features
-   * Playing a game of TicTacToe
-   * Playing a game of Hangman
-   * Viewing of Game statistics
-   * In-Game Guides 
-* Command Summary
+* [Quick Start](https://ay2324s2-cs2113-w13-1.github.io/tp/UserGuide.html#quick-start)
+* [Features](https://ay2324s2-cs2113-w13-1.github.io/tp/UserGuide.html#features)
+   * [Playing a game of TicTacToe](https://ay2324s2-cs2113-w13-1.github.io/tp/UserGuide.html#playing-a-game-of-tictactoe)
+   * [Playing a game of Hangman](https://ay2324s2-cs2113-w13-1.github.io/tp/UserGuide.html#playing-a-game-of-hangman)
+   * [Viewing of Game statistics](https://ay2324s2-cs2113-w13-1.github.io/tp/UserGuide.html#viewing-of-game-statistics)
+   * [In-Game Guides](https://ay2324s2-cs2113-w13-1.github.io/tp/UserGuide.html#in-game-guides) 
+* [Command Summary](https://ay2324s2-cs2113-w13-1.github.io/tp/UserGuide.html#command-summary)
 
 ## Quick Start
 
@@ -96,7 +96,6 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    You have claimed victory over the skies. Godspeed, champion.
    _________________________________________________________________
    Now what would you like to do?
-   
    ```
 
 ### Playing a game of Hangman
@@ -106,14 +105,13 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    the number of mistakes allowed
    * Timed aspect of 4 seconds per frame.
 
-    Start of Hangman tutorial: 
+   Start of Hangman tutorial: 
 
    ```
    _________________________________________________________________
    [Tutorial Mode is playing, do not input any commands!]
    Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
-                   a stellar gameplay of Hangman for you!
-   
+                   a stellar gameplay of Hangman for you! 
    _______        
    |     |        
    |              
@@ -121,8 +119,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    |              
    |              
    ============== 
-   _ _ _ _ _      
-   
+   _ _ _ _ _
    Tutorial Pilot: This is the start of the game, for this tutorial, I'll need to
                    guess a 5-letter word before the 'hangman' is drawn out, which
                    means I can only make 5 wrong guesses! Let's try the letter 'a'
@@ -173,7 +170,6 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    
    Oh noo!! It seems you have lost   :( 
    Now what would you like to do?
-   
    ```
 
 ### Viewing of Game statistics
