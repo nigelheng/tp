@@ -52,17 +52,17 @@ The `UI` component,
 A log file will also be made at `FILE_PATH "./text-ui-test/UiLog.log"` at start of program, that records all Ui-related 
 information and can be used for troubleshooting.
 
-
-
 ### <span style="color:grey;">Game Implementation:</span>
 The `Game` class, is the parent class for our games, `TicTacToe` and `Hangman`.
 * Contains an override method that runs the game for TicTacToe and Hangman.
-* Contains a method `getHelp` as tutorial guidelines for users for each respective game to teach users on the games rules
-* `getHelp` also guides how the game would be controlled on the CLI.
-* `getHelp` will be overridden by child classes, `TicTacToe` and `Hangman`.
+* Contains a method `howToPlay` as rules guidelines for users for each respective game to teach users on the games rules
+* `howToPlay` also guides how the game would be controlled on the CLI.
+* `howToPlay` will be overridden by child classes, `TicTacToe` and `Hangman`.
 * ArrayList of `Game` type is created to store multiple instances of `TicTacToe` and `Hangman` to allow many rounds
 of either games to be played.
-* The `isExit` is a `Boolean` variable to be implemented later on, that checks when a user would want to quit an ongoing game or when a game is ended.
+* `Game` has variable `gameOutcome` which ranges from 0 to 3. `0` denotes the game was lost, while `1` denotes a win, `2` is draw (only applicable for TTT) and lastly, `3` when a game is quit upon without finishing.
+* Game's `gameOutcome` is initialized to be 0 (game lost). Meanwhile, the methods `gameWon`, `gameQuit` and `gameDraw` will change `gameOutcome` based on the actual in-game outcome.
+* When `stats` command is called in the CLI, the program iterates through the ArrayList of `Game`, then computes and outputs the player's statistics.
 
 ### <span style="color:grey;">TicTacToe Implementation:</span>
 The `TicTacToe` class, which inherits from the `Game` class, handles the Tic-Tac-Toe game itself!

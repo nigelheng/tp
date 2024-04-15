@@ -14,7 +14,7 @@ public class Game {
     protected static final Ui ui = new Ui(render, tutorial);
     protected boolean isExit; // true to exit
     protected String gameName;
-    protected int isWin; //0 for lose, 1 for win, 2 for draw (TTT only), 3 for quit.
+    protected int gameOutcome; //0 for lose, 1 for win, 2 for draw (TTT only), 3 for quit.
     /**
      * creates a game
      *
@@ -23,8 +23,8 @@ public class Game {
     public Game(String line) {
         gameName = line;
         isExit = false; //not used for nw
-        isWin = 0;
-        assert (isWin == 0); //not used for now
+        gameOutcome = 0;
+        assert (gameOutcome == 0);
     }
 
     /**
@@ -46,15 +46,15 @@ public class Game {
     }
 
     public void gameWon() {
-        this.isWin = 1;
+        this.gameOutcome = 1;
     }
 
     public void gameQuit() {
-        this.isWin = 3;
+        this.gameOutcome = 3;
     }
 
     public void gameDraw() {
-        this.isWin = 2;
+        this.gameOutcome = 2;
     }
 }
 
