@@ -33,6 +33,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    * Timed aspect of 4 seconds per frame.
 
    Start of TicTacToe tutorial:
+   
    ```
    _________________________________________________________________
    [Tutorial Mode is playing, do not input any commands!]
@@ -51,6 +52,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    ```
 
    * At any point, if you want to quit `tutorial` mode., type `quit`.
+   
    ```
    quit
    TTT Tutorial exited! Returning back to the Main Menu...
@@ -104,7 +106,8 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    the number of mistakes allowed
    * Timed aspect of 4 seconds per frame.
 
-    Start of Hangman tutorial:  
+    Start of Hangman tutorial: 
+
    ```
    _________________________________________________________________
    [Tutorial Mode is playing, do not input any commands!]
@@ -125,7 +128,9 @@ optimized for use via a Command Line Interface (CLI) while still having the core
                    means I can only make 5 wrong guesses! Let's try the letter 'a'
    _________________________________________________________________
    ```
+
    * At any point, if you want to quit `tutorial` mode., type `quit`.
+   
    ```
    quit
    Hangman Tutorial exited! Returning back to the Main Menu...
@@ -170,10 +175,12 @@ optimized for use via a Command Line Interface (CLI) while still having the core
    Now what would you like to do?
    
    ```
+
 ### Viewing of Game statistics
 In the main menu, users can view their total game statistics.
 This can be done so through the `stats` command input into the CLI.
-````
+
+```
 Type 'help' for a list of available commands!                  
 _________________________________________________________________
 stats
@@ -183,7 +190,8 @@ Your victories thus far, player: 0
 Your Defeats, player: 0
 Your Draws, player: 0
 Number of times you fled: 0
-````
+```
+
 The `stats` command will display:
 * Total number of games played
 * Total number of games won (Tic-Tac-Toe and Hangman inclusive)
@@ -198,7 +206,7 @@ The `stats` command will display:
 **A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. Below is an example when opening
 `guide` while playing `hangman`.
 
-````
+```
 Now what is your first guess? ('guide' for a guide on how to play Hangman!)
 _________________________________________________________________
 guide
@@ -215,9 +223,11 @@ Commands for the game:
 
 Lets put your english to the test! Best of luck :D
 _________________________________________________________________
-````
+```
+
 And while playing Tic-Tac-Toe as shown below.
-````
+
+```
 _________________________________________________________________
 TTT
 
@@ -241,13 +251,14 @@ Commands for the game:
 	- To mark a box, simply key in the box's number.
 	- The grid is marked from left to right, top to bottom, from 1 to 9.
 _________________________________________________________________
+```
 
-````
 **Q**: Where can I learn how to play the game?
 
 **A**: In the main menu on the CLI, start a tutorial with either `TTT tutorial` or `hangman tutorial`. Below is an 
 example of the start of a tutorial (frame 1 only) when calling `TTT tutorial`.
-````
+
+```
 TTT tutorial
 _________________________________________________________________
 [Tutorial Mode is playing, do not input any commands!]
@@ -264,7 +275,7 @@ Tutorial Pilot: This is a TTT board which I'll be placing an 'X' depending on
                 the number I put, here is the numbered layout!
 _________________________________________________________________
 (... More Frames to be shown)
-````
+```
 
 ## Command Summary
 
