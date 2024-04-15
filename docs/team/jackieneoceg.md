@@ -41,7 +41,7 @@ displays every frame of the tutorial, and a schedule method `scheduleTutorialFra
 * Added the Ui implementation section to both Developer Guide and User Guide
 
 **Debugging contributions:**
-* Ensured all checks by gradle and IO redirection tests pass, made several Pull [Requests](https://github.com/nus-cs2113-AY2324S2/tp/pull/14)
+* Ensured all checks by gradle and IO redirection tests pass, made several [Pull Requests](https://github.com/nus-cs2113-AY2324S2/tp/pull/14)
 related to this.
 
 **Contributions beyond the project team:**
