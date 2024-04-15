@@ -107,7 +107,7 @@ public class Parser {
      */
     //@@author nigelheng
     public static int parseGuess(String input) {
-        if (input == null) {
+        if (input.isEmpty()) {
             return 0;
         }
         int guessType;

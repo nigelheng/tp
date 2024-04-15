@@ -1,1 +1,7 @@
-
+Apr 15, 2024 8:57:24 PM seedu.duke.ui.Ui startTutorial
+INFO: Started Hangman Tutorial.
+Apr 15, 2024 8:57:24 PM seedu.duke.ui.Ui println
+FINE: Printed to console: Hangman Tutorial exited! Returning back to the Main Menu in 4 seconds...
+_________________________________________________________________
+Apr 15, 2024 8:57:28 PM seedu.duke.ui.Ui handleInputsDuringTutorial
+INFO: Ended Hangman Tutorial.
