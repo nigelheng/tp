@@ -50,8 +50,11 @@ The `UI` component,
   * `handleTutorial(displayMethod, tutorial name)`method in `Ui` flags the boolean `stopTutorial` as true if `quit` is 
   typed. This cancels the timer in `TimerTutorial` ensuring the exit of tutorial mode.
 
-A log file will also be made at `FILE_PATH "./text-ui-test/UiLog.log"` at start of program via `setupLogging()` in `Ui`,
-that records all Ui-related information and can be used for troubleshooting. The log file will refresh at every start.
+_A log file will also be made at `FILE_PATH "./text-ui-test/UiLog.log"` at start of program via `setupLogging()` in `Ui`,
+that records all Ui-related information and can be used for troubleshooting. The log file will refresh at every start._
+
+_JUnit testing for functionality testing can be found at `UiTest.java` in `./src/main/test/java/seedu.duke`_
+
 
 
 ### <span style="color:grey;">Game Implementation:</span>
