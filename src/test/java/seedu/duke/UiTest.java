@@ -70,7 +70,8 @@ public class UiTest {
      */
     @Test
     public void printsExitMessageForHangmanTutorial() {
-        testTutorialExitMessage("quit\n", "Hangman Tutorial exited! Returning back to the Main Menu...\n", true);
+        testTutorialExitMessage("quit\n", "Hangman Tutorial exited! Returning back to the Main " +
+                "Menu in 4 seconds...\n", true);
     }
 
     /**
@@ -78,7 +79,8 @@ public class UiTest {
      */
     @Test
     public void printsExitMessageForTTTTutorial() {
-        testTutorialExitMessage("quit\n", "TTT Tutorial exited! Returning back to the Main Menu...\n", false);
+        testTutorialExitMessage("quit\n", "TTT Tutorial exited! Returning back to the Main" +
+                " Menu in 4 seconds...\n", false);
     }
 
     /**
