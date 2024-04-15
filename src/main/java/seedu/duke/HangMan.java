@@ -126,7 +126,6 @@ public class HangMan extends Game {
 
             if (Parser.checkRemainingBlanks(correctGuesses)) {
                 ui.println("Woahhhh you got it!!");
-                ui.println(Ui.LINE);
                 break;
             }
             ui.println("give me your next guess");
@@ -138,7 +137,7 @@ public class HangMan extends Game {
             printHangMan();
             ui.println("\nOh noo!! It seems you have lost   :( ");
             //returns 0 if lost
-            ui.println("The correct answer is [" + chosenWord + "]");
+            ui.println("The correct answer is " + chosenWord);
             return 0;
         }
         return 0;
@@ -171,7 +170,6 @@ public class HangMan extends Game {
      */
     public void printHangMan() {
         state = getState();
-        assert ((state >= 0) && (state <= 6));
         switch(state) {
         case 0:
             ui.println("  _______");
@@ -242,7 +240,6 @@ public class HangMan extends Game {
         }
 
     }
-
     /**
      * Iterates through the array of letters guessed and prints each element.
      */

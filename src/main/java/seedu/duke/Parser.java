@@ -60,7 +60,7 @@ public class Parser {
     }
 
     /**
-     * Reads input from user specifying what game they wish to play.
+     * Reads input from user specifiying what game they wish to play.
      * Calls internal function to start the indicated game, if valid.
      * rn it returns nothing but maybe it can return a string of the game name ?
      * whatever makes it flow easier
@@ -73,7 +73,7 @@ public class Parser {
     }
 
     /**
-     * Reads input from user specifying what box they wish to mark in Tic Tac Toe
+     * Reads input from user specifiying what box they wish to mark in Tic Tac Toe
      * Calls internal function to perform the indicated move, if valid
      * rn it returns nothing but maybe it can return the int repping the box num ?
      * whatever makes it flow easier
@@ -96,15 +96,6 @@ public class Parser {
         }
     }
 
-    /**
-     * Parses the input string to determine the type of guess.
-     *
-     * @param input the input string to parse
-     * @return an integer representing the type of guess:
-     *           1 if the input string has a length of 1
-     *           2 if the input string has a length greater than 1
-     *           0 if the input string is null
-     */
     //@@author nigelheng
     public static int parseGuess(String input) {
         if (input == null) {
@@ -119,13 +110,6 @@ public class Parser {
         return guessType;
     }
 
-    /**
-     * Checks if the input string contains only English alphabets.
-     *
-     * @param input the input string to check
-     * @return true if the input string contains only English alphabets,
-     *         false otherwise
-     */
     public static boolean containsEnglishAlphabetsOnly(String input) {
         Pattern pattern = Pattern.compile("[^a-zA-Z]");
         return !pattern.matcher(input).find();
@@ -135,13 +119,6 @@ public class Parser {
         return allGuessedLetters.contains(input);
     }
 
-    /**
-     * Checks if there are any remaining blanks (underscores) in the current guess.
-     *
-     * @param currentGuess the current guess string
-     * @return true if there are no remaining blanks (underscores) in the current guess,
-     *         false otherwise
-     */
     //@@author nigelheng
     public static boolean checkRemainingBlanks(String currentGuess) {
         return !currentGuess.contains("_");
