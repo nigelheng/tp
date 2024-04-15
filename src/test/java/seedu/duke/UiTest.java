@@ -65,15 +65,30 @@ public class UiTest {
         assertTrue(outContent.toString().contains("Tutorial Pilot: Hey! I'm still teaching a tutorial here!"));
     }
 
+
+//    @Test
+//    public void printsExitMessageForHangmanTutorial() {
+//        Ui ui = new Ui(new Render(), new TimerTutorial());
+//        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
+//        ui.printHangmanTutorial();
+//        assertTrue(outContent.toString().contains("Hangman Tutorial exited! Returning back to the Main Menu...\n"));
+//    }
+
+
+//    @Test
+//    public void printsExitMessageForTTTTutorial() {
+//        Ui ui = new Ui(new Render(), new TimerTutorial());
+//        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
+//        ui.printTTTTutorial();
+//        assertTrue(outContent.toString().contains("TTT Tutorial exited! Returning back to the Main Menu...\n"));
+//    }
+
     /**
      * Tests that the exit message is correctly printed when the "quit" command is input during the Hangman tutorial.
      */
     @Test
     public void printsExitMessageForHangmanTutorial() {
-        Ui ui = new Ui(new Render(), new TimerTutorial());
-        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
-        ui.printHangmanTutorial();
-        assertTrue(outContent.toString().contains("Hangman Tutorial exited! Returning back to the Main Menu...\n"));
+        testTutorialExitMessage("quit\n", "Hangman Tutorial exited! Returning back to the Main Menu...\n", true);
     }
 
     /**
@@ -81,11 +96,28 @@ public class UiTest {
      */
     @Test
     public void printsExitMessageForTTTTutorial() {
-        Ui ui = new Ui(new Render(), new TimerTutorial());
-        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
-        ui.printTTTTutorial();
-        assertTrue(outContent.toString().contains("TTT Tutorial exited! Returning back to the Main Menu...\n"));
+        testTutorialExitMessage("quit\n", "TTT Tutorial exited! Returning back to the Main Menu...\n", false);
     }
+
+    /**
+     * Helper method to test the exit message for tutorials.
+     * @param input The input to simulate user interaction.
+     * @param expectedOutput The expected output string to verify.
+     * @param isHangman Flag to determine if Hangman or TTT tutorial should be tested.
+     */
+    private void testTutorialExitMessage(String input, String expectedOutput, boolean isHangman) {
+        Ui ui = new Ui(new Render(), new TimerTutorial());
+        System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
+
+        if (isHangman) {
+            ui.printHangmanTutorial();
+        } else {
+            ui.printTTTTutorial();
+        }
+
+        assertTrue(outContent.toString().contains(expectedOutput));
+    }
+
 
     /**
      * Tests that the println method correctly prints a given message.
@@ -101,7 +133,7 @@ public class UiTest {
      * Tests that the greetUser method displays the application logo.
      */
     @Test
-    public void greetUser_displaysCorrectMessage() {
+    public void greetUser_displaysLogo() {
         Ui ui = new Ui(new Render(), new TimerTutorial());
         ui.greetUser();
         assertTrue(outContent.toString().contains(Render.logo));
@@ -121,7 +153,7 @@ public class UiTest {
      * Tests that the quitUser method correctly displays the quit message.
      */
     @Test
-    public void quitUser_displaysCorrectMessage() {
+    public void quitUser_displaysBoeing() {
         Ui ui = new Ui(new Render(), new TimerTutorial());
         ui.quitUser();
         assertTrue(outContent.toString().contains(Render.boeing));
