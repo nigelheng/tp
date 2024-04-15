@@ -148,15 +148,37 @@ Oh noo!! It seems you have lost   :(
 Now what would you like to do?
 
 ```
+### 3. Viewing of Game statistics
+In the main menu, users can view their total game statistics.
+This can be done so through the `stats` command input into the CLI.
+````
+Type 'help' for a list of available commands!                  
+_________________________________________________________________
+stats
+
+Total games played: 0
+Your victories thus far, player: 0
+Your Defeats, player: 0
+Your Draws, player: 0
+Number of times you fled: 0
+````
+The `stats` command will display:
+* Total number of games played
+* Total number of games won (Tic-Tac-Toe and Hangman inclusive)
+* Total number of games lost (Tic-Tac-Toe and Hangman inclusive)
+* Total number of Tic-Tac-Toe games tied
+* Total number of games users have quit and left without finishing
 
 ## In-Game Guides
 
 **Q**: Where can I find a guide on understanding the game rules? 
 
 **A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. Below is an example when opening
-`guide` while playing `hangman`
+`guide` while playing `hangman`.
 
 ````
+Now what is your first guess? ('guide' for a guide on how to play Hangman!)
+_________________________________________________________________
 guide
 _________________________________________________________________
 Let me explain the rules of this game:
@@ -170,8 +192,35 @@ Commands for the game:
 	- A list of guessed letters will be indicated at the top as well.
 
 Lets put your english to the test! Best of luck :D
+_________________________________________________________________
 ````
+And while playing Tic-Tac-Toe as shown below.
+````
+_________________________________________________________________
+TTT
 
+Choose: 'easy', our first champion, is a benchmark 
+for all challengers to test their mettle against, 
+or 'hard', our second champion, is an Elder of the clouds. 
+Which opponent do you desire, challenger?
+
+guide
+_________________________________________________________________
+Let me explain the rules of this game:
+_________________________________________________________________
+	- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial
+ by single combat.
+	- A grid, numbering three across and three lengthwise. Each space represents a
+ spot you can occupy.
+	- You and your opponent will take turns making your moves. The first to complete a line, either horizontally, diagonally or vertically, will emerge the
+ victorious, and give rightful justification to their place in the skies.
+_________________________________________________________________
+Commands for the game:
+	- To mark a box, simply key in the box's number.
+	- The grid is marked from left to right, top to bottom, from 1 to 9.
+_________________________________________________________________
+
+````
 **Q**: Where can I learn how to play the game?
 
 **A**: In the main menu on the CLI, start a tutorial with either `TTT tutorial` or `hangman tutorial`. Below is an 
