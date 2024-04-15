@@ -51,6 +51,28 @@ public class UiTest {
     }
 
     @Test
+    public void printsExitMessageForHangmanTutorial() {
+        Ui ui = new Ui(new Render(), new TimerTutorial());
+
+        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
+        ui.printHangmanTutorial();
+
+        // Check if the correct output was printed
+        assertTrue(outContent.toString().contains("Hangman Tutorial exited! Returning back to the Main Menu...\n"));
+    }
+
+    @Test
+    public void printsExitMessageForTTTTutorial() {
+        Ui ui = new Ui(new Render(), new TimerTutorial());
+
+        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
+        ui.printHangmanTutorial();
+
+        // Check if the correct output was printed
+        assertTrue(outContent.toString().contains("TTT Tutorial exited! Returning back to the Main Menu...\n"));
+    }
+
+    @Test
     public void println_printsCorrectMessage() {
         Ui ui = new Ui(null, null); // Constructor won't be used to invoke println
         ui.println("Hello world!");
@@ -66,11 +88,9 @@ public class UiTest {
     }
 
     @Test
-    public void greetUser_displaysLine() {
+    public void printHelp_displaysLine() {
         Ui ui = new Ui(new Render(), new TimerTutorial());
         ui.printHelp();
-        ui.printHangmanTutorial();
-        ui.printTTTTutorial();
         assertTrue(outContent.toString().contains(Ui.LINE));
     }
 
