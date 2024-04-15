@@ -5,6 +5,15 @@
 AeroCade is an In-Flight Entertainment app designed to keep users entertained during travels, 
 optimized for use via a Command Line Interface (CLI) while still having the core functionalities and features.
 
+## Table of Contents
+* Quick Start
+* Features
+   * Playing a game of TicTacToe
+   * Playing a game of Hangman
+   * Viewing of Game statistics
+   * In-Game Guides 
+* Command Summary
+
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
@@ -17,138 +26,151 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 ## Features
 
 
-### 1. Playing a game of `TicTacToe`
+### Playing a game of TicTacToe
 
-Entering `tutorial` mode: type `TTT tutorial`
-* Detailed tutorial showing the gameplay mechanics of how to win TicTacToe.
-* Timed aspect of 4 seconds per frame.
+1. Entering `tutorial` mode: type `TTT tutorial`
+   * Detailed tutorial showing the gameplay mechanics of how to win TicTacToe.
+   * Timed aspect of 4 seconds per frame.
 
-Start of TicTacToe tutorial:
-```
-_________________________________________________________________
-[Tutorial Mode is playing, do not input any commands!]
-Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
-                a stellar gameplay of TTT for you!
+   Start of TicTacToe tutorial:
+   ```
+   _________________________________________________________________
+   [Tutorial Mode is playing, do not input any commands!]
+   Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
+                   a stellar gameplay of TTT for you!
+   
+       |   |    
+   -------------
+       |   |    
+   -------------
+       |   |    
+   
+   Tutorial Pilot: This is a TTT board which I'll be placing an 'X' depending on
+                   the number I put, here is the numbered layout!
+   _________________________________________________________________
+   ```
 
-    |   |    
--------------
-    |   |    
--------------
-    |   |    
+   * At any point, if you want to quit `tutorial` mode., type `quit`.
+   ```
+   quit
+   TTT Tutorial exited! Returning back to the Main Menu...
+   _________________________________________________________________
+   ```
 
-Tutorial Pilot: This is a TTT board which I'll be placing an 'X' depending on
-                the number I put, here is the numbered layout!
-_________________________________________________________________
-```
+2. Entering the real Tic-Tac-Toe game: 
+   * To start a game, type `TTT`.
+   * Choose your difficulty, either `easy` or `hard`, and type it in.
+   * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
+   * At any point, if you want to quit, simply type `quit`
 
-Example of usage: 
- * To start a game, type `TTT`.
- * Choose your difficulty, either `easy` or `hard`, and type it in.
- * Pick a box in the grid to occupy by choosing number `1/2/3/4/5/6/7/8/9`.
- * At any point, if you want to quit, simply type `quit`
+   ```
+     1 | 2 | 3
+   -------------
+     4 | 5 | 6    
+   -------------
+     7 | 8 | 9    
+   ```
+   ```
+   Which opponent do you desire, challenger?
+   easy
+       |   |    
+   -------------
+       |   |    
+   -------------
+       |   |    
+   _________________________________________________________________
+   ```
+   
+   ```
+   _________________________________________________________________
+   Make your move, challenger.
+   7
+     X | O |    
+   -------------
+     X |   | O  
+   -------------
+     X |   | O  
+   _________________________________________________________________
+   You have claimed victory over the skies. Godspeed, champion.
+   _________________________________________________________________
+   Now what would you like to do?
+   
+   ```
 
-```
-  1 | 2 | 3
--------------
-  4 | 5 | 6    
--------------
-  7 | 8 | 9    
-```
-```
-Which opponent do you desire, challenger?
-easy
-    |   |    
--------------
-    |   |    
--------------
-    |   |    
-_________________________________________________________________
-```
+### Playing a game of Hangman
 
-```
-_________________________________________________________________
-Make your move, challenger.
-7
-  X | O |    
--------------
-  X |   | O  
--------------
-  X |   | O  
-_________________________________________________________________
-You have claimed victory over the skies. Godspeed, champion.
-_________________________________________________________________
-Now what would you like to do?
+1. Entering `tutorial` mode: type `hangman tutorial`
+   * Detailed tutorial showing the ideal thought process of playing while showing
+   the number of mistakes allowed
+   * Timed aspect of 4 seconds per frame.
 
-```
+    Start of Hangman tutorial:  
+   ```
+   _________________________________________________________________
+   [Tutorial Mode is playing, do not input any commands!]
+   Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
+                   a stellar gameplay of Hangman for you!
+   
+   _______        
+   |     |        
+   |              
+   |              
+   |              
+   |              
+   ============== 
+   _ _ _ _ _      
+   
+   Tutorial Pilot: This is the start of the game, for this tutorial, I'll need to
+                   guess a 5-letter word before the 'hangman' is drawn out, which
+                   means I can only make 5 wrong guesses! Let's try the letter 'a'
+   _________________________________________________________________
+   ```
+   * At any point, if you want to quit `tutorial` mode., type `quit`.
+   ```
+   quit
+   Hangman Tutorial exited! Returning back to the Main Menu...
+   _________________________________________________________________
+   ```
 
-### 2. Playing a game of `Hangman`
+2. Entering the real Hangman game:
+   * To start a game, type `hangman`.
+   * You will be prompted to choose a category between `animals`, `fruits`, `countries` & `sports`
+   * Type in one of the 4 categories
+   * Guess a letter in the secret word by typing in the letter or if you are confident
+   * Guess the whole secret word.
 
-Entering `tutorial` mode: type `hangman tutorial`
-* Detailed tutorial showing the ideal thought process of playing while showing
-the number of mistakes allowed
-* Timed aspect of 4 seconds per frame.
-
-Start of Hangman tutorial:
-```
-_________________________________________________________________
-[Tutorial Mode is playing, do not input any commands!]
-Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
-                a stellar gameplay of Hangman for you!
-
-_______        
-|     |        
-|              
-|              
-|              
-|              
-============== 
-_ _ _ _ _      
-
-Tutorial Pilot: This is the start of the game, for this tutorial, I'll need to
-                guess a 5-letter word before the 'hangman' is drawn out, which
-                means I can only make 5 wrong guesses! Let's try the letter 'a'
-_________________________________________________________________
-```
-
-Example of usage:
- * To start a game, type `hangman`.
- * You will be prompted to choose a category between `animals`, `fruits`, `countries` & `sports`
- * Type in one of the 4 categories
- * Guess a letter in the secret word by typing in the letter or if you are confident
- * Guess the whole secret word.
-
-```
-_______
-|     |
-|
-|
-|
-|
-==============
-These are the guesses you have made so far:
-
- _ _ _
-```
-```
-_________________________________________________________________
-These are the guesses you have made so far:
-a  o  i  u  e  b  r  h  
- _ _ o r _
-give me your next guess
-_________________________________________________________________
-  _______
-  |     |
-  |     @
-  |    /|\
-  |     |
-  |    / \
-==============
-
-Oh noo!! It seems you have lost   :( 
-Now what would you like to do?
-
-```
-### 3. Viewing of Game statistics
+   ```
+   _______
+   |     |
+   |
+   |
+   |
+   |
+   ==============
+   These are the guesses you have made so far:
+   
+    _ _ _
+   ```
+   ```
+   _________________________________________________________________
+   These are the guesses you have made so far:
+   a  o  i  u  e  b  r  h  
+    _ _ o r _
+   give me your next guess
+   _________________________________________________________________
+     _______
+     |     |
+     |     @
+     |    /|\
+     |     |
+     |    / \
+   ==============
+   
+   Oh noo!! It seems you have lost   :( 
+   Now what would you like to do?
+   
+   ```
+### Viewing of Game statistics
 In the main menu, users can view their total game statistics.
 This can be done so through the `stats` command input into the CLI.
 ````
@@ -169,7 +191,7 @@ The `stats` command will display:
 * Total number of Tic-Tac-Toe games tied
 * Total number of games users have quit and left without finishing
 
-## In-Game Guides
+### In-Game Guides
 
 **Q**: Where can I find a guide on understanding the game rules? 
 
@@ -246,14 +268,13 @@ _________________________________________________________________
 
 ## Command Summary
 
-* See list of commands in menu: `help`
-
-* Start a game of Tic-tac-toe: `TTT`
-* View Tic-tac-toe tutorial: `TTT tutorial`
-
-* Start a game of Hangman: `hangman`
-* View Hangman tutorial: `hangman tutorial`
-
-* See guide on game: `guide`
-* To quit a game anytime: `quit`
-* To see your number of games won: `stats`
+| Commands                 | Description                    |
+|--------------------------|--------------------------------|
+| `help`                   | See list of commands in menu   |
+| `TTT tutorial`           | View Tic-tac-toe tutorial      |
+| `TTT`                    | Start a game of Tic-tac-toe    |
+| `hangman tutorial`       | View Hangman tutorial          |
+| `hangman`                | Start a game of Hangman        |
+| `guide` _(only in-game)_ | View guide while in-game       |
+| `stats`                  | See number of games won        |
+| `quit`                   | Ends the game/tutorial/program |
