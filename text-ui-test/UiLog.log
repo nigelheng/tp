@@ -1,31 +1,21 @@
-Apr 15, 2024 4:25:02 PM seedu.duke.ui.Ui greetUser
+Apr 15, 2024 5:20:15 PM seedu.duke.ui.Ui greetUser
 INFO: Displayed game menu to user.
-Apr 15, 2024 4:25:09 PM seedu.duke.ui.Ui println
-FINE: Printed to console: Invalid Game. Type 'help' for list of available commands.
-Apr 15, 2024 4:25:12 PM seedu.duke.ui.Ui printHelp
-INFO: Displayed help message.
-Apr 15, 2024 4:25:15 PM seedu.duke.ui.Ui printHelp
-INFO: Displayed help message.
-Apr 15, 2024 4:25:31 PM seedu.duke.ui.Ui handleTutorial
-INFO: Started TTT Tutorial.
-Apr 15, 2024 4:25:38 PM seedu.duke.ui.Ui println
+Apr 15, 2024 5:20:24 PM seedu.duke.ui.Ui handleTutorial
+INFO: Started Hangman Tutorial.
+Apr 15, 2024 5:20:27 PM seedu.duke.ui.Ui println
 FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
-Apr 15, 2024 4:25:38 PM seedu.duke.ui.Ui handleTutorial
-INFO: Ignored input during TTT Tutorial: hang
-Apr 15, 2024 4:25:40 PM seedu.duke.ui.Ui println
+Apr 15, 2024 5:20:27 PM seedu.duke.ui.Ui handleTutorial
+INFO: Ignored input during Hangman Tutorial: test
+Apr 15, 2024 5:20:28 PM seedu.duke.ui.Ui println
 FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
-Apr 15, 2024 4:25:40 PM seedu.duke.ui.Ui handleTutorial
-INFO: Ignored input during TTT Tutorial: 
-Apr 15, 2024 4:25:42 PM seedu.duke.ui.Ui println
+Apr 15, 2024 5:20:28 PM seedu.duke.ui.Ui handleTutorial
+INFO: Ignored input during Hangman Tutorial: s
+Apr 15, 2024 5:20:29 PM seedu.duke.ui.Ui println
 FINE: Printed to console: Tutorial Pilot: Hey! I'm still teaching a tutorial here!
-Apr 15, 2024 4:25:42 PM seedu.duke.ui.Ui handleTutorial
-INFO: Ignored input during TTT Tutorial: stats
-Apr 15, 2024 4:25:45 PM seedu.duke.ui.Ui println
-FINE: Printed to console: TTT Tutorial exited! Returning back to the Main Menu...
+Apr 15, 2024 5:20:29 PM seedu.duke.ui.Ui handleTutorial
+INFO: Ignored input during Hangman Tutorial: v
+Apr 15, 2024 5:20:31 PM seedu.duke.ui.Ui println
+FINE: Printed to console: Hangman Tutorial exited! Returning back to the Main Menu...
 _________________________________________________________________
-Apr 15, 2024 4:25:45 PM seedu.duke.ui.Ui handleTutorial
-INFO: Ended TTT Tutorial.
-Apr 15, 2024 4:25:49 PM seedu.duke.ui.Ui println
-FINE: Printed to console: Invalid Game. Type 'help' for list of available commands.
-Apr 15, 2024 4:25:54 PM seedu.duke.ui.Ui quitUser
-INFO: Displayed farewell message to user.
+Apr 15, 2024 5:20:31 PM seedu.duke.ui.Ui handleTutorial
+INFO: Ended Hangman Tutorial.
