@@ -65,30 +65,13 @@ public class UiTest {
         assertTrue(outContent.toString().contains("Tutorial Pilot: Hey! I'm still teaching a tutorial here!"));
     }
 
-
-//    @Test
-//    public void printsExitMessageForHangmanTutorial() {
-//        Ui ui = new Ui(new Render(), new TimerTutorial());
-//        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
-//        ui.printHangmanTutorial();
-//        assertTrue(outContent.toString().contains("Hangman Tutorial exited! Returning back to the Main Menu...\n"));
-//    }
-
-
-//    @Test
-//    public void printsExitMessageForTTTTutorial() {
-//        Ui ui = new Ui(new Render(), new TimerTutorial());
-//        System.setIn(new java.io.ByteArrayInputStream("quit\n".getBytes()));
-//        ui.printTTTTutorial();
-//        assertTrue(outContent.toString().contains("TTT Tutorial exited! Returning back to the Main Menu...\n"));
-//    }
-
     /**
      * Tests that the exit message is correctly printed when the "quit" command is input during the Hangman tutorial.
      */
     @Test
     public void printsExitMessageForHangmanTutorial() {
-        testTutorialExitMessage("quit\n", "Hangman Tutorial exited! Returning back to the Main Menu...\n", true);
+        testTutorialExitMessage("quit\n", "Hangman Tutorial exited! Returning back to the Main " +
+                "Menu in 4 seconds...\n", true);
     }
 
     /**
@@ -96,7 +79,8 @@ public class UiTest {
      */
     @Test
     public void printsExitMessageForTTTTutorial() {
-        testTutorialExitMessage("quit\n", "TTT Tutorial exited! Returning back to the Main Menu...\n", false);
+        testTutorialExitMessage("quit\n", "TTT Tutorial exited! Returning back to the Main" +
+                " Menu in 4 seconds...\n", false);
     }
 
     /**
