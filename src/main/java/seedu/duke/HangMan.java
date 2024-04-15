@@ -77,6 +77,8 @@ public class HangMan extends Game {
      * Runs the HangMan game, taking in inputs of words and english alphabets as guesses for the hidden word.
      * Continues to take in inputs till game completion, either by making 6 incorrect guesses or correctly guessing
      * the hidden word.
+     *
+     * @return an int value that denotes the outcome of hangman game. 0 for loss, 1 for win and 3 for quit.
      */
     @Override public int runGame() {
 
@@ -138,7 +140,7 @@ public class HangMan extends Game {
             ui.println("The correct answer is " + chosenWord);
             return 0;
         }
-        return 4;
+        return 0;
     }
     public int getNumberOfLettersGuessed() {
         return numberOfLettersGuessed;
