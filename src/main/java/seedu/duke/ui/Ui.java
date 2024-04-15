@@ -124,7 +124,7 @@ public class Ui {
     }
 
     /**
-     * Handles the common logic for displaying tutorials.
+     * Handles the common logic for displaying tutorials. Every User Input other than quit is ignored.
      *
      * @param displayMethod The method reference to display the specific tutorial.
      * @param tutorialName The name of the tutorial to be displayed, either TTT or Hangman
