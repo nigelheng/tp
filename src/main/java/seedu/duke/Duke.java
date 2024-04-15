@@ -1,7 +1,12 @@
 package seedu.duke;
 
+
 import seedu.duke.exceptions.InvalidGameException;
 import seedu.duke.exceptions.InvalidTTMoveException;
+import seedu.duke.ui.Render;
+import seedu.duke.ui.TimerTutorial;
+import seedu.duke.ui.Ui;
+
 
 import java.util.ArrayList;
 
@@ -10,11 +15,12 @@ public class Duke {
     private static final Render render = new Render();
     private static final TimerTutorial tutorial = new TimerTutorial();
     private static final Ui ui = new Ui(render, tutorial);
-    //private static final HangMan hangman = new HangMan();
     private static ArrayList<Game> games = new ArrayList<>();
     private static int gameCounter = 0;
-
     private static int numberOfGamesWon;
+    private static int numberOfGamesLost;
+    private static int numberOfGamesQuit;
+    private static int numberOfGamesDraw;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -35,13 +41,27 @@ public class Duke {
                 break;
             } else if (Parser.ifShowStats(input)) {
                 numberOfGamesWon = 0;
+                numberOfGamesLost = 0;
+                numberOfGamesQuit = 0;
+                numberOfGamesDraw = 0;
                 for (Game item: games) {
-                    if (item.isWin) {
+                    if (item.gameOutcome == 3) {
+                        numberOfGamesQuit++;
+                    } else if (item.gameOutcome == 1) {
                         numberOfGamesWon ++;
+                    } else if (item.gameOutcome == 0) {
+                        numberOfGamesLost ++;
+                    }  else if (item.gameOutcome == 2) {
+                        numberOfGamesDraw++;
                     }
                 }
-                System.out.println("Your victories so far, player: " + numberOfGamesWon);
+                System.out.println("Total games played: " + (gameCounter));
+                System.out.println("Your victories thus far, player: " + numberOfGamesWon);
+                System.out.println("Your Defeats, player: " + numberOfGamesLost);
+                System.out.println("Your Draws, player: " + numberOfGamesDraw);
+                System.out.println("Number of times you fled: " + numberOfGamesQuit);
                 input = Parser.readLine().trim();
+                continue;
             }
 
 
@@ -54,16 +74,21 @@ public class Duke {
                             games.add(new TicTacToe(input));
                             switch (games.get(gameCounter).runGame()) {
                             case 0:
-                                System.out.println("this line is working for lose");
+                                //Game lost
                                 break;
                             case 1:
+                                //Game won
                                 games.get(gameCounter).gameWon();
                                 break;
                             case 2:
-                                System.out.println("this line is working for draw");
+                                //Game tied
+                                games.get(gameCounter).gameDraw();
                                 break;
                             case 3:
-                                System.out.println("this line is working for quit");
+                                //Game quit
+                                games.get(gameCounter).gameQuit();
+                                break;
+                            default:
                                 break;
                             }
                             gameCounter ++;
@@ -93,16 +118,19 @@ public class Duke {
                         }
 
                         games.add(new HangMan(category));
-                        switch(games.get(gameCounter).runGame())
-                        {
+                        switch(games.get(gameCounter).runGame()) {
                         case 0:
-                            System.out.println("this line is working for hangman lose");
+                            //Game lost
                             break;
                         case 1:
+                            //Game won
                             games.get(gameCounter).gameWon();
                             break;
                         case 3:
-                            System.out.println("this line is working for hangman quit");
+                            //Game quit
+                            games.get(gameCounter).gameQuit();
+                            break;
+                        default:
                             break;
                         }
                         gameCounter ++;

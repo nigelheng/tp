@@ -1,5 +1,8 @@
 package seedu.duke;
 import seedu.duke.exceptions.InvalidTTMoveException;
+import seedu.duke.ui.Render;
+import seedu.duke.ui.TimerTutorial;
+import seedu.duke.ui.Ui;
 
 /**
  * Game class with 2 subclasses TicTacToe and HangMan
@@ -9,10 +12,9 @@ public class Game {
     protected static final Render render = new Render();
     private static final TimerTutorial tutorial = new TimerTutorial();
     protected static final Ui ui = new Ui(render, tutorial);
-    protected boolean isExit; // true to exit
     protected String gameName;
+    protected int gameOutcome; //0 for lose, 1 for win, 2 for draw (TTT only), 3 for quit.
 
-    protected boolean isWin; //true if won, false if lost, quit or draw (for TTT)
     /**
      * creates a game
      *
@@ -20,9 +22,8 @@ public class Game {
      */
     public Game(String line) {
         gameName = line;
-        isExit = false; //not used for nw
-        isWin = false;
-        assert !isWin; //not used for now
+        gameOutcome = 0;
+        assert (gameOutcome == 0);
     }
 
     /**
@@ -43,7 +44,30 @@ public class Game {
         ui.println("Let me explain the rules of this game:");
     }
 
+    /**
+     * Sets the gameOutcome to 1
+     * This denotes a win in that game
+     */
     public void gameWon() {
-        this.isWin = true;
+        this.gameOutcome = 1;
+    }
+
+    /**
+     * Sets the gameOutcome to 3
+     * This denotes the user quit the game halfway
+     */
+    public void gameQuit() {
+        this.gameOutcome = 3;
+    }
+
+    /**
+     * Sets the gameOutcome to 2
+     * This denotes the game ended in a draw with the program
+     * This method is only applicable for Tic-Tac-Toe as TTT can result in draw
+     * Whereas hangman does not
+     */
+    public void gameDraw() {
+        this.gameOutcome = 2;
     }
 }
+

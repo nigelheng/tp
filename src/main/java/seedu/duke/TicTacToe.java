@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import seedu.duke.exceptions.InvalidTTMoveException;
+import seedu.duke.ui.Ui;
 
 import java.util.Scanner;
 
@@ -331,6 +332,8 @@ public class TicTacToe extends Game {
     /**
      * Runs the TTT game and outputs the winner.
      *
+     * @return an integer returned by 'checkWinner' method that denotes the game outcome.
+     * 0 for lost, 1 for win, 2 for draw and 3 for quit.
      */
     @Override
     public int runGame() {
@@ -405,6 +408,9 @@ public class TicTacToe extends Game {
      * Prints the winner of the game.
      *
      * @param whoWon The string of who won the game.
+     *
+     *  @return an integer that denotes the game outcome.
+     *  0 for lost, 1 for win, 2 for draw and 3 for quit.
      */
     private static int printWinner(String whoWon) {
         switch (whoWon) {

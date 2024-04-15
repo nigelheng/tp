@@ -8,7 +8,7 @@ optimized for use via a Command Line Interface (CLI) while still having the core
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-2. Down the latest version of `AeroCade.jar` from [here](http://link.to/duke).
+2. Download the latest version of `AeroCade.jar` from [here](http://link.to/duke).
 3. Copy the file to the folder you want to use as the home folder for your (name).
 4. Open a command terminal, cd into the folder you put the jar file in, and use the java -jar (name).jar command to run the application.
 5. Type commands in the CLI and press Enter to execute it. (E.g. type and enter 'help' for a list of available commands)
@@ -23,7 +23,9 @@ Entering `tutorial` mode: type `TTT tutorial`
 * Detailed tutorial showing the gameplay mechanics of how to win TicTacToe.
 * Timed aspect of 4 seconds per frame.
 
+Start of TicTacToe tutorial:
 ```
+_________________________________________________________________
 [Tutorial Mode is playing, do not input any commands!]
 Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
                 a stellar gameplay of TTT for you!
@@ -52,6 +54,32 @@ Example of usage:
 -------------
   7 | 8 | 9    
 ```
+```
+Which opponent do you desire, challenger?
+easy
+    |   |    
+-------------
+    |   |    
+-------------
+    |   |    
+_________________________________________________________________
+```
+
+```
+_________________________________________________________________
+Make your move, challenger.
+7
+  X | O |    
+-------------
+  X |   | O  
+-------------
+  X |   | O  
+_________________________________________________________________
+You have claimed victory over the skies. Godspeed, champion.
+_________________________________________________________________
+Now what would you like to do?
+
+```
 
 ### 2. Playing a game of `Hangman`
 
@@ -60,6 +88,27 @@ Entering `tutorial` mode: type `hangman tutorial`
 the number of mistakes allowed
 * Timed aspect of 4 seconds per frame.
 
+Start of Hangman tutorial:
+```
+_________________________________________________________________
+[Tutorial Mode is playing, do not input any commands!]
+Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
+                a stellar gameplay of Hangman for you!
+
+_______        
+|     |        
+|              
+|              
+|              
+|              
+============== 
+_ _ _ _ _      
+
+Tutorial Pilot: This is the start of the game, for this tutorial, I'll need to
+                guess a 5-letter word before the 'hangman' is drawn out, which
+                means I can only make 5 wrong guesses! Let's try the letter 'a'
+_________________________________________________________________
+```
 
 Example of usage:
  * To start a game, type `hangman`.
@@ -80,17 +129,58 @@ These are the guesses you have made so far:
 
  _ _ _
 ```
+```
+_________________________________________________________________
+These are the guesses you have made so far:
+a  o  i  u  e  b  r  h  
+ _ _ o r _
+give me your next guess
+_________________________________________________________________
+  _______
+  |     |
+  |     @
+  |    /|\
+  |     |
+  |    / \
+==============
 
-## FAQ
+Oh noo!! It seems you have lost   :( 
+Now what would you like to do?
+
+```
+### 3. Viewing of Game statistics
+In the main menu, users can view their total game statistics.
+This can be done so through the `stats` command input into the CLI.
+````
+Type 'help' for a list of available commands!                  
+_________________________________________________________________
+stats
+
+Total games played: 0
+Your victories thus far, player: 0
+Your Defeats, player: 0
+Your Draws, player: 0
+Number of times you fled: 0
+````
+The `stats` command will display:
+* Total number of games played
+* Total number of games won (Tic-Tac-Toe and Hangman inclusive)
+* Total number of games lost (Tic-Tac-Toe and Hangman inclusive)
+* Total number of Tic-Tac-Toe games tied
+* Total number of games users have quit and left without finishing
+
+## In-Game Guides
 
 **Q**: Where can I find a guide on understanding the game rules? 
 
 **A**: Open a game with `TTT` or `hangman` and open the game guide with `guide`. Below is an example when opening
-`guide` while playing `hangman`
+`guide` while playing `hangman`.
 
 ````
+Now what is your first guess? ('guide' for a guide on how to play Hangman!)
+_________________________________________________________________
 guide
-----------------------------------------------------
+_________________________________________________________________
 Let me explain the rules of this game:
 	- Hangman is a word guessing game played by yourself.
 	- There is a SECRET word which you would have to guess.
@@ -99,15 +189,42 @@ Let me explain the rules of this game:
 Commands for the game:
 	- To guess a letter, simply type in an alphabet.
 	- If it is correct, the letter will be shown.
-	- A list of guessed letters will be indicated at the top as well."
+	- A list of guessed letters will be indicated at the top as well.
 
 Lets put your english to the test! Best of luck :D
-----------------------------------------------------
+_________________________________________________________________
 ````
+And while playing Tic-Tac-Toe as shown below.
+````
+_________________________________________________________________
+TTT
 
+Choose: 'easy', our first champion, is a benchmark 
+for all challengers to test their mettle against, 
+or 'hard', our second champion, is an Elder of the clouds. 
+Which opponent do you desire, challenger?
+
+guide
+_________________________________________________________________
+Let me explain the rules of this game:
+_________________________________________________________________
+	- The ancient game of Tic-Tac-Toe, as foretold by our forefathers, is a trial
+ by single combat.
+	- A grid, numbering three across and three lengthwise. Each space represents a
+ spot you can occupy.
+	- You and your opponent will take turns making your moves. The first to complete a line, either horizontally, diagonally or vertically, will emerge the
+ victorious, and give rightful justification to their place in the skies.
+_________________________________________________________________
+Commands for the game:
+	- To mark a box, simply key in the box's number.
+	- The grid is marked from left to right, top to bottom, from 1 to 9.
+_________________________________________________________________
+
+````
 **Q**: Where can I learn how to play the game?
 
-**A**: In the main menu on the CLI, start a tutorial with either `TTT tutorial` or `hangman tutorial`. Below is an example of the start of a tutorial when calling `TTT tutorial`.
+**A**: In the main menu on the CLI, start a tutorial with either `TTT tutorial` or `hangman tutorial`. Below is an 
+example of the start of a tutorial (frame 1 only) when calling `TTT tutorial`.
 ````
 TTT tutorial
 _________________________________________________________________
@@ -124,6 +241,7 @@ Tutorial Pilot: Good day! this is Tutorial Pilot and I will demonstrate
 Tutorial Pilot: This is a TTT board which I'll be placing an 'X' depending on
                 the number I put, here is the numbered layout!
 _________________________________________________________________
+(... More Frames to be shown)
 ````
 
 ## Command Summary
