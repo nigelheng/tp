@@ -145,6 +145,7 @@ _________________________________________________________________
 ==============
 
 Oh noo!! It seems you have lost   :( 
+The correct answer is [stork]
 Now what would you like to do?
 
 ```
